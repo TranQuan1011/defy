@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-import { Label, FormInput } from 'app/components/Input/index';
+import Input from 'app/components/Input/index';
 
 export function HomePage() {
   return (
@@ -12,8 +12,7 @@ export function HomePage() {
       </Helmet>
       <span>HomePage container</span>
 
-      <Label>Name</Label>
-      <FormInput>Quynhdtn</FormInput>
+      <Input/>
     </>
   );
 }
