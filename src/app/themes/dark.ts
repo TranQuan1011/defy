@@ -10,6 +10,12 @@ const theme = createTheme({
     secondary: {
       main: '#DBA83D',
     },
+    warning: {
+      main: 'rgb(219, 168, 61)',
+    },
+    error: {
+      main: '#ff5252',
+    },
   },
   typography: {
     fontFamily: ['Montserrat', 'Helvetica', 'Arial', ' sans-serif'].join(', '),
