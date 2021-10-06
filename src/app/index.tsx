@@ -32,7 +32,6 @@ export function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/login" />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

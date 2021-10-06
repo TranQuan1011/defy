@@ -47,6 +47,8 @@ const NavBar = props => {
   const [state, setState] = React.useState(false);
   const [ele, setEl] = React.useState(false);
   const matches = useMediaQuery(theme.breakpoints.down('lg'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isLap = useMediaQuery(theme.breakpoints.down('sm'));
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -58,6 +60,7 @@ const NavBar = props => {
       }
       setState(open);
     };
+
   const list = () => (
     <Box
       sx={{ width: 250 }}
@@ -86,20 +89,38 @@ const NavBar = props => {
             Buy DFY
           </ButtonNoColor>
         </ListItem>
-        <ListItem>
-          <ButtonNoColor onClick={() => handleClick('/')}>
-            Connect
-          </ButtonNoColor>
-        </ListItem>
+        {isMobile ? (
+          <List>
+            <ListItem>
+              <ButtonNoColor onClick={() => handleClick('/')}>
+                Connect
+              </ButtonNoColor>
+            </ListItem>
+          </List>
+        ) : (
+          <></>
+        )}
         <ListItem>
           <ButtonNoColor onClick={() => handleClick('/login')}>
             Login
           </ButtonNoColor>
         </ListItem>
       </List>
+      <Divider />
+      {isMobile && ele ? (
+        <List>
+          <ListItem>
+            <Link onClick={() => handleClick('/')} to="/">
+              <img src={SignUp} alt="link" />
+            </Link>
+          </ListItem>
+        </List>
+      ) : (
+        <></>
+      )}
     </Box>
   );
-  // Ham dieu huong
+
   const handleClick = page => {
     if (page === '/login') {
       setEl(true);
@@ -125,7 +146,7 @@ const NavBar = props => {
               <img src={Logo} alt="logo" />
             </Link>
           </Typography>
-          {matches ? ( // breackpoint
+          {matches ? (
             <Grid container>
               <Grid
                 container
@@ -133,18 +154,24 @@ const NavBar = props => {
                 justifyContent="flex-end"
                 spacing={3}
               >
-                {ele && ( // xuat hien Sign Up khi an vao nut Login
+                {!isLap && ele ? (
                   <Grid item>
                     <Link to="/">
                       <img src={SignUp} alt="link" />
                     </Link>
                   </Grid>
+                ) : (
+                  <></>
                 )}
-                <Grid item>
-                  <ButtonNoColor onClick={() => handleClick('/')}>
-                    Connect
-                  </ButtonNoColor>
-                </Grid>
+                {!isLap ? (
+                  <Grid item>
+                    <ButtonNoColor onClick={() => handleClick('/')}>
+                      Connect
+                    </ButtonNoColor>
+                  </Grid>
+                ) : (
+                  <></>
+                )}
                 <Grid item>
                   <IconButton
                     size="large"
@@ -166,36 +193,16 @@ const NavBar = props => {
             // Navbar
             <Grid container alignItems="center">
               <Grid container item spacing={3} xs={6} alignItems="center">
-                <Grid item>
-                  <LinkButton onClick={() => handleClick('/')} to="/">
-                    Pawn
-                  </LinkButton>
-                </Grid>
-                <Grid item>
-                  <LinkButton onClick={() => handleClick('/')} to="/">
-                    Borrow
-                  </LinkButton>
-                </Grid>
-                <Grid item>
-                  <LinkButton onClick={() => handleClick('/')} to="/">
-                    Lend
-                  </LinkButton>
-                </Grid>
-                <Grid item>
-                  <LinkButton onClick={() => handleClick('/')} to="/">
-                    NFT
-                  </LinkButton>
-                </Grid>
-                <Grid item>
-                  <LinkButton onClick={() => handleClick('/')} to="/">
-                    My Account
-                  </LinkButton>
-                </Grid>
-                <Grid item>
-                  <LinkButton onClick={() => handleClick('/')} to="/">
-                    FAQ
-                  </LinkButton>
-                </Grid>
+                {menuList.map(item => (
+                  <Grid item key={item.name}>
+                    <LinkButton
+                      onClick={() => handleClick(item.url)}
+                      to={item.url}
+                    >
+                      {item.name}
+                    </LinkButton>
+                  </Grid>
+                ))}
                 {ele && ( // xuat hien Sign Up khi an vao nut Login
                   <Grid item>
                     <Link to="/">
