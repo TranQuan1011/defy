@@ -6,33 +6,34 @@ export default function Input(props) {
   return (
     <>
       <Typography
-        font-weigh = '500'
-        font-size = '14px'
-        line-height = '17px'
-        color = '#ffffff'
-      >
-        {props.label}
-      </Typography>
-        <TextField 
-          sx={{
-            height: '44px',
-            border: '1px solid #74767B',
-            borderRadius: '22px',
-            fontWeight: '500',
-            fontSize: '16px',
-            lineHeight: '20px',
-            color: 'white',
-            '& .MuiOutlinedInput-root': {
-              height: '44px',
-              border: '1px solid #74767B',
-              borderRadius: '22px',
-            },
-            '& fieldset': {
-                border: '1px solid #74767B',
-            },
+          component="label"
+          sx= {{
+            display:"block",
+            fontSize: "1rem",
+            fontWeight: 500,        
           }}
-          type={props.type} 
-          placeholder={props.placeholder} 
+        >
+          {props.label}
+        </Typography>
+        <TextField
+          sx={{
+            borderRadius: "22px",
+            "& .MuiOutlinedInput-root": {
+              height: "44px",
+              borderRadius: "22px",
+              "& input": {
+                pt:0,
+                pb:0,
+                height:"100%",
+                lineHeight: "44px"
+              }
+            },
+            "& fieldset": {
+              border: "1px solid #74767B"
+            }
+          }}
+          type={props.type}
+          placeholder={props.placeholder}
           InputProps={props.InputProps}
         />
     </>
