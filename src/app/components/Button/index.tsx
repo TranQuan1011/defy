@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Button } from '@mui/material';
-export const CustomButton = styled(Button)`
-  width: 125px;
+export const ButtonNoColor = styled(Button)`
+  width: 102px;
   height: 36px;
   border: 1px solid #dba83d;
   border-radius: 25px;
@@ -12,7 +12,7 @@ export const CustomButton = styled(Button)`
   text-transform: none;
 `;
 
-export const BackgroundButton = styled(Button)`
+export const ButtonColor = styled(Button)`
   width: 191px;
   height: 36px;
   border: 1px solid #dba83d;
