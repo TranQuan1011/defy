@@ -19,18 +19,16 @@ const useStyles = makeStyles({
     span: {
         color: '#DBA83D',
     },
-    btn: {
-        margin: '30px 40%',
-    }
   });
 
   export default function Signin() {
   const classes = useStyles();
   return (
     <>
-        <Box>
+        <Box pt={3} display="flex" flexDirection="column">
             <Input 
-                label='Name' type='name' 
+                label='Name' 
+                type='text' 
                 placeholder='Enter Name' 
                 sx={input}
             />
@@ -73,14 +71,17 @@ const useStyles = makeStyles({
             <Typography className={classes.text}>We will not share or sell your information to 3rd parties.</Typography>
             <Typography className={classes.text}>By clicking on <span className={classes.span}>Create Account</span>, you agree to DeFi For
                 You’s Terms and Conditions of Use.</Typography>
-            <ButtonColor 
-                className={classes.btn}
-            >
+            <ButtonColor sx={button}>
                 Create Account
             </ButtonColor>
         </Box>
     </>
   );
+}
+
+const button: SxProps<Theme> = {
+    padding: '1rem 2rem',
+    alignSelf: 'center',
 }
 
 const input: SxProps<Theme> = {
