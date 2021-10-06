@@ -19,6 +19,7 @@ export default function Input(props) {
           fullWidth
           sx={{
             borderRadius: "22px",
+            marginBottom: "39px",
             "& .MuiOutlinedInput-root": {
               height: "44px",
               borderRadius: "22px",
