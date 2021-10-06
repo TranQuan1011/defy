@@ -5,8 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Drawer from '@mui/material/Drawer';
 import { ButtonColor, ButtonNoColor } from '../Button';
@@ -14,15 +12,35 @@ import { useTheme } from '@mui/material/styles';
 import { Link, withRouter } from 'react-router-dom';
 import Logo from '../../../assets/image/defi-logo.png';
 import SignUp from '../../../assets/image/sign-up.png';
-import {
-  Button,
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemIcon,
-} from '@mui/material';
+import { Divider, Grid, List, ListItem } from '@mui/material';
 import { LinkButton } from './style';
+
+const menuList = [
+  {
+    name: 'Pawn',
+    url: '/',
+  },
+  {
+    name: 'Borrow',
+    url: '/',
+  },
+  {
+    name: 'Lend',
+    url: '/',
+  },
+  {
+    name: 'NFT',
+    url: '/',
+  },
+  {
+    name: 'My Account',
+    url: '/',
+  },
+  {
+    name: 'FAQ',
+    url: '/',
+  },
+];
 const NavBar = props => {
   const { history } = props;
   const theme = useTheme();
@@ -48,36 +66,13 @@ const NavBar = props => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <ListItem>
-          <LinkButton onClick={() => handleClick('/')} to="/">
-            Pawn
-          </LinkButton>
-        </ListItem>
-        <ListItem>
-          <LinkButton onClick={() => handleClick('/')} to="/">
-            Borrow
-          </LinkButton>
-        </ListItem>
-        <ListItem>
-          <LinkButton onClick={() => handleClick('/')} to="/">
-            Lend
-          </LinkButton>
-        </ListItem>
-        <ListItem>
-          <LinkButton onClick={() => handleClick('/')} to="/">
-            NFT
-          </LinkButton>
-        </ListItem>
-        <ListItem>
-          <LinkButton onClick={() => handleClick('/')} to="/">
-            My Account
-          </LinkButton>
-        </ListItem>
-        <ListItem>
-          <LinkButton onClick={() => handleClick('/')} to="/">
-            FAQ
-          </LinkButton>
-        </ListItem>
+        {menuList.map(item => (
+          <ListItem key={item.name}>
+            <LinkButton onClick={() => handleClick(item.url)} to={item.url}>
+              {item.name}
+            </LinkButton>
+          </ListItem>
+        ))}
       </List>
       <Divider />
       <List>
