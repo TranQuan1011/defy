@@ -12,8 +12,10 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+
 import { useTranslation } from 'react-i18next';
 import GlobalTheme from './containers/ThemeProvider';
+import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 
 export function App() {
@@ -28,9 +30,10 @@ export function App() {
         >
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
-
+        <NavBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
+
           <Route path="/login" component={AuthPage} />
           <Route component={NotFoundPage} />
         </Switch>
