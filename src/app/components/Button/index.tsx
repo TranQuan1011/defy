@@ -17,7 +17,6 @@ export const BackgroundButton = styled(Button)`
   height: 36px;
   border: 1px solid #dba83d;
   border-radius: 25px;
-  color: #dba83d;
   font-size: 14px;
   font-weight: 500;
   background: linear-gradient(
