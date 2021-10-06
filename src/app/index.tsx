@@ -18,7 +18,6 @@ import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 
-
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -34,6 +33,7 @@ export function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
+
           <Route path="/login" component={AuthPage} />
           <Route component={NotFoundPage} />
         </Switch>
