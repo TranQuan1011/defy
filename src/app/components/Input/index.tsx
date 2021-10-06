@@ -27,6 +27,9 @@ export default function Input(props) {
               border: '1px solid #74767B',
               borderRadius: '22px',
             },
+            '& fieldset': {
+                border: '1px solid #74767B',
+            },
           }}
           type={props.type} 
           placeholder={props.placeholder} 
