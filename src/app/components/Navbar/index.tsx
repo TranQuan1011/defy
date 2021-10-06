@@ -8,32 +8,102 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Drawer from '@mui/material/Drawer';
 import { ButtonColor, ButtonNoColor } from '../Button';
 import { useTheme } from '@mui/material/styles';
 import { Link, withRouter } from 'react-router-dom';
 import Logo from '../../../assets/image/defi-logo.png';
 import SignUp from '../../../assets/image/sign-up.png';
-import { Grid } from '@mui/material';
+import {
+  Button,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+} from '@mui/material';
 import { LinkButton } from './style';
 const NavBar = props => {
   const { history } = props;
   const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [state, setState] = React.useState(false);
   const [ele, setEl] = React.useState(false);
   const matches = useMediaQuery(theme.breakpoints.down('lg'));
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  // Ham dieu huong
-  const handleMenuClick = page => {
-    if (page === '/login') {
-      setEl(true);
-    } else {
-      setEl(false);
-    }
-    history.push(page);
-    setAnchorEl(null);
-  };
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      setState(open);
+    };
+  const list = () => (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
+        <ListItem>
+          <LinkButton onClick={() => handleClick('/')} to="/">
+            Pawn
+          </LinkButton>
+        </ListItem>
+        <ListItem>
+          <LinkButton onClick={() => handleClick('/')} to="/">
+            Borrow
+          </LinkButton>
+        </ListItem>
+        <ListItem>
+          <LinkButton onClick={() => handleClick('/')} to="/">
+            Lend
+          </LinkButton>
+        </ListItem>
+        <ListItem>
+          <LinkButton onClick={() => handleClick('/')} to="/">
+            NFT
+          </LinkButton>
+        </ListItem>
+        <ListItem>
+          <LinkButton onClick={() => handleClick('/')} to="/">
+            My Account
+          </LinkButton>
+        </ListItem>
+        <ListItem>
+          <LinkButton onClick={() => handleClick('/')} to="/">
+            FAQ
+          </LinkButton>
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem>
+          <ButtonColor onClick={() => handleClick('/')}>
+            Become a Pawnshop
+          </ButtonColor>
+        </ListItem>
+        <ListItem>
+          <ButtonNoColor onClick={() => handleClick('/')}>
+            Buy DFY
+          </ButtonNoColor>
+        </ListItem>
+        <ListItem>
+          <ButtonNoColor onClick={() => handleClick('/')}>
+            Connect
+          </ButtonNoColor>
+        </ListItem>
+        <ListItem>
+          <ButtonNoColor onClick={() => handleClick('/login')}>
+            Login
+          </ButtonNoColor>
+        </ListItem>
+      </List>
+    </Box>
+  );
   // Ham dieu huong
   const handleClick = page => {
     if (page === '/login') {
@@ -45,8 +115,15 @@ const NavBar = props => {
   };
 
   return (
-    <Box sx={{ minWidth: '100%' }}>
-      <AppBar position="relative">
+    <Box
+      sx={{
+        minWidth: '100%',
+      }}
+    >
+      <AppBar
+        position="relative"
+        sx={{ backgroundColor: 'none', backgroundImage: 'none' }}
+      >
         <Toolbar>
           <Typography component="div" sx={{ margin: '20px 81px 20px 0' }}>
             <Link onClick={() => handleClick('/')} to="/">
@@ -69,7 +146,7 @@ const NavBar = props => {
                   </Grid>
                 )}
                 <Grid item>
-                  <ButtonNoColor onClick={() => handleMenuClick('/')}>
+                  <ButtonNoColor onClick={() => handleClick('/')}>
                     Connect
                   </ButtonNoColor>
                 </Grid>
@@ -79,56 +156,16 @@ const NavBar = props => {
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
-                    onClick={handleMenu}
+                    onClick={toggleDrawer(true)}
                     color="inherit"
                   >
                     <MenuIcon />
                   </IconButton>
                 </Grid>
               </Grid>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={() => setAnchorEl(null)}
-              >
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <LinkButton to="/">Pawn</LinkButton>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <LinkButton to="/">Borrow</LinkButton>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <LinkButton to="/">Lend</LinkButton>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <LinkButton to="/">NFT</LinkButton>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <LinkButton to="/">My Account</LinkButton>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <LinkButton to="/">FAQ</LinkButton>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <ButtonColor>Become a Pawnshop</ButtonColor>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/')}>
-                  <ButtonNoColor>Buy DFY</ButtonNoColor>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick('/login')}>
-                  <ButtonNoColor>Login</ButtonNoColor>
-                </MenuItem>
-              </Menu>
+              <Drawer open={state} onClose={toggleDrawer(false)}>
+                {list()}
+              </Drawer>
             </Grid>
           ) : (
             // Navbar
