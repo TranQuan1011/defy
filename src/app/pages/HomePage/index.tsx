@@ -12,7 +12,7 @@ export function HomePage() {
       </Helmet>
       <span>HomePage container</span>
 
-      <Input/>
+      <Input label='Name' type='name' placeholder='Enter Name' />
     </>
   );
 }
