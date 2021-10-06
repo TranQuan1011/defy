@@ -12,7 +12,7 @@ import { useTheme } from '@mui/material/styles';
 import { Link, withRouter } from 'react-router-dom';
 import Logo from 'app/assets/image/defi-logo.png';
 import SignUp from 'app/assets/image/sign-up.png';
-import { Divider, Grid, List, ListItem } from '@mui/material';
+import { Divider, List, ListItem } from '@mui/material';
 import { LinkButton } from './style';
 
 const menuList = [
@@ -89,17 +89,6 @@ const NavBar = props => {
             Buy DFY
           </ButtonNoColor>
         </ListItem>
-        {isMobile ? (
-          <List>
-            <ListItem>
-              <ButtonNoColor onClick={() => handleClick('/')}>
-                Connect
-              </ButtonNoColor>
-            </ListItem>
-          </List>
-        ) : (
-          <></>
-        )}
         <ListItem>
           <ButtonNoColor onClick={() => handleClick('/login')}>
             Login
@@ -141,100 +130,115 @@ const NavBar = props => {
         sx={{ backgroundColor: 'none', backgroundImage: 'none' }}
       >
         <Toolbar>
-          <Typography component="div" sx={{ margin: '20px 81px 20px 0' }}>
-            <Link onClick={() => handleClick('/')} to="/">
-              <img src={Logo} alt="logo" />
-            </Link>
-          </Typography>
-          {matches ? (
-            <Grid container>
-              <Grid
-                container
-                alignItems="center"
-                justifyContent="flex-end"
-                spacing={3}
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Typography
+              component="div"
+              sx={{ margin: '20px 0', height: 'auto' }}
+            >
+              <Link onClick={() => handleClick('/')} to="/">
+                <img width="100%" src={Logo} alt="logo" />
+              </Link>
+            </Typography>
+            {matches ? (
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'nowrap',
+                  alignItems: 'center',
+                  marginLeft: '20px',
+                }}
               >
                 {!isLap && ele ? (
-                  <Grid item>
-                    <Link to="/">
-                      <img src={SignUp} alt="link" />
-                    </Link>
-                  </Grid>
+                  <Link style={{ marginRight: '10px' }} to="/">
+                    <img src={SignUp} alt="link" />
+                  </Link>
                 ) : (
                   <></>
                 )}
-                {!isLap ? (
-                  <Grid item>
-                    <ButtonNoColor onClick={() => handleClick('/')}>
-                      Connect
-                    </ButtonNoColor>
-                  </Grid>
-                ) : (
-                  <></>
-                )}
-                <Grid item>
-                  <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={toggleDrawer(true)}
-                    color="inherit"
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                </Grid>
-              </Grid>
-              <Drawer open={state} onClose={toggleDrawer(false)}>
-                {list()}
-              </Drawer>
-            </Grid>
-          ) : (
-            // Navbar
-            <Grid container alignItems="center">
-              <Grid container item spacing={3} xs={6} alignItems="center">
-                {menuList.map(item => (
-                  <Grid item key={item.name}>
+                <ButtonNoColor onClick={() => handleClick('/')}>
+                  Connect
+                </ButtonNoColor>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={toggleDrawer(true)}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+
+                <Drawer open={state} onClose={toggleDrawer(false)}>
+                  {list()}
+                </Drawer>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'nowrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                  marginLeft: '81px',
+                }}
+              >
+                <Box sx={{ width: '50%' }}>
+                  {menuList.map(item => (
                     <LinkButton
                       onClick={() => handleClick(item.url)}
                       to={item.url}
+                      sx={{ margin: '10px 36px 10px 0' }}
                     >
                       {item.name}
                     </LinkButton>
-                  </Grid>
-                ))}
-                {ele && ( // xuat hien Sign Up khi an vao nut Login
-                  <Grid item>
-                    <Link to="/">
+                  ))}
+                </Box>
+                <Box>
+                  {ele && ( // xuat hien Sign Up khi an vao nut Login
+                    <Link style={{ marginLeft: '20px' }} to="/">
                       <img src={SignUp} alt="link" />
                     </Link>
-                  </Grid>
-                )}
-              </Grid>
-              <Grid container item spacing={3} xs={6} justifyContent="flex-end">
-                <Grid item>
-                  <ButtonColor onClick={() => handleClick('/')}>
+                  )}
+                  <ButtonColor
+                    sx={{ marginLeft: '20px' }}
+                    onClick={() => handleClick('/')}
+                  >
                     Become a Pawnshop
                   </ButtonColor>
-                </Grid>
-                <Grid item>
-                  <ButtonNoColor onClick={() => handleClick('/')}>
+
+                  <ButtonNoColor
+                    sx={{ marginLeft: '20px' }}
+                    onClick={() => handleClick('/')}
+                  >
                     Buy DFY
                   </ButtonNoColor>
-                </Grid>
-                <Grid item>
-                  <ButtonNoColor onClick={() => handleClick('/')}>
+
+                  <ButtonNoColor
+                    sx={{ marginLeft: '20px' }}
+                    onClick={() => handleClick('/')}
+                  >
                     Connect
                   </ButtonNoColor>
-                </Grid>
-                <Grid item>
-                  <ButtonNoColor onClick={() => handleClick('/login')}>
+
+                  <ButtonNoColor
+                    sx={{ marginLeft: '20px' }}
+                    onClick={() => handleClick('/login')}
+                  >
                     Login
                   </ButtonNoColor>
-                </Grid>
-              </Grid>
-            </Grid>
-          )}
+                </Box>
+              </Box>
+            )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
