@@ -16,6 +16,7 @@ export default function Input(props) {
           {props.label}
         </Typography>
         <TextField
+          fullWidth
           sx={{
             borderRadius: "22px",
             "& .MuiOutlinedInput-root": {
