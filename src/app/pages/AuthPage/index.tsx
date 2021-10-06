@@ -9,6 +9,8 @@ import { Theme } from '@mui/material';
 import { SxProps, styled } from '@mui/system';
 
 import ResponsiveImg from 'app/components/ResponsiveImg';
+import LogIn from 'app/components/LogIn';
+import heroImg from 'app/assets/image/Frame.png';
 
 export default function AuthPage() {
   return (
@@ -34,12 +36,10 @@ export default function AuthPage() {
               <StyledTab label="Sign up" />
               <StyledTab label="Log in" />
             </Tabs>
+            <LogIn />
           </Grid>
           <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
-            <ResponsiveImg
-              src="https://techcrunch.com/wp-content/uploads/2020/03/DarkMode_iPhone.jpg"
-              alt="computer"
-            />
+            <ResponsiveImg src={heroImg} alt="computer" />
           </Grid>
         </Grid>
       </StyledContainer>
