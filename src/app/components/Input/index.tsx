@@ -6,6 +6,27 @@ export default function Input(props) {
   return (
     <>
       <Typography
+        component="label"
+        sx={{
+          display: 'block',
+          fontSize: '1rem',
+          fontWeight: 500,
+        }}
+      >
+        {props.label}
+      </Typography>
+      <TextField
+        fullWidth
+        sx={{
+          borderRadius: '22px',
+          '& .MuiOutlinedInput-root': {
+            height: '44px',
+            borderRadius: '22px',
+            '& input': {
+              pt: 0,
+              pb: 0,
+              height: '100%',
+              lineHeight: '44px',
             },
           },
           '& fieldset': {
