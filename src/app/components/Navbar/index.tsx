@@ -192,22 +192,24 @@ const NavBar = props => {
                 }}
               >
                 <Box sx={{ width: '50%' }}>
-                  {menuList.map(item => (
-                    <LinkButton
-                      onClick={() => handleClick(item.url)}
-                      to={item.url}
-                      sx={{ margin: '10px 36px 10px 0' }}
-                    >
-                      {item.name}
-                    </LinkButton>
-                  ))}
+                  <>
+                    {menuList.map(item => (
+                      <LinkButton
+                        onClick={() => handleClick(item.url)}
+                        to={item.url}
+                        sx={{ margin: '10px 36px 10px 0' }}
+                      >
+                        {item.name}
+                      </LinkButton>
+                    ))}
+                    {ele && ( // xuat hien Sign Up khi an vao nut Login
+                      <Link style={{ marginLeft: '20px' }} to="/">
+                        <img src={SignUp} alt="link" />
+                      </Link>
+                    )}
+                  </>
                 </Box>
                 <Box>
-                  {ele && ( // xuat hien Sign Up khi an vao nut Login
-                    <Link style={{ marginLeft: '20px' }} to="/">
-                      <img src={SignUp} alt="link" />
-                    </Link>
-                  )}
                   <ButtonColor
                     sx={{ marginLeft: '20px' }}
                     onClick={() => handleClick('/')}
