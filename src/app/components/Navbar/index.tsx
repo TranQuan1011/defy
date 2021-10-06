@@ -10,8 +10,8 @@ import Drawer from '@mui/material/Drawer';
 import { ButtonColor, ButtonNoColor } from '../Button';
 import { useTheme } from '@mui/material/styles';
 import { Link, withRouter } from 'react-router-dom';
-import Logo from '../../../assets/image/defi-logo.png';
-import SignUp from '../../../assets/image/sign-up.png';
+import Logo from 'app/assets/image/defi-logo.png';
+import SignUp from 'app/assets/image/sign-up.png';
 import { Divider, Grid, List, ListItem } from '@mui/material';
 import { LinkButton } from './style';
 
