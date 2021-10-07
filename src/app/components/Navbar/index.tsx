@@ -71,7 +71,11 @@ const NavBar = props => {
       <List>
         {menuList.map(item => (
           <ListItem key={item.name}>
-            <LinkButton onClick={() => handleClick(item.url)} to={item.url}>
+            <LinkButton
+              onClick={() => handleClick(item.url)}
+              to={item.url}
+              key={item.url}
+            >
               {item.name}
             </LinkButton>
           </ListItem>
@@ -79,17 +83,17 @@ const NavBar = props => {
       </List>
       <Divider />
       <List>
-        <ListItem>
+        <ListItem key={1}>
           <ButtonColor onClick={() => handleClick('/')}>
             Become a Pawnshop
           </ButtonColor>
         </ListItem>
-        <ListItem>
+        <ListItem key={2}>
           <ButtonNoColor onClick={() => handleClick('/')}>
             Buy DFY
           </ButtonNoColor>
         </ListItem>
-        <ListItem>
+        <ListItem key={3}>
           <ButtonNoColor onClick={() => handleClick('/login')}>
             Login
           </ButtonNoColor>
@@ -98,7 +102,7 @@ const NavBar = props => {
       <Divider />
       {isMobile && ele ? (
         <List>
-          <ListItem>
+          <ListItem key={1}>
             <Link onClick={() => handleClick('/')} to="/">
               <img src={SignUp} alt="link" />
             </Link>
@@ -191,19 +195,20 @@ const NavBar = props => {
                   marginLeft: '81px',
                 }}
               >
-                <Box sx={{ width: '55%' }}>
+                <Box>
                   <>
                     {menuList.map(item => (
                       <LinkButton
                         onClick={() => handleClick(item.url)}
                         to={item.url}
                         sx={{ margin: '10px 36px 10px 0' }}
+                        key={item.name}
                       >
                         {item.name}
                       </LinkButton>
                     ))}
                     {ele && ( // xuat hien Sign Up khi an vao nut Login
-                      <Link to="/">
+                      <Link to="/" key="sign-up">
                         <img src={SignUp} alt="link" />
                       </Link>
                     )}
@@ -211,6 +216,7 @@ const NavBar = props => {
                 </Box>
                 <Box>
                   <ButtonColor
+                    key={1}
                     sx={{ marginLeft: '20px' }}
                     onClick={() => handleClick('/')}
                   >
@@ -218,6 +224,7 @@ const NavBar = props => {
                   </ButtonColor>
 
                   <ButtonNoColor
+                    key={2}
                     sx={{ marginLeft: '20px' }}
                     onClick={() => handleClick('/')}
                   >
@@ -225,6 +232,7 @@ const NavBar = props => {
                   </ButtonNoColor>
 
                   <ButtonNoColor
+                    key={3}
                     sx={{ marginLeft: '20px' }}
                     onClick={() => handleClick('/')}
                   >
@@ -232,6 +240,7 @@ const NavBar = props => {
                   </ButtonNoColor>
 
                   <ButtonNoColor
+                    key={4}
                     sx={{ marginLeft: '20px' }}
                     onClick={() => handleClick('/login')}
                   >
