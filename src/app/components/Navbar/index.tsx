@@ -46,7 +46,7 @@ const NavBar = props => {
   const theme = useTheme();
   const [state, setState] = React.useState(false);
   const [ele, setEl] = React.useState(false);
-  const matches = useMediaQuery(theme.breakpoints.down('lg'));
+  const matches = useMediaQuery(theme.breakpoints.down('xl'));
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isLap = useMediaQuery(theme.breakpoints.down('sm'));
   const toggleDrawer =
@@ -191,7 +191,7 @@ const NavBar = props => {
                   marginLeft: '81px',
                 }}
               >
-                <Box sx={{ width: '50%' }}>
+                <Box sx={{ width: '55%' }}>
                   <>
                     {menuList.map(item => (
                       <LinkButton
@@ -203,7 +203,7 @@ const NavBar = props => {
                       </LinkButton>
                     ))}
                     {ele && ( // xuat hien Sign Up khi an vao nut Login
-                      <Link style={{ marginLeft: '20px' }} to="/">
+                      <Link to="/">
                         <img src={SignUp} alt="link" />
                       </Link>
                     )}
