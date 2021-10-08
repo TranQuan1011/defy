@@ -10,6 +10,7 @@ export function HomePage() {
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       <span>HomePage container</span>
+      
       <Pawnshop />
     </>
   );
