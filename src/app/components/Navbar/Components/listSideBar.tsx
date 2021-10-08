@@ -7,15 +7,31 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { LinkButton, BoxButton } from '../style';
+import { withRouter } from 'react-router-dom';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-export default function ListSideBar() {
+import Avatar from '@mui/material/Avatar';
+import Ava from '../../../assets/image/Vector.svg';
+import { ButtonNoColor } from 'app/components/Button';
+const ListSideBar = props => {
+  const { history } = props;
+  const handleClick = page => {
+    history.push(page);
+  };
   return (
     <Box sx={{ width: '100%', minHeight: '100vh' }}>
       <List>
+        <ListItem sx={{ justifyContent: 'center', flexDirection: 'column' }}>
+          <Avatar alt="avatar" src={Ava} />
+          <ButtonNoColor
+            onClick={() => handleClick('/login')}
+            sx={{ marginTop: '10px' }}
+          >
+            Login
+          </ButtonNoColor>
+        </ListItem>
         <ListItem disablePadding>
           <ListItemButton component="a" href="/">
             <ListItemText primary="Pawn" />
@@ -207,4 +223,5 @@ export default function ListSideBar() {
       </List>
     </Box>
   );
-}
+};
+export default withRouter(ListSideBar);
