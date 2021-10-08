@@ -9,6 +9,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import SearchIcon from '@mui/icons-material/Search';
 
 import Input from 'app/components/Input';
 import Dropdown from 'app/components/Dropdown';
@@ -82,6 +83,9 @@ export default function Lend() {
           <MultiSelect />
         </Grid>
       </Grid>
+      <ButtonColor fullWidth sx={submitBtn}>
+        <SearchIcon /> Search
+      </ButtonColor>
     </Box>
   );
 }
@@ -91,4 +95,7 @@ const EndAbor: SxProps<Theme> = {
   padding: '8px 12px',
   borderRadius: '172px',
   mr: -1,
+};
+const submitBtn: SxProps<Theme> = {
+  mt: 5,
 };
