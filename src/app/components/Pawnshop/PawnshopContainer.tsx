@@ -109,6 +109,7 @@ export default function Pawnshop() {
 
 const box: SxProps<Theme> = {
   background: '#232732',
+  paddingBottom: '80px',
 }
 const title: SxProps<Theme> = {
   fontSize: '36px',
