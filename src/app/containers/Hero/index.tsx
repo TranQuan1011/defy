@@ -12,6 +12,7 @@ import Box from '@mui/system/Box';
 import ResponsiveImg from 'app/components/ResponsiveImg';
 import heroImg from 'app/assets/image/Hero.png';
 import Borrow from 'app/components/Borrow';
+import Lend from 'app/components/Lend';
 
 export default function Hero() {
   return (
@@ -56,7 +57,8 @@ export default function Hero() {
               <StyledTab label="Borrow" />
               <StyledTab label="Lend" />
             </Tabs>
-            <Borrow />
+            {/* <Borrow /> */}
+            <Lend />
           </Grid>
         </Grid>
       </Container>

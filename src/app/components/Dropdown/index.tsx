@@ -40,7 +40,7 @@ const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => {
           '& .MuiOutlinedInput-root': {
             borderRadius: theme => theme.typography.pxToRem(22),
             height: theme => theme.typography.pxToRem(44),
-            padding: '0',
+            padding: '0 !important',
             paddingRight: '32px !important',
             '& .MuiOutlinedInput-input': {
               lineHeight: '100%',
