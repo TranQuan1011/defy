@@ -6,6 +6,7 @@ import Autocomplete, {
 import Box from '@mui/system/Box';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
+import { Typography } from '@mui/material';
 
 const names = ['Oliver', 'Van', 'April'];
 
@@ -17,6 +18,7 @@ const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => {
         top="0"
         left="0"
         display="flex"
+        alignItems="center"
         columnGap="6px"
         height="100%"
         width="calc(100% - 32px)"
@@ -25,15 +27,16 @@ const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => {
         whiteSpace="nowrap"
         textOverflow="ellipsis"
       >
-        <Avatar sx={{ width: '24px', height: '24px' }} />
-        TEXT
+        <Avatar sx={{ width: '20px', height: '20px' }} />
+        <Typography component="span" variant="body1">
+          TEXT
+        </Typography>
       </Box>
       <TextField
         {...params}
         // placeholder="Name"
         color="warning"
         sx={{
-          minWidth: theme => theme.typography.pxToRem(111),
           '& .MuiOutlinedInput-root': {
             borderRadius: theme => theme.typography.pxToRem(22),
             height: theme => theme.typography.pxToRem(44),
@@ -67,6 +70,7 @@ export default function Dropdown(): JSX.Element {
   const [input, setInput] = React.useState('');
   return (
     <Autocomplete
+      value={value as string}
       PaperComponent={props => (
         <Paper
           {...props}
@@ -77,11 +81,10 @@ export default function Dropdown(): JSX.Element {
         />
       )}
       noOptionsText="no data available"
-      clearIcon={null}
+      disableClearable
       options={names}
       renderInput={params => renderInput(params)}
       renderOption={renderOption}
-      value={value}
       inputValue={input}
       onChange={(e, v, r) => setValue(v)}
       onInputChange={(e, v, r) => {
