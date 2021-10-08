@@ -9,20 +9,34 @@ import { Theme } from '@mui/material';
 import { SxProps, styled } from '@mui/system';
 
 import ResponsiveImg from 'app/components/ResponsiveImg';
+import LogIn from 'app/components/LogIn';
+import heroImg from 'app/assets/image/Frame.png';
+import SignUp from 'app/components/SignUp';
 
 export default function AuthPage() {
   return (
     <Box component="main" padding="20px 16px">
       <StyledContainer>
-        <Typography component="h1" sx={h1}>
-          Exclusive on <DefySpan>DeFi For You.</DefySpan>
-        </Typography>
-        <Typography component="h2" variant="subtitle1" sx={h2}>
-          Register new DeFi For You account from{' '}
-          <DefySpan>01/08/2021 </DefySpan>
-          to <DefySpan>31/12/2021</DefySpan> to have 100% chance of receiving
-          DFY tokens
-        </Typography>
+        <Box
+          component="section"
+          sx={{
+            width: {
+              xs: '100%',
+              md: '70%',
+            },
+          }}
+        >
+          <Typography component="h1" sx={h1}>
+            Exclusive on <DefySpan>DeFi For You.</DefySpan>
+          </Typography>
+          <Typography component="h2" variant="subtitle1" sx={h2}>
+            Register new DeFi For You account from{' '}
+            <DefySpan>01/08/2021 </DefySpan>
+            to <DefySpan>31/12/2021</DefySpan> to have 100% chance of receiving
+            DFY tokens
+          </Typography>
+        </Box>
+
         <Grid container rowSpacing={3} columnSpacing={11}>
           <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
             <Tabs
@@ -34,12 +48,11 @@ export default function AuthPage() {
               <StyledTab label="Sign up" />
               <StyledTab label="Log in" />
             </Tabs>
+            {/* <LogIn /> */}
+            <SignUp />
           </Grid>
           <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
-            <ResponsiveImg
-              src="https://techcrunch.com/wp-content/uploads/2020/03/DarkMode_iPhone.jpg"
-              alt="computer"
-            />
+            <ResponsiveImg src={heroImg} alt="computer" />
           </Grid>
         </Grid>
       </StyledContainer>
