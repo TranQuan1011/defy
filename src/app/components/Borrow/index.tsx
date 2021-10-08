@@ -6,6 +6,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 import Cryps from './Cryps';
+import NFT from './NFT';
 
 export default function Borrow() {
   return (
@@ -40,7 +41,8 @@ export default function Borrow() {
         <StyledTab label="Cryptocurrency" />
         <StyledTab label="NFT" />
       </Tabs>
-      <Cryps />
+      {/* <Cryps /> */}
+      <NFT />
     </Box>
   );
 }
