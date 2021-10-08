@@ -6,10 +6,11 @@ export const TextBox = styled(Box)`
   color: #8894a5;
   font-size: 14px;
 `;
-export const LinkBox = styled(Link)`
+export const LinkBox = styled(Box)`
   color: #8894a5;
   font-size: 14px;
   text-decoration: none;
+  cursor: pointer;
   :hover {
     color: #c2c2c2;
   }

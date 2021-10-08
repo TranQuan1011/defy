@@ -45,9 +45,7 @@ export const Footer = () => {
           }}
         >
           <div>
-            <LinkBox onClick={handleOpen} to="/">
-              Term Of Services
-            </LinkBox>
+            <LinkBox onClick={handleOpen}>Term Of Services</LinkBox>
             <Modal
               open={open}
               onClose={handleClose}
@@ -67,7 +65,7 @@ export const Footer = () => {
           </div>
 
           <TextBox>|</TextBox>
-          <LinkBox to="/">Privacy Policy</LinkBox>
+          <LinkBox>Privacy Policy</LinkBox>
         </Box>
       </Container>
     </Box>
