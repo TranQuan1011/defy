@@ -12,17 +12,18 @@ import Chip from '@mui/material/Chip';
 
 export default function CBAccordion(props) {
   return (
-    <Accordion sx={root} elevation={0} disableGutters>
+    <Accordion sx={root(props.disableDivider)} elevation={0} disableGutters>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography sx={heading}>{props.header}</Typography>
       </AccordionSummary>
       <AccordionDetails sx={detail}>
         <FormControl component="fieldset" variant="standard">
           <FormGroup>
-            {props.labels.map(item => (
+            {props.labels.map((item, index) => (
               <FormControlLabel
                 control={<Checkbox name={item} color="secondary" />}
                 label={item}
+                key={index}
               />
             ))}
           </FormGroup>
@@ -32,7 +33,7 @@ export default function CBAccordion(props) {
   );
 }
 
-const root = {
+const root = disableDivider => ({
   background: '#282C37',
   '& .MuiButtonBase-root': {
     pl: 1.5,
@@ -42,9 +43,9 @@ const root = {
   overflow: 'scroll',
   '&::before': {
     backgroundColor: '#45484F',
-    height: '2px',
+    height: disableDivider ? '0px' : '2px',
   },
-};
+});
 
 const detail = {
   pl: 1.5,
