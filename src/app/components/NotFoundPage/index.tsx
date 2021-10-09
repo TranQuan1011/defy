@@ -3,12 +3,12 @@ import styled from 'styled-components/macro';
 import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
-import WhyBorrow from 'app/containers/WhyBorrow';
+import CBAccordion from 'app/components/CBAccordion';
 
 export function NotFoundPage() {
   return (
     <>
-      <WhyBorrow />
+      <CBAccordion header="Test" labels={['test', 'test', 'test']} />
       {/* <Helmet>
         <title>404 Page Not Found</title>
         <meta name="description" content="Page not found" />
