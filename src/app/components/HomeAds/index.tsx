@@ -55,13 +55,13 @@ const Backgroud = styled.div`
     background-repeat: no-repeat;
     padding: 38px 0px 36px 70px;
   }
-  @media only screen and (min-width: 1100px) and (max-width: 1280px) {
+  @media only screen and (min-width: 1100px) and (max-width: 1500px) {
     background-image: url(${homeAdsmobile});
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 48px 0px 56px 70px;
   }
-  @media only screen and (max-width: 1281px) {
+  @media only screen and (max-width: 1501px) {
     background-size: cover;
   }
 `;
@@ -131,7 +131,7 @@ const content: SxProps<Theme> = {
     width: '50%',
   },
   '@media (min-width: 1281px)': {
-    width: '35%',
+    width: '40%',
   }
 }
 const button: SxProps<Theme> = {
