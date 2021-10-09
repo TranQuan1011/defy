@@ -140,8 +140,10 @@ const slider: SxProps<Theme> = {
     top: '34%',
     '&::before': {
       color: '#C9CACD',
-      fontSize: '74px',
-      opacity: '0.1',
+      background: '#dba83d',
+      fontSize: '44px',
+      borderRadius: '100%',
+      // opacity: '0.1',
       '@media (max-width: 750px)': {
         fontSize: '30px',
       }
