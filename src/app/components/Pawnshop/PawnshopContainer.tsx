@@ -149,13 +149,19 @@ const slider: SxProps<Theme> = {
   },
   '& .slick-next': {
     right: '-40px',
-    '@media (max-width: 750px)': {
+    '@media (max-width: 400px)': {
+      right: '5px',
+    },
+    '@media (min-width: 400px) and (max-width: 750px)': {
       right: '-10px',
     }
   },
   '& .slick-prev': {
     left: '-80px',
-    '@media (max-width: 750px)': {
+    '@media (max-width: 400px)': {
+      left: '-5px',
+    },
+    '@media (min-width: 400px) and (max-width: 750px)': {
       left: '-15px',
     }
   },
@@ -173,5 +179,8 @@ const seeAll: SxProps<Theme> = {
     margin: '0 0 0 auto',
     '@media (min-width: 320px) and (max-width: 1024px)': {
       visibility: 'hidden',
+    },
+    '@media (max-width: 1080px)': {
+      display: 'none',
     }
 }

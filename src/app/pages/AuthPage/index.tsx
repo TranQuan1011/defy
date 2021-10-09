@@ -20,6 +20,7 @@ export default function AuthPage() {
         <Box
           component="section"
           sx={{
+            maxWidth: 'lg',
             width: {
               xs: '100%',
               md: '70%',
