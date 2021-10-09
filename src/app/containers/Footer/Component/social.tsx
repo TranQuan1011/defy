@@ -12,39 +12,42 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import decor from '../../../assets/icon/decorator.png';
 export const Social = () => {
   const themes = useTheme();
-  const matches = useMediaQuery(themes.breakpoints.down('md'));
+  const matches = useMediaQuery(themes.breakpoints.down('lg'));
   return (
     <Box
       sx={{
         borderTop: '1px solid rgba(125,111,125,.8)',
-        paddingTop: '85px',
+        paddingTop: matches ? '65px' : '85px',
       }}
     >
-      <img
-        src={decor}
-        alt="text"
-        style={{ position: 'absolute', zIndex: -99 }}
-      />
+      <Box>
+        <img
+          width="72%"
+          src={decor}
+          alt="text"
+          style={{ position: 'absolute', zIndex: -99 }}
+        />
+      </Box>
       <Container
         maxWidth="lg"
         sx={{
           display: 'flex',
           width: '100%',
           flexWrap: 'nowrap',
-          paddingTop: '65px',
+          paddingTop: matches ? '45px' : '65px',
         }}
       >
         <Grid container>
           <Grid item xl={3} xs={12}>
             <Contact />
           </Grid>
-          <Grid item md={9} xs={12} container>
+          <Grid item md={9} xs={12} container paddingTop="15px">
             <Grid item md={7} xs={6}>
               <ContactVietNam />
               <ContactLondon />
             </Grid>
             {!matches && (
-              <Grid item xl={5} xs={12}>
+              <Grid item md={4} xs={12}>
                 <SocialNetwork />
                 <Quick />
               </Grid>

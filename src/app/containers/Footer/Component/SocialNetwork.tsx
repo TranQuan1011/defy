@@ -16,23 +16,23 @@ export const SocialNetwork = () => {
       <Box sx={{ fontWeight: 600, marginBottom: '24px' }}>Find us on</Box>
       {!matches && (
         <a href="https://github.com/defi-vn/">
-          <img src={github} alt="github" style={{ marginRight: '30px' }} />
+          <img src={github} alt="github" style={{ marginRight: '25px' }} />
         </a>
       )}
       <a href="https://t.me/DeFiForYou_English">
-        <img src={tele} alt="Telegram" style={{ marginRight: '30px' }} />
+        <img src={tele} alt="Telegram" style={{ marginRight: '25px' }} />
       </a>
 
       <a href="https://www.facebook.com/DeFiForYouDFY">
-        <img src={fb} alt="Facebook" style={{ marginRight: '30px' }} />
+        <img src={fb} alt="Facebook" style={{ marginRight: '25px' }} />
       </a>
 
       <a href="https://www.youtube.com/channel/UCGaSCU17Zo_2CzJNaBeUHaA/featured">
-        <img src={youtube} alt="Youtube" style={{ marginRight: '30px' }} />
+        <img src={youtube} alt="Youtube" style={{ marginRight: '25px' }} />
       </a>
 
       <a href="https://www.linkedin.com/company/defiforyou">
-        <img src={linkin} alt="LinkedIn" style={{ marginRight: '30px' }} />
+        <img src={linkin} alt="LinkedIn" style={{ marginRight: '25px' }} />
       </a>
 
       <a href="https://twitter.com/Defiforyou">
