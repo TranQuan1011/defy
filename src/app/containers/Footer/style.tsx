@@ -16,3 +16,16 @@ export const LinkBox = styled(Box)`
   }
   margin: 0 1rem;
 `;
+export const LinkBoxYellow = styled(Box)`
+  color: #dba83d;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  :hover {
+    color: #ddc38c;
+  }
+  margin: 0 1rem;
+`;
+export const LinkImg = styled(Link)``;
+
+export const SocialBox = styled(Box)``;
