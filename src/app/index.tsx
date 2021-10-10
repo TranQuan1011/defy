@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
-
+import LendTable from './components/LendTable';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -35,6 +35,7 @@ export function App() {
           <Route exact path="/" component={HomePage} />
 
           <Route path="/login" component={AuthPage} />
+          <Route path="/lend" component={LendTable} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

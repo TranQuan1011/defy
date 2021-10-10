@@ -12,7 +12,7 @@ const links = [
   },
   {
     name: 'Lend',
-    url: '/',
+    url: '/lend',
   },
   {
     name: 'NFT',
