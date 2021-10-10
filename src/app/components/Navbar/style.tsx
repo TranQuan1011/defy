@@ -19,6 +19,7 @@ export const BoxSideBar = styled(Box)`
   top: 70px;
   width: 100%;
   background-color: #232732;
+  z-index: 999;
 `;
 export const BoxButton = styled(Box)`
   color: #d1d1d3;

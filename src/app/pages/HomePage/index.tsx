@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import Pawnshop from 'app/components/Pawnshop/PawnshopContainer';
+import HomeAds from 'app/components/HomeAds/index';
 
 export function HomePage() {
   return (
@@ -10,7 +10,7 @@ export function HomePage() {
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
       <span>HomePage container</span>
-      <Pawnshop />
+      <HomeAds />
     </>
   );
 }

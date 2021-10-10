@@ -1,0 +1,175 @@
+import React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Grid from '@mui/material/Grid';
+import { Typography } from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import { Divider } from '@mui/material';
+import { Chip } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+
+import {
+  StarTypo,
+  BlueUnderline,
+  GreenTypo,
+  CardLabel,
+  CardInfo,
+} from 'app/components/CardTypos';
+import cardmedia from 'app/assets/image/CardMedia.png';
+import tag from 'app/assets/image/tag.png';
+import { ButtonColor } from '../Button';
+
+export default function LendCard() {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  return (
+    <Card sx={root}>
+      <CardMedia component="img" src={tag} sx={tagSx} />
+      <Grid container>
+        <Grid item xs={12} md={3}>
+          <CardMedia component="img" sx={cardMedia} src={cardmedia} />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <CardContent sx={info}>
+            <Typography component="h3" sx={h3}>
+              Diamond ring
+            </Typography>
+            <StarTypo>1000</StarTypo>
+            <List sx={list}>
+              <ListItem disablePadding>
+                <ListItemText sx={{ flexBasis: '33%', flexGrow: 0 }}>
+                  <CardLabel>Borrower:</CardLabel>
+                </ListItemText>
+                <ListItemText>
+                  <BlueUnderline sx={{ fontSize: '14px' }}>
+                    RandomText
+                  </BlueUnderline>
+                </ListItemText>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemText sx={{ flexBasis: '33%', flexGrow: 0 }}>
+                  <CardLabel>Borrower:</CardLabel>
+                </ListItemText>
+                <ListItemText>
+                  <CardInfo>RandomText</CardInfo>
+                </ListItemText>
+              </ListItem>
+            </List>
+          </CardContent>
+        </Grid>
+        <Grid item xs={12} md={1}>
+          <Divider
+            sx={divider}
+            orientation={matches ? 'vertical' : 'horizontal'}
+          />
+        </Grid>
+        <Grid item xs={12} md={4} sx={lastGrid}>
+          <CardLabel>Expected loan</CardLabel>
+          <GreenTypo sx={currency}>100,000 USDT</GreenTypo>
+          <Chip
+            variant="outlined"
+            color="secondary"
+            label="Diamond"
+            icon={<i className="far fa-gem"></i>}
+          />
+          <ButtonColor sx={button}>Send Offer</ButtonColor>
+        </Grid>
+      </Grid>
+    </Card>
+  );
+}
+
+const root = {
+  pt: {
+    xs: 1.5,
+    md: 2.5,
+  },
+  pb: {
+    xs: 2.5,
+  },
+  pl: {
+    xs: 1.5,
+    md: 2.5,
+  },
+  pr: {
+    xs: 1.5,
+    md: 2.5,
+  },
+  borderRadius: '20px',
+  position: 'relative',
+  overflow: 'visible',
+} as const;
+
+const tagSx = {
+  position: 'absolute',
+  top: '23px',
+  left: '-8px',
+  maxWidth: '100%',
+  width: 'auto',
+} as const;
+
+const cardMedia = {
+  borderRadius: '20px',
+  height: '215px',
+  width: 'auto',
+  margin: 'auto',
+};
+
+const h3 = {
+  fontSize: { xs: '18px', md: '24px' },
+  fontWeight: 600,
+  lineHeight: '22px',
+  mb: 1.25,
+};
+
+const info = {
+  pt: {
+    md: 0,
+  },
+  pl: {
+    xs: 1,
+  },
+  pr: {
+    xs: 1,
+  },
+  paddingBottom: '16px !important',
+};
+
+const list = {
+  mt: 2.375,
+  display: 'flex',
+  flexDirection: 'column',
+} as const;
+
+const lastGrid = {
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '8px',
+  alignItems: { xs: 'start', md: 'end' },
+} as const;
+
+const divider = {
+  mb: 1.5,
+};
+
+const button = {
+  display: 'flex',
+  padding: '11px 22px',
+  fontSize: '16px',
+  fontWeight: 500,
+  height: '44px',
+  mt: {
+    xs: 2,
+    md: 'auto',
+  },
+};
+
+const currency = {
+  textAlign: {
+    md: 'right',
+  },
+} as const;
