@@ -3,21 +3,23 @@ import styled from 'styled-components/macro';
 import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
-import Filter from '../Filter';
-import CBAccordion from '../CBAccordion';
-import Sidebar from '../Sidebar';
+import {
+  StarTypo,
+  BlueUnderline,
+  GreenTypo,
+  CardLabel,
+  CardInfo,
+} from 'app/components/CardTypos';
 
 export function NotFoundPage() {
   return (
-    <Sidebar>
-      <Filter displayClose>
-        <CBAccordion
-          header="Test"
-          labels={['test', 'test', 'test', 'test', 'test', 'test']}
-        />
-        <CBAccordion header="Test" labels={['test', 'test', 'test']} />
-      </Filter>
-    </Sidebar>
+    <>
+      <StarTypo>Test</StarTypo>
+      <BlueUnderline>Test</BlueUnderline>
+      <GreenTypo>Test</GreenTypo>
+      <CardLabel>Test</CardLabel>
+      <CardInfo>Test</CardInfo>
+    </>
     /* <Helmet>
         <title>404 Page Not Found</title>
         <meta name="description" content="Page not found" />
