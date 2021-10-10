@@ -1,33 +1,29 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import ImgButton from 'app/assets/image/ButtonResults.png';
 
-interface menu {
-  open: boolean;
-}
-
 export default function ButtonMenuResults() {
-    const [open, setOpen] = useState(false);
 
     return (
       <>
-        <Menu open={open} onClick={() => setOpen(!open)}>
-          <ButtonMenu open={open} />
-        </Menu>
+        <div>
+          <Menu>
+            <ButtonMenu/>
+          </Menu>
+        </div>
       </>
     );
 };
 
-const Menu = styled.div<menu>`
+const Menu = styled.div`
   position: inherit;
   top: 25px;
   right: 16px;
   display: none;
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     display: block;
   }
 `
-const ButtonMenu = styled.div<menu>`
+const ButtonMenu = styled.div`
     background-image: url(${ImgButton});
     background-size: cover;
     width: 30px;
