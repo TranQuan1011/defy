@@ -3,13 +3,22 @@ import styled from 'styled-components/macro';
 import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
-import CBAccordion from 'app/components/CBAccordion';
+import Filter from '../Filter';
+import CBAccordion from '../CBAccordion';
+import Sidebar from '../Sidebar';
 
 export function NotFoundPage() {
   return (
-    <>
-      <CBAccordion header="Test" labels={['test', 'test', 'test']} />
-      {/* <Helmet>
+    <Sidebar>
+      <Filter displayClose>
+        <CBAccordion
+          header="Test"
+          labels={['test', 'test', 'test', 'test', 'test', 'test']}
+        />
+        <CBAccordion header="Test" labels={['test', 'test', 'test']} />
+      </Filter>
+    </Sidebar>
+    /* <Helmet>
         <title>404 Page Not Found</title>
         <meta name="description" content="Page not found" />
       </Helmet>
@@ -22,8 +31,7 @@ export function NotFoundPage() {
           4
         </Title>
         <P>Page not found.</P>
-      </Wrapper> */}
-    </>
+      </Wrapper> */
   );
 }
 

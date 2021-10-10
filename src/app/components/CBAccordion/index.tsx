@@ -8,49 +8,55 @@ import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
 
 export default function CBAccordion(props) {
   return (
-    <Accordion sx={root(props.disableDivider)} elevation={0} disableGutters>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography sx={heading}>{props.header}</Typography>
-      </AccordionSummary>
-      <AccordionDetails sx={detail}>
-        <FormControl component="fieldset" variant="standard">
-          <FormGroup>
-            {props.labels.map((item, index) => (
-              <FormControlLabel
-                control={<Checkbox name={item} color="secondary" />}
-                label={item}
-                key={index}
-              />
-            ))}
-          </FormGroup>
-        </FormControl>
-      </AccordionDetails>
-    </Accordion>
+    <>
+      <Accordion sx={root} elevation={0} disableGutters>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography sx={heading}>{props.header}</Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={detail}>
+          <FormControl component="fieldset" variant="standard">
+            <FormGroup>
+              {props.labels.map((item, index) => (
+                <FormControlLabel
+                  control={<Checkbox name={item} color="secondary" />}
+                  label={item}
+                  key={index}
+                />
+              ))}
+            </FormGroup>
+          </FormControl>
+        </AccordionDetails>
+      </Accordion>
+      <Divider />
+    </>
   );
 }
 
-const root = disableDivider => ({
+const root = {
   background: '#282C37',
+  width: '100%',
   '& .MuiButtonBase-root': {
     pl: 1.5,
     pr: 1.5,
   },
-  maxHeight: '176px',
-  overflow: 'scroll',
   '&::before': {
     backgroundColor: '#45484F',
-    height: disableDivider ? '0px' : '2px',
+    display: 'none',
   },
-});
+};
 
 const detail = {
+  maxHeight: '176px',
+  overflow: 'scroll',
+  overflowX: 'hidden',
   pl: 1.5,
-  pr: 1.5,
-};
+  mr: 2.2,
+  pt: 0,
+} as const;
 
 const heading = {
   fontWeight: 600,
