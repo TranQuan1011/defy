@@ -68,7 +68,7 @@ export default function Lend() {
             <RadioGroup row name="collateral">
               <FormControlLabel
                 value="crypto"
-                control={<Radio color="secondary" />}
+                control={<Radio color="secondary" />} 
                 label="Crypto"
               />
               <FormControlLabel
