@@ -3,23 +3,13 @@ import styled from 'styled-components/macro';
 import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
-import {
-  StarTypo,
-  BlueUnderline,
-  GreenTypo,
-  CardLabel,
-  CardInfo,
-} from 'app/components/CardTypos';
+import LendCard from '../LendCard';
 
 export function NotFoundPage() {
   return (
-    <>
-      <StarTypo>Test</StarTypo>
-      <BlueUnderline>Test</BlueUnderline>
-      <GreenTypo>Test</GreenTypo>
-      <CardLabel>Test</CardLabel>
-      <CardInfo>Test</CardInfo>
-    </>
+    <div style={{ padding: '10px' }}>
+      <LendCard />
+    </div>
     /* <Helmet>
         <title>404 Page Not Found</title>
         <meta name="description" content="Page not found" />
