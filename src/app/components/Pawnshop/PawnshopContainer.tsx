@@ -58,7 +58,7 @@ export default function Pawnshop() {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1600,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -139,10 +139,8 @@ const slider: SxProps<Theme> = {
   '& .slick-arrow': {
     top: '34%',
     '&::before': {
-      color: '#C9CACD',
-      background: '#dba83d',
+      color: '#dba83d',
       fontSize: '44px',
-      borderRadius: '100%',
       // opacity: '0.1',
       '@media (max-width: 750px)': {
         fontSize: '30px',
@@ -159,7 +157,7 @@ const slider: SxProps<Theme> = {
     }
   },
   '& .slick-prev': {
-    left: '-80px',
+    left: '-55px',
     '@media (max-width: 400px)': {
       left: '-5px',
     },

@@ -46,6 +46,13 @@ const box: SxProps<Theme> = {
     maxWidth: '428px',
     margin:' 0 auto',
   },
+  '@media (min-width: 1200px) and (max-width: 1600px)': {
+    maxWidth: '300px !important',
+    margin: '0 auto',
+    '& .img': {
+      maxWidth: '283px',
+    }
+  },
 }
 const grid: SxProps<Theme> = {
   position: 'relative',
