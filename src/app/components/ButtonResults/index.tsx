@@ -4,13 +4,9 @@ import ImgButton from 'app/assets/image/ButtonResults.png';
 export default function ButtonMenuResults() {
 
     return (
-      <>
-        <div>
-          <Menu>
-            <ButtonMenu/>
-          </Menu>
-        </div>
-      </>
+      <Menu>
+        <ButtonMenu/>
+      </Menu>
     );
 };
 
