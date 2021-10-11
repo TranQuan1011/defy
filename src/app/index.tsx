@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
-
+import { Footer } from './containers/Footer/index';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -37,6 +37,7 @@ export function App() {
           <Route path="/login" component={AuthPage} />
           <Route component={NotFoundPage} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </GlobalTheme>
   );
