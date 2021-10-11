@@ -53,9 +53,25 @@ const detail = {
   maxHeight: '176px',
   overflow: 'scroll',
   overflowX: 'hidden',
+  overflowY: 'auto',
+  '&::-webkit-scrollbar': {
+    width: '4px',
+  },
+  '&::-webkit-scrollbar-track': {
+    background: '#45484F',
+    borderRadius: ' 3px',
+    maxHeght: '90%',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    background: '#74767B',
+    height: '26px',
+    borderRadius: ' 3px',
+  },
   pl: 1.5,
-  mr: 2.2,
+  mr: 2.6,
   pt: 0,
+  pb: 0,
+  mb: 1.5,
 } as const;
 
 const heading = {

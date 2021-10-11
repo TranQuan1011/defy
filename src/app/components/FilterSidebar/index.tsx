@@ -13,6 +13,7 @@ export default function Sidebar(props) {
           backgroundImage: 'none',
           width: '90%',
           backgroundColor: '#282C37',
+          padding: '32px 0',
         },
       }}
     >

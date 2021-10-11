@@ -1,28 +1,28 @@
-import styled from 'styled-components';
-import ImgButton from 'app/assets/image/ButtonResults.png';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import filterIcon from 'app/assets/icon/filterIcon.png';
 
-export default function ButtonMenuResults() {
-
-    return (
-      <Menu>
-        <ButtonMenu/>
-      </Menu>
-    );
+const FilterButton = props => {
+  return (
+    <StyledButton variant="outlined" color="secondary" sx={props.sx}>
+      <Img src={filterIcon} />
+    </StyledButton>
+  );
 };
 
-const Menu = styled.div`
-  position: inherit;
-  top: 25px;
-  right: 16px;
-  display: none;
-  @media (max-width: 900px) {
-    display: block;
-  }
-`
-const ButtonMenu = styled.div`
-    background-image: url(${ImgButton});
-    background-size: cover;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
-`;
+const StyledButton = styled(Button)(({ theme }) => ({
+  width: '30px !important',
+  height: '30px',
+  minWidth: 0,
+  padding: '6px',
+  display: 'flex',
+  [theme.breakpoints.up('md')]: {
+    display: 'none',
+  },
+}));
+
+const Img = styled('img')({
+  height: '100%',
+});
+
+export default FilterButton;

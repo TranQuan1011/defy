@@ -7,10 +7,7 @@ import { Typography } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { Divider } from '@mui/material';
 import { Chip } from '@mui/material';
-import { useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 
 import {
   StarTypo,
@@ -24,8 +21,6 @@ import tag from 'app/assets/image/tag.png';
 import { ButtonColor } from '../Button';
 
 export default function LendCard() {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
   return (
     <Card sx={root}>
       <CardMedia component="img" src={tag} sx={tagSx} />
@@ -33,7 +28,7 @@ export default function LendCard() {
         <Grid item xs={12} md={3}>
           <CardMedia component="img" sx={cardMedia} src={cardmedia} />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={5}>
           <CardContent sx={info}>
             <Typography component="h3" sx={h3}>
               Diamond ring
@@ -41,7 +36,7 @@ export default function LendCard() {
             <StarTypo>1000</StarTypo>
             <List sx={list}>
               <ListItem disablePadding>
-                <ListItemText sx={{ flexBasis: '33%', flexGrow: 0 }}>
+                <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
                   <CardLabel>Borrower:</CardLabel>
                 </ListItemText>
                 <ListItemText>
@@ -51,7 +46,7 @@ export default function LendCard() {
                 </ListItemText>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemText sx={{ flexBasis: '33%', flexGrow: 0 }}>
+                <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
                   <CardLabel>Borrower:</CardLabel>
                 </ListItemText>
                 <ListItemText>
@@ -61,12 +56,7 @@ export default function LendCard() {
             </List>
           </CardContent>
         </Grid>
-        <Grid item xs={12} md={1}>
-          <Divider
-            sx={divider}
-            orientation={matches ? 'vertical' : 'horizontal'}
-          />
-        </Grid>
+
         <Grid item xs={12} md={4} sx={lastGrid}>
           <CardLabel>Expected loan</CardLabel>
           <GreenTypo sx={currency}>100,000 USDT</GreenTypo>
@@ -114,8 +104,7 @@ const tagSx = {
 
 const cardMedia = {
   borderRadius: '20px',
-  height: '215px',
-  width: 'auto',
+  width: '100%',
   margin: 'auto',
 };
 
@@ -150,11 +139,10 @@ const lastGrid = {
   flexDirection: 'column',
   rowGap: '8px',
   alignItems: { xs: 'start', md: 'end' },
+  borderTop: { xs: '1px solid #45484F', md: 'none' },
+  borderLeft: { xs: 'none', md: '1px solid #45484F' },
+  pt: { xs: 1.5, md: 0 },
 } as const;
-
-const divider = {
-  mb: 1.5,
-};
 
 const button = {
   display: 'flex',

@@ -12,6 +12,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import LendNFTResult from './pages/LendNFTResultPage';
 
 import { useTranslation } from 'react-i18next';
 import GlobalTheme from './containers/ThemeProvider';
@@ -35,6 +36,7 @@ export function App() {
           <Route exact path="/" component={HomePage} />
 
           <Route path="/login" component={AuthPage} />
+          <Route path="/test" component={LendNFTResult} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />
