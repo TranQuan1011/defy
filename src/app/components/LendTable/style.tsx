@@ -11,3 +11,7 @@ export const LinkBox = styled(Box)`
   color: blue;
   text-decoration: underline;
 `;
+export const CellSpacing = styled(TableCell)`
+  border-collapse: separate;
+  border-spacing: 0 5px;
+`;
