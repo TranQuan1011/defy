@@ -24,8 +24,8 @@ export function App() {
     <GlobalTheme>
       <BrowserRouter>
         <Helmet
-          titleTemplate="%s - React Boilerplate"
-          defaultTitle="React Boilerplate"
+          titleTemplate="%s  | DeFi For You UK"
+          defaultTitle="DeFi For You. | DeFi For You UK"
           htmlAttributes={{ lang: i18n.language }}
         >
           <meta name="description" content="A React Boilerplate application" />

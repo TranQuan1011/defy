@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
+import Pawnshop from 'app/components/Pawnshop/PawnshopContainer';
 import HomeAds from 'app/components/HomeAds/index';
-import ButtonMenuResults from 'app/components/ButtonResults/index';
-
+import WhyBorrow from 'app/containers/WhyBorrow/index';
+import Hero from 'app/containers/Hero/index';
 export function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Home Page</title>
+        <title>DeFi For You. </title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
-      <span>HomePage container</span>
+      <Hero />
+      <WhyBorrow />
+      <Pawnshop />
       <HomeAds />
-      <ButtonMenuResults/>
     </>
   );
 }
