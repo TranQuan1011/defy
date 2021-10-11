@@ -23,6 +23,7 @@ export const AdsRow: React.FC = () => {
           <Box>
             <Typography fontWeight="600">
               Sign up for pawnshop to get great benefits from{' '}
+              <span style={{ color: '#ffca2a' }}>Defi For You</span>
             </Typography>
           </Box>
         </Box>
