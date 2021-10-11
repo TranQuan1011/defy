@@ -42,7 +42,7 @@ export const Social = () => {
             <Contact />
           </Grid>
           <Grid item md={9} xs={12} container paddingTop="15px">
-            <Grid item md={7} xs={6}>
+            <Grid item md={7} xs={12}>
               <ContactVietNam />
               <ContactLondon />
             </Grid>
