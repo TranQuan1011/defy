@@ -19,6 +19,7 @@ import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 import { Footer } from './containers/Footer/index';
+import LendCryptoResult from './pages/LendCryptoResult/index';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -37,6 +38,7 @@ export function App() {
 
           <Route path="/login" component={AuthPage} />
           <Route path="/test" component={BorrowerADS} />
+          <Route path="/result" component={LendCryptoResult} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />
