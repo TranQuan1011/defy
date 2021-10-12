@@ -12,12 +12,13 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import BorrowerADS from './components/BorrowerADS';
 
 import { useTranslation } from 'react-i18next';
 import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
-import LendTable from './components/LendTable';
+import { Footer } from './containers/Footer/index';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -35,8 +36,10 @@ export function App() {
           <Route exact path="/" component={HomePage} />
 
           <Route path="/login" component={AuthPage} />
+          <Route path="/test" component={BorrowerADS} />
           <Route component={NotFoundPage} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </GlobalTheme>
   );
