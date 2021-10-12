@@ -35,7 +35,6 @@ export function App() {
           <Route exact path="/" component={HomePage} />
 
           <Route path="/login" component={AuthPage} />
-          <Route path="/lend" component={LendTable} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
