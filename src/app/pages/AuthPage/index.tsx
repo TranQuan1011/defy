@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Box from '@mui/system/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -17,7 +17,6 @@ import heroImg from 'app/assets/image/Frame.png';
 import SignUp from 'app/components/SignUp';
 import authPageSelector from './slice/selector';
 import { useAuthPageSlice } from './slice';
-import { confirmToken } from 'app/apis/auth';
 
 export default function AuthPage() {
   const { actions, sagaActions } = useAuthPageSlice();
@@ -33,26 +32,6 @@ export default function AuthPage() {
   ) => {
     history.push(`${path}?tab=${value}`);
   };
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    if (!accessToken) {
-      return;
-    }
-    (async () => {
-      try {
-        const res = await confirmToken(accessToken);
-        history.push('/');
-      } catch (error: any) {
-        if (error.response.status === 401) {
-          return;
-        }
-        alert(
-          `Error ${error.response.status} : ${error.response.data.errorCodes[0]}`,
-        );
-      }
-    })();
-  }, []);
 
   return (
     <Box component="main" padding="20px 16px">

@@ -13,3 +13,22 @@ export interface LogIn {
   username: string;
   password: string;
 }
+
+export interface User {
+  email: string;
+  birthday: any;
+  phoneNumber: any;
+  address: any;
+  isActive: boolean;
+  createdAt: number;
+  activatedAt: number;
+  links: any;
+  pawnShop: any;
+  kyc: any;
+  id: number;
+  name: string;
+}
+
+export interface GlobalReducer {
+  user: User | null;
+}

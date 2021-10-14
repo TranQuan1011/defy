@@ -1,5 +1,6 @@
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 import { AuthState } from 'app/pages/AuthPage/slice/types.js';
+import { GlobalReducer } from 'app/commons/types';
 
 /* 
   Because the redux-injectors injects your reducers asynchronously somewhere in your code
@@ -7,5 +8,6 @@ import { AuthState } from 'app/pages/AuthPage/slice/types.js';
 */
 export interface RootState {
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
+  globalReducer?: GlobalReducer;
   authPage?: AuthState;
 }

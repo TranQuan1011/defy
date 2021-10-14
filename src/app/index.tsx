@@ -9,19 +9,45 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, Router, Redirect } from 'react-router-dom';
-import history from './history';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
-import BorrowerADS from './components/BorrowerADS';
 
 import { useTranslation } from 'react-i18next';
+import { useInjectSaga, useInjectReducer } from 'utils/redux-injectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserReq } from './globalActions';
+
+import globaSelector from './globalSelector';
+import globalSaga from './globalSagas';
+import { globalReducer } from 'app/globalReducers';
 import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 import { Footer } from './containers/Footer/index';
+import BorrowerADS from './components/BorrowerADS';
+import history from './history';
+
 export function App() {
   const { i18n } = useTranslation();
+  useInjectReducer({
+    key: 'globalReducer',
+    reducer: globalReducer,
+  });
+  useInjectSaga({
+    key: 'globalSaga',
+    saga: globalSaga,
+  });
+  const dispatch = useDispatch();
+  const globalState = useSelector(globaSelector);
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      dispatch(fetchUserReq(token));
+    }
+  }, [dispatch]);
+
   return (
     <GlobalTheme>
       <Router history={history}>
@@ -38,7 +64,9 @@ export function App() {
             <Redirect to="/pawn" />
           </Route>
           <Route path="/pawn" component={HomePage} />
-          <Route exact path="/login" component={AuthPage} />
+          <Route exact path="/login">
+            {globalState?.user ? <Redirect to="/pawn" /> : <AuthPage />}
+          </Route>
           <Route path="/test" component={BorrowerADS} />
           <Route component={NotFoundPage} />
         </Switch>
