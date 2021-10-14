@@ -1,20 +1,25 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import Pawnshop from 'app/components/Pawnshop/PawnshopContainer';
-import HomeAds from 'app/components/HomeAds/index';
-import WhyBorrow from 'app/containers/WhyBorrow/index';
-import Hero from 'app/containers/Hero/index';
+
+import LendCryptoResult from '../LendCryptoResult';
+import LendNFTResult from '../LendNFTResultPage';
+import PawnPage from '../PawnPage';
+import { Route, useRouteMatch } from 'react-router';
+
 export function HomePage() {
+  const { path } = useRouteMatch();
+
   return (
     <>
-      <Helmet>
-        <title>DeFi For You. </title>
-        <meta name="description" content="A Boilerplate application homepage" />
-      </Helmet>
-      {/* <Hero /> */}
-      <WhyBorrow />
-      <Pawnshop />
-      <HomeAds />
+      <Route exact path={path}>
+        <PawnPage />
+      </Route>
+      <Route exact path={`${path}/lender`}>
+        <LendCryptoResult />
+      </Route>
+      <Route exact path={`${path}/lender/nft-result`}>
+        <LendNFTResult />
+      </Route>
     </>
   );
 }
