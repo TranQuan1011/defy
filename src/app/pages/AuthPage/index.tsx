@@ -44,6 +44,9 @@ export default function AuthPage() {
         const res = await confirmToken(accessToken);
         history.push('/');
       } catch (error: any) {
+        if (error.response.status === 401) {
+          return;
+        }
         alert(
           `Error ${error.response.status} : ${error.response.data.errorCodes[0]}`,
         );
