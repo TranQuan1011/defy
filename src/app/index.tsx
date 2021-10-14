@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, Router } from 'react-router-dom';
+import { Switch, Route, Router, Redirect } from 'react-router-dom';
 import history from './history';
 
 import { HomePage } from './pages/HomePage/Loadable';
@@ -20,7 +20,6 @@ import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 import { Footer } from './containers/Footer/index';
-import LendCryptoResult from './pages/LendCryptoResult/index';
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -35,11 +34,12 @@ export function App() {
         </Helmet>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-
+          <Route exact path="/">
+            <Redirect to="/pawn" />
+          </Route>
+          <Route path="/pawn" component={HomePage} />
           <Route exact path="/login" component={AuthPage} />
           <Route path="/test" component={BorrowerADS} />
-          <Route path="/result" component={LendCryptoResult} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />
