@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/system/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -7,13 +7,53 @@ import Tab from '@mui/material/Tab';
 import { Container } from '@mui/material';
 import { Theme } from '@mui/material';
 import { SxProps, styled } from '@mui/system';
+import { useSelector } from 'react-redux';
+import { useRouteMatch, useLocation } from 'react-router-dom';
+import history from 'app/history';
 
 import ResponsiveImg from 'app/components/ResponsiveImg';
 import LogIn from 'app/components/LogIn';
 import heroImg from 'app/assets/image/Frame.png';
 import SignUp from 'app/components/SignUp';
+import authPageSelector from './slice/selector';
+import { useAuthPageSlice } from './slice';
+import { confirmToken } from 'app/apis/auth';
 
 export default function AuthPage() {
+  const { actions, sagaActions } = useAuthPageSlice();
+  const authPageState = useSelector(authPageSelector);
+  const { path } = useRouteMatch();
+  const location = useLocation();
+
+  const tab = new URLSearchParams(location.search).get('tab');
+
+  const handleTabChange = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string,
+  ) => {
+    history.push(`${path}?tab=${value}`);
+  };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      return;
+    }
+    (async () => {
+      try {
+        const res = await confirmToken(accessToken);
+        history.push('/');
+      } catch (error: any) {
+        if (error.response.status === 401) {
+          return;
+        }
+        alert(
+          `Error ${error.response.status} : ${error.response.data.errorCodes[0]}`,
+        );
+      }
+    })();
+  }, []);
+
   return (
     <Box component="main" padding="20px 16px">
       <StyledContainer>
@@ -41,16 +81,34 @@ export default function AuthPage() {
         <Grid container rowSpacing={3} columnSpacing={11}>
           <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
             <Tabs
-              value={0}
+              value={tab || '2'}
               textColor="secondary"
               indicatorColor="secondary"
               sx={tabs}
+              onChange={handleTabChange}
             >
-              <StyledTab label="Sign up" />
-              <StyledTab label="Log in" />
+              <StyledTab label="Sign up" value={'1'} />
+              <StyledTab label="Log in" value={'2'} />
             </Tabs>
-            {/* <LogIn /> */}
-            <SignUp />
+            {location.search === '?tab=1' ? (
+              <SignUp
+                captchaRes={authPageState?.signup.recaptcha_response}
+                onCaptchaChange={actions.changeRecaptcha}
+                showPassword={actions.signupShowPassword}
+                showConfirmPassword={actions.signupShowConfirmPassword}
+                isShowPassword={authPageState?.signup.showPassword}
+                isShowConfirmPassword={
+                  authPageState?.signup.showConfirmPassword
+                }
+                submitAction={sagaActions.signUpReq}
+              />
+            ) : (
+              <LogIn
+                showPassword={actions.loginShowPassword}
+                isShowPassword={authPageState?.login.showPassword}
+                submitAction={sagaActions.logInReq}
+              />
+            )}
           </Grid>
           <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
             <ResponsiveImg src={heroImg} alt="computer" />

@@ -8,7 +8,8 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
+import history from './history';
 
 import { HomePage } from './pages/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
@@ -19,12 +20,12 @@ import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 import { Footer } from './containers/Footer/index';
-import LendCryptoResult from './pages/LendCryptoResult';
+import LendCryptoResult from './pages/LendCryptoResult/index';
 export function App() {
   const { i18n } = useTranslation();
   return (
     <GlobalTheme>
-      <BrowserRouter>
+      <Router history={history}>
         <Helmet
           titleTemplate="%s  | DeFi For You UK"
           defaultTitle="DeFi For You. | DeFi For You UK"
@@ -36,13 +37,13 @@ export function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
 
-          <Route path="/login" component={AuthPage} />
+          <Route exact path="/login" component={AuthPage} />
           <Route path="/test" component={BorrowerADS} />
           <Route path="/result" component={LendCryptoResult} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />
-      </BrowserRouter>
+      </Router>
     </GlobalTheme>
   );
 }
