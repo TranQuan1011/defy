@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, all, put } from 'redux-saga/effects';
 
 import {
   signUpReq as signUpAction,
@@ -6,12 +6,11 @@ import {
 } from './sagaActions';
 import { signUp, logIn } from 'app/apis/auth';
 import { SignUpAction, LogInAction } from './types';
-import history from 'app/history';
+import { fetchUserReq } from 'app/globalActions';
 
 function* signUpReq({ payload }: SignUpAction) {
   try {
     const data = yield call(signUp, payload);
-    console.log(data);
 
     if (
       window.confirm(
@@ -35,11 +34,11 @@ function* signUpReq({ payload }: SignUpAction) {
   }
 }
 function* logInReq({ payload }: LogInAction) {
-  console.log(payload);
   try {
     const data = yield call(logIn, payload);
-    localStorage.setItem('accessToken', data.data.access_token);
-    history.push('/');
+    const token = data.data.access_token;
+    localStorage.setItem('accessToken', token);
+    yield put(fetchUserReq(token));
   } catch (error: any) {
     if (error.response.status === 401) {
       alert('Username or Password is incorrect');

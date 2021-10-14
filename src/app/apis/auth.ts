@@ -12,8 +12,6 @@ export const logIn = (data: LogIn): Promise<AxiosResponse<SignUp>> => {
 };
 
 export const confirmToken = (token: string): Promise<AxiosResponse<string>> => {
-  console.log(`Bearer ${token}`);
-
   return axios.get(
     'https://staginggw.defiforyou.uk/defi-user-service/api/v1.0.0/users/profile',
     {
