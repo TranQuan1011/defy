@@ -11,7 +11,7 @@ export function HomePage() {
         <title>DeFi For You. </title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
-      <Hero />
+      {/* <Hero /> */}
       <WhyBorrow />
       <Pawnshop />
       <HomeAds />
