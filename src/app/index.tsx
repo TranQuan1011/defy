@@ -19,7 +19,7 @@ import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
 import { Footer } from './containers/Footer/index';
-import LendCryptoResult from './pages/LendCryptoResult/index';
+import LendCryptoResult from './pages/LendCryptoResult';
 export function App() {
   const { i18n } = useTranslation();
   return (

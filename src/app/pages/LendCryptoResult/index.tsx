@@ -14,7 +14,6 @@ import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import LendTable from 'app/components/LendTable/index';
 const testData = [1, 2, 3, 4, 5, 6].map(item => `${item}`);
-
 export default function LendCryptoResult() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
