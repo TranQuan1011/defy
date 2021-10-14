@@ -11,7 +11,6 @@ import history from 'app/history';
 function* signUpReq({ payload }: SignUpAction) {
   try {
     const data = yield call(signUp, payload);
-    alert('Please check your Email and confirm to active your account');
     console.log(data);
 
     if (
