@@ -23,7 +23,6 @@ export default function AuthPage() {
   const authPageState = useSelector(authPageSelector);
   const { path } = useRouteMatch();
   const location = useLocation();
-
   const tab = new URLSearchParams(location.search).get('tab');
 
   const handleTabChange = (

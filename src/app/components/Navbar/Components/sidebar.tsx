@@ -2,15 +2,16 @@ import { BoxSideBar } from '../style';
 import ListSideBar from './listSideBar';
 interface isOpen {
   open: boolean;
+  loginState: boolean;
 }
 
 export const SideBar = (props: isOpen) => {
-  const { open } = props;
+  const { open, loginState } = props;
   return (
     <>
-      {open && (
+      {props.open && (
         <BoxSideBar>
-          <ListSideBar />
+          <ListSideBar loginState={props.loginState} />
         </BoxSideBar>
       )}
     </>
