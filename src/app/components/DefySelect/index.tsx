@@ -1,20 +1,30 @@
 import React from 'react';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { SxProps } from '@mui/system';
 import { Theme } from '@mui/material';
+import { Controller } from 'react-hook-form';
 
-export default function DefySelect() {
+export default function DefySelect(props) {
   return (
-    <FormControl fullWidth sx={root} color="warning">
-      <Select value={10}>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-      </Select>
-    </FormControl>
+    <Controller
+      control={props.control}
+      name={props.name}
+      defaultValue="All"
+      render={({ field }) => {
+        const { ref, ...fieldProps } = field;
+        return (
+          <FormControl fullWidth sx={root} color="warning">
+            <Select {...fieldProps} defaultValue="All">
+              <MenuItem value={'All'}>All</MenuItem>
+              <MenuItem value={0}>Weeks</MenuItem>
+              <MenuItem value={1}>Months</MenuItem>
+            </Select>
+          </FormControl>
+        );
+      }}
+    />
   );
 }
 

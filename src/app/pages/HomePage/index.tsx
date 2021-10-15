@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { Helmet } from 'react-helmet-async';
+import react, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCrypto } from 'app/globalActions';
 
 import LendCryptoResult from '../LendCryptoResult';
 import LendNFTResult from '../LendNFTResultPage';
@@ -9,6 +10,11 @@ import BorrowerResultPage from '../BorrowerResultPage';
 
 export function HomePage() {
   const { path } = useRouteMatch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCrypto());
+  }, [dispatch]);
 
   return (
     <>

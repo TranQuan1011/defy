@@ -5,15 +5,30 @@ import { Theme, Typography } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import InfoIcon from '@mui/icons-material/Info';
 import SearchIcon from '@mui/icons-material/Search';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 
 import Input from 'app/components/Input';
 import Dropdown from 'app/components/Dropdown';
 import { ButtonColor, ButtonNoColor } from 'app/components/Button';
 import DefySelect from 'app/components/DefySelect';
+import selector from './selector';
+import concatQuery from 'app/commons/concatQuery';
+import history from 'app/history';
 
 export default function Cryps() {
+  const { control, handleSubmit } = useForm({
+    mode: 'all',
+  });
+  const globalState = useSelector(selector);
+
+  const onSubmit: SubmitHandler<any> = data => {
+    const query = concatQuery(data);
+    history.push(`pawn/offer${query}`);
+  };
+
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Grid
         container
         alignItems="flex-end"
@@ -33,10 +48,15 @@ export default function Cryps() {
                 </InputAdornment>
               ),
             }}
+            control={control}
           />
         </Grid>
         <Grid item xs={5} sm={4}>
-          <Dropdown />
+          <Dropdown
+            control={control}
+            name="collateralSymbols"
+            list={globalState?.collateral}
+          />
         </Grid>
         <Grid item xs={7} sm={8}>
           <Typography
@@ -62,22 +82,36 @@ export default function Cryps() {
         </Grid>
         <Grid item xs={5} sm={4}></Grid>
         <Grid item xs={7} sm={8}>
-          <Input label="Duration" type="number" placeholder="Duration" />
+          <Input
+            label="Duration"
+            type="number"
+            placeholder="Duration"
+            control={control}
+          />
         </Grid>
         <Grid item xs={5} sm={4}>
-          <DefySelect />
+          <DefySelect control={control} name="durationTypes" />
         </Grid>
         <Grid item xs={7} sm={8}>
-          <Input label="Loan Amount" type="number" placeholder="Enter Amount" />
+          <Input
+            label="Loan Amount"
+            type="number"
+            placeholder="Enter Amount"
+            control={control}
+          />
         </Grid>
         <Grid item xs={5} sm={4}>
-          <Dropdown />
+          <Dropdown
+            control={control}
+            name="loanSymbols"
+            list={globalState?.loan}
+          />
         </Grid>
       </Grid>
       <Typography variant="body2">
         Recommended amount <InfoIcon fontSize="inherit" />
       </Typography>
-      <ButtonColor fullWidth sx={submitBtn}>
+      <ButtonColor fullWidth sx={submitBtn} type="submit">
         <SearchIcon /> Search
       </ButtonColor>
     </StyledForm>
