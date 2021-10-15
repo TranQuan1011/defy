@@ -15,22 +15,31 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Avatar from '@mui/material/Avatar';
 import Ava from '../../../assets/image/Vector.svg';
 import { ButtonNoColor } from 'app/components/Button';
+import { useDispatch } from 'react-redux';
+import { logout } from 'app/globalActions';
 const ListSideBar = props => {
+  const dispatch = useDispatch();
   const { history } = props;
   const handleClick = page => {
     history.push(page);
+  };
+  const Logout = () => {
+    localStorage.removeItem('accessToken');
+    dispatch(logout());
   };
   return (
     <Box sx={{ width: '100%', minHeight: '100vh' }}>
       <List>
         <ListItem sx={{ justifyContent: 'center', flexDirection: 'column' }}>
           <Avatar alt="avatar" src={Ava} />
-          <ButtonNoColor
-            onClick={() => handleClick('/login')}
-            sx={{ marginTop: '10px' }}
-          >
-            Login
-          </ButtonNoColor>
+          {!props.loginState && (
+            <ButtonNoColor
+              onClick={() => handleClick('/login')}
+              sx={{ marginTop: '10px' }}
+            >
+              Login
+            </ButtonNoColor>
+          )}
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton component="a" href="/">
@@ -216,7 +225,7 @@ const ListSideBar = props => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="/login">
+          <ListItemButton onClick={Logout}>
             <ListItemText primary="Log out" />
           </ListItemButton>
         </ListItem>

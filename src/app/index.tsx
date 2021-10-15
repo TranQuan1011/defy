@@ -47,7 +47,6 @@ export function App() {
       dispatch(fetchUserReq(token));
     }
   }, [dispatch]);
-
   return (
     <GlobalTheme>
       <Router history={history}>
@@ -58,7 +57,7 @@ export function App() {
         >
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
-        <NavBar />
+        <NavBar user={globalState?.user} />
         <Switch>
           <Route exact path="/">
             <Redirect to="/pawn" />
