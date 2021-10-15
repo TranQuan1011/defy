@@ -32,3 +32,15 @@ export interface User {
 export interface GlobalReducer {
   user: User | null;
 }
+
+export interface resultBorrower {
+  collateralAmount: number;
+  collateralSymbols: string;
+  durationQty: number;
+  durationTypes: number;
+  loanAmount: number;
+  loanSymbols: string;
+  status: number;
+  size: number;
+  page: number;
+}

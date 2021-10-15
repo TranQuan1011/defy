@@ -14,8 +14,27 @@ import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import LendTable from 'app/components/LendTable/index';
 import { BorrowerSearchResult } from 'app/components/BorrowerSearchResult';
+import axios from 'axios';
+
 const testData = [1, 2, 3, 4, 5, 6].map(item => `${item}`);
 export default function BorrowerResultPage() {
+  const [data, setData] = React.useState<any>();
+  React.useEffect(() => {
+    axios
+      .get(
+        'https://staginggw.defiforyou.uk/defi-pawn-crypto-service/public-api/v1.0.0/pawn-shop-package/search',
+      )
+      .then(res => {
+        console.log(res);
+        setData(res.data);
+      })
+      .catch(res => console.log(res));
+  }, []);
+  // if (data) {
+  //   console.log(data.data.content);
+  // } else {
+  //   console.log('null');
+  // }
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   return (
@@ -33,7 +52,7 @@ export default function BorrowerResultPage() {
             10 collateral offers match your search
           </Typography>
           <Box display="flex" flexDirection="column" rowGap="20px">
-            <BorrowerSearchResult />
+            <BorrowerSearchResult data={data} />
           </Box>
           <ButtonPagination
             count={10}

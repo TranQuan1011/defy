@@ -27,7 +27,7 @@ export default function LendCard(props) {
         <Grid item xs={12} md={5}>
           <CardContent sx={info}>
             <Typography component="h3" sx={h3}>
-              Pawnshop
+              {props.shopname}
             </Typography>
             <StarTypo>1000</StarTypo>
             <List sx={list}>
@@ -74,8 +74,7 @@ export default function LendCard(props) {
           <CardInfo>BTC, EHB, BNB {'&'} +8 more</CardInfo>
           {props.state === 0 && <BlueState>Auto</BlueState>}
           {props.state === 1 && <OrangeState>Semi - Auto</OrangeState>}
-          {props.state === 2 && <BlueState>Auto</BlueState>}
-          {props.state === 3 && <RedState>Negotiation</RedState>}
+          {props.state === 2 && <RedState>Negotiation</RedState>}
           <ButtonColor sx={button}>View detail</ButtonColor>
         </Grid>
       </Grid>

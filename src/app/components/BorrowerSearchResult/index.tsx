@@ -5,10 +5,20 @@ import { Typography } from '@mui/material';
 import { PersonalCard } from './components/PersonalCard';
 import LendCard from './components/LendCard';
 import { MenuFilter } from './components/MenuFilter';
-export const BorrowerSearchResult = () => {
+import boostmoney from '../../assets/image/boostMoney.svg';
+import money from '../../assets/image/moneyResult.svg';
+
+interface data {
+  data: any;
+}
+
+export const BorrowerSearchResult = (props: data) => {
+  const data = props.data;
+  console.log(data);
   return (
     <Box>
       <Ads
+        img={money}
         header="Become your onw bank"
         content="Sign up for pawnshop to get great benefits from"
         defi={true}
@@ -28,13 +38,14 @@ export const BorrowerSearchResult = () => {
         <PersonalCard />
       </Box>
       <Ads
+        img={boostmoney}
         header="Want an instant loan?"
         content="Submit your collateral to get a loan in seconds"
         defi={false}
       />
       <MenuFilter />
       <Box>
-        {[0, 1, 2, 3].map(item => (
+        {data.data.content.map(item => (
           <LendCard key={item} state={item} />
         ))}
       </Box>
