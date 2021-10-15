@@ -13,15 +13,17 @@ export default function HomeAds() {
       <Backgroud>
         <Typography sx={text}>Become a Pawnshop</Typography>
         <Typography sx={content}>
-        Open your own pawn shop and discover a new business opportunity with an unmatched ROI. Be
-        a part of the world's financial revolution.
+          Open your own pawn shop and discover a new business opportunity with
+          an unmatched ROI. Be a part of the world's financial revolution.
         </Typography>
-        <Typography sx={contentMobile}>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.</Typography>
+        <Typography sx={contentMobile}>
+          Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
+        </Typography>
         <ButtonColor sx={button}>Learn more </ButtonColor>
       </Backgroud>
     </Box>
   );
-};
+}
 
 const Backgroud = styled.div`
   background-image: url(${homeAds});
@@ -38,7 +40,7 @@ const Backgroud = styled.div`
     padding: 12px 12px 10px 12px;
     width: 95%;
   }
-  @media only screen and (min-width: 410px) and (max-width: 600px){
+  @media only screen and (min-width: 410px) and (max-width: 600px) {
     background-image: url(${homeAdsmobile});
     background-size: cover;
     background-position: right;
@@ -47,7 +49,7 @@ const Backgroud = styled.div`
     width: 95%;
   }
   @media only screen and (min-width: 600px) and (max-width: 900px) {
-    padding: 48px 0px 56px 68px;;
+    padding: 48px 0px 56px 68px;
   }
   @media (max-width: 1200px) {
     width: 95%;
@@ -61,7 +63,7 @@ const box: SxProps<Theme> = {
   '@media (max-width: 600px)': {
     margin: '30px 0px 40px 0px',
   },
-}
+};
 const text: SxProps<Theme> = {
   fontSize: '36px',
   lineHeight: '44px',
@@ -84,7 +86,7 @@ const text: SxProps<Theme> = {
     fontSize: '28px',
     lineHeight: '34px',
   },
-}
+};
 const content: SxProps<Theme> = {
   fontSize: '20px',
   lineHeight: '24px',
@@ -102,7 +104,7 @@ const content: SxProps<Theme> = {
   '@media (min-width: 750px)': {
     width: '50%',
   },
-}
+};
 const button: SxProps<Theme> = {
   width: '142px',
   height: '48px',
@@ -114,20 +116,20 @@ const button: SxProps<Theme> = {
     fontSize: '14px',
     lineHeight: '17px',
   },
-}
+};
 const contentMobile: SxProps<Theme> = {
-    display: 'none',
-    fontSize: '12px',
-    lineHeight: '15px',
-    fontWeight: '500',
-    paddingBottom: '12px',
-    width: '45%',
-    '@media (max-width: 410px)': {
-      display: 'block',
-      paddingBottom: '14px',
-    },
-    '@media only screen and (min-width: 410px) and (max-width: 600px)': {
-      paddingBottom: '25px',
-      display: 'block',
-    },
-}
+  display: 'none',
+  fontSize: '12px',
+  lineHeight: '15px',
+  fontWeight: '500',
+  paddingBottom: '12px',
+  width: '45%',
+  '@media (max-width: 410px)': {
+    display: 'block',
+    paddingBottom: '14px',
+  },
+  '@media only screen and (min-width: 410px) and (max-width: 600px)': {
+    paddingBottom: '25px',
+    display: 'block',
+  },
+};

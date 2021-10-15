@@ -8,13 +8,20 @@ import { SxProps, styled } from '@mui/system';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/system/Box';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ResponsiveImg from 'app/components/ResponsiveImg';
 import heroImg from 'app/assets/image/Hero.png';
 import Borrow from 'app/components/Borrow';
 import Lend from 'app/components/Lend';
+import heroSelector from './slice/selectors';
+import { useHeroSlice } from './slice';
 
 export default function Hero() {
+  const { actions } = useHeroSlice();
+  const { heroState } = useSelector(heroSelector);
+  const dispatch = useDispatch();
+
   return (
     <Box
       width="100%"
@@ -53,12 +60,25 @@ export default function Hero() {
             <ResponsiveImg src={heroImg} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Tabs value={0} textColor="secondary" sx={tabs}>
-              <StyledTab label="Borrow" />
-              <StyledTab label="Lend" />
+            <Tabs
+              value={heroState?.borrowLendTab}
+              textColor="secondary"
+              sx={tabs}
+              onChange={(event: React.SyntheticEvent, value: number) =>
+                dispatch(actions.changeBorrowLendTab(value))
+              }
+            >
+              <StyledTab label="Borrow" value={0} />
+              <StyledTab label="Lend" value={1} />
             </Tabs>
-            {/* <Borrow /> */}
-            <Lend />
+            {heroState?.borrowLendTab ? (
+              <Lend
+                collateralRadio={heroState?.lendTab}
+                onCollateralRadioChange={actions.changeLendTab}
+              />
+            ) : (
+              <Borrow />
+            )}
           </Grid>
         </Grid>
       </Container>

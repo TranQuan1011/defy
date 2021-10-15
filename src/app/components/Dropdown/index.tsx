@@ -7,31 +7,101 @@ import Box from '@mui/system/Box';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import { Typography } from '@mui/material';
+import { Controller } from 'react-hook-form';
+import { Crypto } from 'app/commons/types';
+import getIconUrl from 'app/commons/getIconUrl';
 
-const names = ['Oliver', 'Van', 'April'];
+export default function Dropdown(props): JSX.Element {
+  const [input, setInput] = React.useState('');
+  const temp = props.list.map((item: Crypto) => item.symbol);
+  const list = ['All', ...temp];
 
-const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => {
+  return (
+    <Controller
+      control={props.control}
+      name={props.name}
+      defaultValue={list[0]}
+      render={({ field }) => {
+        const { ref, onChange, ...fieldProps } = field;
+        return (
+          <Autocomplete
+            PaperComponent={props => (
+              <Paper
+                {...props}
+                sx={{
+                  backgroundColor: '#2f3543',
+                  borderRadius: '16px',
+                  '& ul': {
+                    '&::-webkit-scrollbar': {
+                      width: '4px',
+                    },
+                    '&::-webkit-scrollbar-track': {
+                      background: '#45484F',
+                      borderRadius: ' 3px',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                      background: '#74767B',
+                      height: '26px',
+                      borderRadius: ' 3px',
+                    },
+                  },
+                }}
+              />
+            )}
+            defaultValue={list[0]}
+            noOptionsText="no data available"
+            disableClearable
+            options={list}
+            renderInput={params => renderInput(params, field.value, input)}
+            renderOption={renderOption}
+            inputValue={input}
+            onInputChange={(e, v, r) => {
+              if (r === 'input') {
+                setInput(v);
+              }
+            }}
+            onChange={(e, v, r) => onChange(v)}
+            {...fieldProps}
+          />
+        );
+      }}
+    />
+  );
+}
+
+const renderInput = (
+  params: AutocompleteRenderInputParams,
+  curValue: string,
+  input: string,
+): JSX.Element => {
   return (
     <Box position="relative">
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        display="flex"
-        alignItems="center"
-        columnGap="6px"
-        height="100%"
-        width="calc(100% - 32px)"
-        padding="10px"
-        overflow="hidden"
-        whiteSpace="nowrap"
-        textOverflow="ellipsis"
-      >
-        <Avatar sx={{ width: '20px', height: '20px' }} />
-        <Typography component="span" variant="body1">
-          TEXT
-        </Typography>
-      </Box>
+      {input ? null : (
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          display="flex"
+          alignItems="center"
+          columnGap="6px"
+          height="100%"
+          width="calc(100% - 32px)"
+          padding="10px"
+          overflow="hidden"
+          whiteSpace="nowrap"
+          textOverflow="ellipsis"
+        >
+          {curValue !== 'All' && (
+            <Avatar
+              sx={{ width: '20px', height: '20px' }}
+              src={getIconUrl(curValue)}
+            />
+          )}
+          <Typography component="span" variant="body1">
+            {curValue}
+          </Typography>
+        </Box>
+      )}
       <TextField
         {...params}
         // placeholder="Name"
@@ -59,39 +129,13 @@ const renderOption = (
 ): JSX.Element => {
   return (
     <Box component="li" display="flex" columnGap="6px" {...props}>
-      <Avatar sx={{ width: '24px', height: '24px' }} />
-      {option}
+      {option !== 'All' && (
+        <Avatar
+          sx={{ width: '24px', height: '24px' }}
+          src={getIconUrl(option)}
+        />
+      )}
+      {option !== 'All' ? option : 'All'}
     </Box>
   );
 };
-
-export default function Dropdown(): JSX.Element {
-  const [value, setValue] = React.useState<string | null>(null);
-  const [input, setInput] = React.useState('');
-  return (
-    <Autocomplete
-      value={value as string}
-      PaperComponent={props => (
-        <Paper
-          {...props}
-          sx={{
-            backgroundColor: '#2f3543',
-            borderRadius: '16px',
-          }}
-        />
-      )}
-      noOptionsText="no data available"
-      disableClearable
-      options={names}
-      renderInput={params => renderInput(params)}
-      renderOption={renderOption}
-      inputValue={input}
-      onChange={(e, v, r) => setValue(v)}
-      onInputChange={(e, v, r) => {
-        if (r === 'input') {
-          setInput(v);
-        }
-      }}
-    />
-  );
-}
