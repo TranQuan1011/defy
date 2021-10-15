@@ -16,11 +16,11 @@ export const Ads = props => {
       <CardContent
         sx={{
           display: 'flex',
-          justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
-        <Box>
+        <img src={props.img} alt="image" />
+        <Box sx={{ marginLeft: '15px' }}>
           <Typography variant="h6" fontWeight="600" color="#ffca2a">
             {props.header}
           </Typography>
