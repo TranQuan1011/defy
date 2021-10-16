@@ -4,8 +4,11 @@ import { Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { useDispatch } from 'react-redux';
 
 export default function Filter(props) {
+  const dispatch = useDispatch();
+
   return (
     <Box
       width="100%"
@@ -26,6 +29,7 @@ export default function Filter(props) {
             textDecoration: 'underline !important',
             p: 0,
           }}
+          onClick={props.onReset}
         >
           Reset filter
         </Button>
@@ -37,6 +41,7 @@ export default function Filter(props) {
             width: '29px',
             display: props.displayClose ? 'inline-flex' : 'none',
           }}
+          onClick={() => dispatch(props.onClose())}
         >
           <CloseIcon />
         </IconButton>
