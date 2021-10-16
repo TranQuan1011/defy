@@ -4,6 +4,7 @@ import { GlobalReducer } from 'app/commons/types';
 import { SearchAction } from 'app/pages/BorrowerResultPage/slice/types';
 
 import { HeroState } from 'app/containers/Hero/slice/types';
+import { LendCryptoPageState } from 'app/pages/LendCryptoResult/slice/types';
 
 /* 
   Because the redux-injectors injects your reducers asynchronously somewhere in your code
@@ -15,4 +16,5 @@ export interface RootState {
   authPage?: AuthState;
   searchAction: SearchAction;
   heroState?: HeroState;
+  lendCryptoPage: LendCryptoPageState;
 }
