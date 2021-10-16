@@ -1,9 +1,5 @@
-import { AxiosResponse } from 'axios';
-import { authBase } from './base';
-import { resultBorrower } from 'app/commons/types';
+import { base } from './base';
 
-export const searchResult = (
-  data: resultBorrower,
-): Promise<AxiosResponse<resultBorrower>> => {
-  return authBase.get('/pawn-shop-package/search', { params: { data } });
-};
+const fetchBorrowrResult = () => base.get('/pawn-shop-package/search?size=10');
+
+export default fetchBorrowrResult;

@@ -17,8 +17,8 @@ interface Props {
   type: string;
   placeholder: string;
   InputProps?: Partial<InputProps>;
-  sx?: SxProps<Theme>;
-  control?: Control<FieldValues>;
+  sx?: SxProps<Theme> | undefined;
+  control: Control<FieldValues>;
   rules?: Object;
 }
 

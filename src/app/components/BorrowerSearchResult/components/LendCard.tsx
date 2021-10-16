@@ -22,14 +22,14 @@ export default function LendCard(props) {
     <Card sx={root}>
       <Grid container>
         <Grid item xs={12} md={3}>
-          <CardMedia component="img" sx={cardMedia} src={cardmedia} />
+          <CardMedia component="img" sx={cardMedia} src={props.avatar} />
         </Grid>
         <Grid item xs={12} md={5}>
           <CardContent sx={info}>
             <Typography component="h3" sx={h3}>
               {props.shopname}
             </Typography>
-            <StarTypo>1000</StarTypo>
+            <StarTypo>{props.reputation}</StarTypo>
             <List sx={list}>
               <ListItem disablePadding>
                 <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
@@ -44,7 +44,16 @@ export default function LendCard(props) {
                   <CardLabel>Limit:</CardLabel>
                 </ListItemText>
                 <ListItemText>
-                  <CardInfo>RandomText</CardInfo>
+                  {props.symbol.length > 0 ? (
+                    <CardInfo>
+                      {props.allowedloanMin} - {props.allowedloanMax}{' '}
+                      {props.symbol[0].symbol}
+                    </CardInfo>
+                  ) : (
+                    <CardInfo>
+                      {props.allowedloanMin} - {props.allowedloanMax}{' '}
+                    </CardInfo>
+                  )}
                 </ListItemText>
               </ListItem>
               <ListItem disablePadding>
@@ -52,7 +61,15 @@ export default function LendCard(props) {
                   <CardLabel>Duration:</CardLabel>
                 </ListItemText>
                 <ListItemText>
-                  <CardInfo>6 - 12 months</CardInfo>
+                  {props.durationqtyType === 1 ? (
+                    <CardInfo>
+                      {props.durationqtyMin} - {props.durationqtyMax} months
+                    </CardInfo>
+                  ) : (
+                    <CardInfo>
+                      {props.durationqtyMin} - {props.durationqtyMax} weeks
+                    </CardInfo>
+                  )}
                 </ListItemText>
               </ListItem>
               <ListItem disablePadding>
@@ -60,7 +77,7 @@ export default function LendCard(props) {
                   <CardLabel>LVT:</CardLabel>
                 </ListItemText>
                 <ListItemText>
-                  <CardInfo>up to 80%</CardInfo>
+                  <CardInfo>up to {props.ltv}%</CardInfo>
                 </ListItemText>
               </ListItem>
             </List>
@@ -69,9 +86,34 @@ export default function LendCard(props) {
 
         <Grid item xs={12} md={4} sx={lastGrid}>
           <CardLabel>Interest rate</CardLabel>
-          <GreenTypo sx={currency}>15% APR</GreenTypo>
+          {props.interest ? (
+            <GreenTypo sx={currency}>{props.interest}% APR</GreenTypo>
+          ) : (
+            <GreenTypo sx={currency}>
+              {props.interestMin} - {props.interestMax}% APR
+            </GreenTypo>
+          )}
           <CardLabel>Collateral accepted</CardLabel>
-          <CardInfo>BTC, EHB, BNB {'&'} +8 more</CardInfo>
+          {props.accept.length === 1 && (
+            <CardInfo> {props.accept[0].symbol}</CardInfo>
+          )}
+          {props.accept.length === 2 && (
+            <CardInfo>
+              {props.accept[0].symbol}, {props.accept[1].symbol},{' '}
+            </CardInfo>
+          )}
+          {props.accept.length === 3 && (
+            <CardInfo>
+              {props.accept[0].symbol}, {props.accept[1].symbol},{' '}
+              {props.accept[2].symbol}
+            </CardInfo>
+          )}
+          {props.accept.length > 3 && (
+            <CardInfo>
+              {props.accept[0].symbol}, {props.accept[1].symbol},{' '}
+              {props.accept[2].symbol} {'&'} {props.accept.length - 3}+ more
+            </CardInfo>
+          )}
           {props.state === 0 && <BlueState>Auto</BlueState>}
           {props.state === 1 && <OrangeState>Semi - Auto</OrangeState>}
           {props.state === 2 && <RedState>Negotiation</RedState>}

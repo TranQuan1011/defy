@@ -2,6 +2,9 @@
 import { AuthState } from 'app/pages/AuthPage/slice/types.js';
 import { GlobalReducer } from 'app/commons/types';
 import { SearchAction } from 'app/pages/BorrowerResultPage/slice/types';
+
+import { HeroState } from 'app/containers/Hero/slice/types';
+
 /* 
   Because the redux-injectors injects your reducers asynchronously somewhere in your code
   You have to declare them here manually
@@ -11,4 +14,5 @@ export interface RootState {
   globalReducer?: GlobalReducer;
   authPage?: AuthState;
   searchAction: SearchAction;
+  heroState?: HeroState;
 }

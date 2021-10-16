@@ -17,11 +17,9 @@ export default function PawnshopCard(props: IProps) {
     <Box sx={box}>
       <Grid sx={grid}>
         <img alt="img" src={image} className="img" />
-        <Typography sx={superShop}>
-          Super shop
-        </Typography>
+        <Typography sx={superShop}>Super shop</Typography>
         <Typography sx={rate}>
-            <StarIcon sx={star}/>
+          <StarIcon sx={star} />
           1000
         </Typography>
       </Grid>
@@ -40,24 +38,24 @@ const box: SxProps<Theme> = {
     margin: '0 auto',
     '& .img': {
       maxWidth: '283px',
-    }
+    },
   },
   '@media (min-width: 1028px) and (max-width: 1080px)': {
     maxWidth: '428px',
-    margin:' 0 auto',
+    margin: ' 0 auto',
   },
   '@media (min-width: 1200px) and (max-width: 1600px)': {
     maxWidth: '300px !important',
     margin: '0 auto',
     '& .img': {
       maxWidth: '283px',
-    }
+    },
   },
-}
+};
 const grid: SxProps<Theme> = {
   position: 'relative',
   marginBottom: '12px',
-}
+};
 const superShop: SxProps<Theme> = {
   padding: '5px 12px',
   background: '#ff4848',
@@ -73,7 +71,7 @@ const superShop: SxProps<Theme> = {
     fontSize: '12px',
     lineHeight: '15px',
   },
-}
+};
 const rate: SxProps<Theme> = {
   position: 'absolute',
   fontSize: '14px',
@@ -91,12 +89,12 @@ const rate: SxProps<Theme> = {
     lineHeight: '15px',
     padding: '5px 8px 3px 5px',
   },
-}
+};
 const star: SxProps<Theme> = {
-  marginBottom:'3px',
+  marginBottom: '3px',
   height: '15.5px',
   color: '#ffffff',
-}
+};
 const des: SxProps<Theme> = {
   fontSize: '20px',
   lineHeight: '24px',
@@ -106,7 +104,7 @@ const des: SxProps<Theme> = {
     lineHeight: '22px',
     marginBottom: '4px',
   },
-}
+};
 const cont: SxProps<Theme> = {
   fontSize: '16px',
   lineHeight: '20px',
@@ -114,4 +112,4 @@ const cont: SxProps<Theme> = {
     fontSize: '14px',
     lineHeight: '17px',
   },
-}
+};

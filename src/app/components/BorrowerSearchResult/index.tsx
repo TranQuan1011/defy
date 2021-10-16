@@ -7,14 +7,11 @@ import LendCard from './components/LendCard';
 import { MenuFilter } from './components/MenuFilter';
 import boostmoney from '../../assets/image/boostMoney.svg';
 import money from '../../assets/image/moneyResult.svg';
-
 interface data {
   data: any;
 }
 
 export const BorrowerSearchResult = (props: data) => {
-  const data = props.data;
-  console.log(data);
   return (
     <Box>
       <Ads
@@ -45,8 +42,25 @@ export const BorrowerSearchResult = (props: data) => {
       />
       <MenuFilter />
       <Box>
-        {data.data.content.map(item => (
-          <LendCard key={item} state={item} />
+        {props.data.data.content.map((item, index) => (
+          <LendCard
+            key={index}
+            state={item.type}
+            shopname={item.pawnShop.name}
+            interest={item.interest}
+            interestMax={item.interestMax}
+            interestMin={item.interestMin}
+            durationqtyMax={item.durationQtyMax}
+            durationqtyMin={item.durationQtyMin}
+            allowedloanMax={item.allowedLoanMax}
+            allowedloanMin={item.allowedLoanMin}
+            durationqtyType={item.durationQtyType}
+            ltv={item.loanToValue}
+            avatar={item.pawnShop.avatar}
+            symbol={item.acceptableAssetsAsLoan}
+            reputation={item.pawnShop.reputation}
+            accept={item.acceptableAssetsAsCollateral}
+          />
         ))}
       </Box>
     </Box>

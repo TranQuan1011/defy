@@ -15,15 +15,13 @@ import { useTheme } from '@mui/material/styles';
 import LendTable from 'app/components/LendTable/index';
 import { BorrowerSearchResult } from 'app/components/BorrowerSearchResult';
 import axios from 'axios';
+import fetchBorrowrResult from 'app/apis/pawnshopSearch';
 
 const testData = [1, 2, 3, 4, 5, 6].map(item => `${item}`);
 export default function BorrowerResultPage() {
   const [data, setData] = React.useState<any>();
   React.useEffect(() => {
-    axios
-      .get(
-        'https://staginggw.defiforyou.uk/defi-pawn-crypto-service/public-api/v1.0.0/pawn-shop-package/search',
-      )
+    fetchBorrowrResult()
       .then(res => {
         console.log(res);
         setData(res.data);
@@ -35,6 +33,10 @@ export default function BorrowerResultPage() {
   // } else {
   //   console.log('null');
   // }
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   return (
@@ -52,13 +54,14 @@ export default function BorrowerResultPage() {
             10 collateral offers match your search
           </Typography>
           <Box display="flex" flexDirection="column" rowGap="20px">
-            <BorrowerSearchResult data={data} />
+            {data ? <BorrowerSearchResult data={data} /> : null}
           </Box>
           <ButtonPagination
-            count={10}
+            count={data ? data.data.total_pages : null}
             variant="outlined"
             shape="rounded"
             sx={{ mt: { xs: 2, md: 6 } }}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={3} order={{ xs: 1, md: 2 }}>
