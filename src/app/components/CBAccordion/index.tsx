@@ -13,7 +13,7 @@ import Divider from '@mui/material/Divider';
 export default function CBAccordion(props) {
   return (
     <>
-      <Accordion sx={root} elevation={0} disableGutters>
+      <Accordion sx={root} elevation={0} disableGutters defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={heading}>{props.header}</Typography>
         </AccordionSummary>
@@ -22,8 +22,15 @@ export default function CBAccordion(props) {
             <FormGroup>
               {props.labels.map((item, index) => (
                 <FormControlLabel
-                  control={<Checkbox name={item} color="secondary" />}
-                  label={item}
+                  control={
+                    <Checkbox
+                      name={item}
+                      color="secondary"
+                      checked={props.filterOption[props.name][item]}
+                      onChange={e => props.onChange(e.target.name)}
+                    />
+                  }
+                  label={props.label ? props.label(item) : item}
                   key={index}
                 />
               ))}
