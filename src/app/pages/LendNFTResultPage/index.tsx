@@ -138,16 +138,15 @@ export default function LendNFTResult(props) {
       <Grid container rowSpacing={1.5} columnSpacing={5.375}>
         <Grid item xs={12} md={9} order={{ xs: 2, md: 1 }}>
           <Typography variant="h6" sx={resultTypo}>
-            {/* {props.LendNFTPageState?.total_elements}  */}
             {list.total_elements} collateral offers match your search
           </Typography>
           <Box display="flex" flexDirection="column" rowGap="20px">
-            {/* {props.LendNFTPageState?.map((item, index) => (
-              <LendCard key={index} item={item} />
-            ))} */}
-            {/* {list?.map(() => {
-              <LendCard list={list.content} />
+            {/* {list?.content.map((item) => {
+              <LendCard item={item} />
             })} */}
+            {/* {list.map(item => (
+              <LendCard key={item} list={list.content}/>
+            ))} */}
             <LendCard list={list.content} />
             {/* {DataLendNFT.map((item, index) => (
               <LendCard key={index} item={item} />

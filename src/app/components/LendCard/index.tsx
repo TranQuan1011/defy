@@ -40,7 +40,12 @@ import {item} from 'app/pages/LendNFTResultPage/slice/types'
 //   nftAvatarCid: string;
 //   nftMediaCid: string;
 // }
+// interface Props {
+//   list: item[];
+// }
+
 export default function LendCard(item) {
+  // console.log(props)
   return (
     <Card sx={root}>
       <CardMedia component="img" src={tag} sx={tagSx} />
