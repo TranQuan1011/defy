@@ -5,8 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { SxProps } from '@mui/system';
 import { Theme } from '@mui/material';
 import { Controller } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 export default function DefySelect(props) {
+  const { t } = useTranslation();
   return (
     <Controller
       control={props.control}
@@ -17,9 +19,9 @@ export default function DefySelect(props) {
         return (
           <FormControl fullWidth sx={root} color="warning">
             <Select {...fieldProps} defaultValue="All">
-              <MenuItem value={'All'}>All</MenuItem>
-              <MenuItem value={0}>Weeks</MenuItem>
-              <MenuItem value={1}>Months</MenuItem>
+              <MenuItem value={'All'}>{t('home.hero.borrow.cryp.all')}</MenuItem>
+              <MenuItem value={0}>{t('home.hero.borrow.cryp.week')}</MenuItem>
+              <MenuItem value={1}>{t('home.hero.borrow.cryp.month')}</MenuItem>
             </Select>
           </FormControl>
         );

@@ -15,8 +15,10 @@ import DefySelect from 'app/components/DefySelect';
 import selector from './selector';
 import concatQuery from 'app/commons/concatQuery';
 import history from 'app/history';
+import { useTranslation } from 'react-i18next';
 
 export default function Cryps() {
+  const { t } = useTranslation();
   const { control, handleSubmit } = useForm({
     mode: 'all',
   });
@@ -38,13 +40,13 @@ export default function Cryps() {
       >
         <Grid item xs={7} sm={8}>
           <Input
-            label="Collateral"
+            label={t('home.hero.borrow.cryp.coll')}
             type="number"
-            placeholder="Enter amount"
+            placeholder={t('home.hero.borrow.cryp.enterAmount')}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <ButtonColor sx={EndAbor}>Max</ButtonColor>
+                  <ButtonColor sx={EndAbor}>{t('home.hero.borrow.cryp.max')}</ButtonColor>
                 </InputAdornment>
               ),
             }}
@@ -67,7 +69,7 @@ export default function Cryps() {
               fontWeight: 500,
             }}
           >
-            Or
+            {t('home.hero.borrow.cryp.or')}
           </Typography>
           <ButtonNoColor
             sx={{
@@ -77,15 +79,15 @@ export default function Cryps() {
               pr: { sm: 2.5 },
             }}
           >
-            Choose Existing Collateral
+            {t('home.hero.borrow.cryp.choose')}
           </ButtonNoColor>
         </Grid>
         <Grid item xs={5} sm={4}></Grid>
         <Grid item xs={7} sm={8}>
           <Input
-            label="Duration"
+            label={t('home.hero.borrow.cryp.duration')}
             type="number"
-            placeholder="Duration"
+            placeholder={t('home.hero.borrow.cryp.duration')}
             control={control}
           />
         </Grid>
@@ -94,9 +96,9 @@ export default function Cryps() {
         </Grid>
         <Grid item xs={7} sm={8}>
           <Input
-            label="Loan Amount"
+            label={t('home.hero.borrow.cryp.loanAmount')}
             type="number"
-            placeholder="Enter Amount"
+            placeholder={t('home.hero.borrow.cryp.enterAmount')}
             control={control}
           />
         </Grid>
@@ -109,10 +111,10 @@ export default function Cryps() {
         </Grid>
       </Grid>
       <Typography variant="body2">
-        Recommended amount <InfoIcon fontSize="inherit" />
+      {t('home.hero.borrow.cryp.recommend')} <InfoIcon fontSize="inherit" />
       </Typography>
       <ButtonColor fullWidth sx={submitBtn} type="submit">
-        <SearchIcon /> Search
+        <SearchIcon /> {t('home.hero.search')}
       </ButtonColor>
     </StyledForm>
   );

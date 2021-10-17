@@ -10,7 +10,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { ButtonNoColor, ButtonColor } from '../../components/Button/index';
+import { useTranslation } from 'react-i18next';
+
 export const Footer = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState<DialogProps['scroll']>('paper');
 
@@ -51,7 +54,7 @@ export const Footer = () => {
             alignItems: 'center',
           }}
         >
-          <TextBox>© 2021 DeFi For You. All rights reserved</TextBox>
+          <TextBox>{t('footer.copyRight.trademark')}</TextBox>
           <Box
             sx={{
               display: 'flex',
@@ -59,7 +62,7 @@ export const Footer = () => {
           >
             <div>
               <LinkBox onClick={handleClickOpen('paper')}>
-                Term Of Services
+                {t('footer.copyRight.term')}
               </LinkBox>
               <Dialog
                 open={open}
@@ -72,7 +75,7 @@ export const Footer = () => {
               >
                 <DialogTitle id="scroll-dialog-title">
                   <Typography variant="h4" textAlign="center" fontWeight="700">
-                    Term Of Services
+                    {t('footer.copyRight.term')} 
                   </Typography>
                 </DialogTitle>
                 <DialogContent
@@ -99,17 +102,17 @@ export const Footer = () => {
                     onClick={handleClose}
                     sx={{ color: '#b03e42', border: '1px solid #b03e42' }}
                   >
-                    Decline
+                    {t('footer.copyRight.Decline')}
                   </ButtonNoColor>
                   <ButtonColor onClick={handleClose} sx={{ width: '102px' }}>
-                    Accept
+                    {t('footer.copyRight.Accept')}
                   </ButtonColor>
                 </DialogActions>
               </Dialog>
             </div>
 
             <TextBox>|</TextBox>
-            <LinkBox>Privacy Policy</LinkBox>
+            <LinkBox>{t('footer.copyRight.policy')} </LinkBox>
           </Box>
         </Container>
       </Box>

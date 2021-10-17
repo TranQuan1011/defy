@@ -6,20 +6,21 @@ import { Theme } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 export default function HomeAds() {
+  const { t } = useTranslation();
   return (
     <Box sx={box}>
       <Backgroud>
-        <Typography sx={text}>Become a Pawnshop</Typography>
+        <Typography sx={text}>{t('home.sliders.title')}</Typography>
         <Typography sx={content}>
-          Open your own pawn shop and discover a new business opportunity with
-          an unmatched ROI. Be a part of the world's financial revolution.
+          {t('home.ads.content')}
         </Typography>
         <Typography sx={contentMobile}>
           Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
         </Typography>
-        <ButtonColor sx={button}>Learn more </ButtonColor>
+        <ButtonColor sx={button}>{t('home.ads.more')}</ButtonColor>
       </Backgroud>
     </Box>
   );

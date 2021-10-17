@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/Star';
 import { SxProps } from '@mui/system';
 import { Theme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   image?: string;
@@ -12,12 +13,13 @@ interface IProps {
 }
 
 export default function PawnshopCard(props: IProps) {
+  const { t } = useTranslation();
   const { image, description, content } = props;
   return (
     <Box sx={box}>
       <Grid sx={grid}>
         <img alt="img" src={image} className="img" />
-        <Typography sx={superShop}>Super shop</Typography>
+        <Typography sx={superShop}>{t('home.sliders.SuperShop')}</Typography>
         <Typography sx={rate}>
           <StarIcon sx={star} />
           1000
