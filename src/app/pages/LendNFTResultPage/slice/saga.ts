@@ -7,8 +7,6 @@ import { lendNFTPageActions } from './index';
 function* fetchListReq({ payload }: { type: string; payload: FetchParams }) {
   try {
     const params = {
-      page: 0,
-      size: 10,
       ...payload,
     };
     const res = yield call(fetchList, params);

@@ -3,7 +3,7 @@ import { ResultLendNft } from './base';
 import {  FetchParams } from 'app/pages/LendNFTResultPage/slice/types';
 
 export const fetchList = (params: FetchParams) => {
-  return ResultLendNft.get('/collaterals/nfts/search', {
+  return ResultLendNft.get('/account/collaterals/nfts/search', {
     params,
   });
 };
