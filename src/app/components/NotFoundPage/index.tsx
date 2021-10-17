@@ -3,14 +3,10 @@ import styled from 'styled-components/macro';
 import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
-import LendCard from '../LendCard';
-
 export function NotFoundPage() {
   return (
-    <div style={{ padding: '10px' }}>
-      <LendCard />
-    </div>
-    /* <Helmet>
+    <>
+      <Helmet>
         <title>404 Page Not Found</title>
         <meta name="description" content="Page not found" />
       </Helmet>
@@ -23,7 +19,8 @@ export function NotFoundPage() {
           4
         </Title>
         <P>Page not found.</P>
-      </Wrapper> */
+      </Wrapper>
+    </>
   );
 }
 
