@@ -3,11 +3,12 @@ import Box from '@mui/system/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-
 import data from './data';
 import WhyBorrowCard from 'app/components/WhyBorrowCard';
+import { useTranslation } from 'react-i18next';
 
 export default function WhyBorrow() {
+  const { t } = useTranslation();
   return (
     <Box width="100%">
       <Container maxWidth="lg" sx={container}>
@@ -24,7 +25,7 @@ export default function WhyBorrow() {
             },
           }}
         >
-          Why borrow with us?
+          {t('home.whyBorrow.title')}
         </Typography>
         <Grid container rowSpacing={6.875} columnSpacing={13.5}>
           {data.map((item, index) => (

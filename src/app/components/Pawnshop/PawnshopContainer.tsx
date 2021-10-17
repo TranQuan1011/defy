@@ -9,8 +9,10 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { SxProps } from '@mui/system';
 import { Theme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export default function Pawnshop() {
+  const { t } = useTranslation();
   const PawnshopItem = [
     {
       id: 1,
@@ -98,10 +100,10 @@ export default function Pawnshop() {
   });
   return (
     <Box sx={box}>
-      <Typography sx={title}>Explore Featured Pawnshops</Typography>
+      <Typography sx={title}>{t('home.sliders.title')}</Typography>
       <Box sx={slider}>
         <Typography sx={seeAll}>
-          See all <ArrowRightAltIcon />
+        {t('home.sliders.SeeAll')} <ArrowRightAltIcon />
         </Typography>
         <Slider {...sliders}>{PawnshopContainer}</Slider>
       </Box>

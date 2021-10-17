@@ -22,6 +22,8 @@ import Menu from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { logout } from 'app/globalActions';
+import ChangeLang from './Components/changeLang';
+
 const NavBar = props => {
   const { history } = props;
   const theme = useTheme();
@@ -77,6 +79,7 @@ const NavBar = props => {
                   <img width="100%" src={Logo} alt="logo" />
                 </Link>
               </Typography>
+              
               <Box
                 sx={{
                   display: 'flex',
@@ -175,6 +178,7 @@ const NavBar = props => {
                 )}
               </Box>
             </Box>
+            <ChangeLang />
           </Toolbar>
           <SideBar open={open} loginState={props.user} />
         </AppBar>

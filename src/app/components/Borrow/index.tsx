@@ -5,11 +5,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useRouteMatch, useLocation } from 'react-router-dom';
 import history from 'app/history';
-
 import Cryps from './Cryps';
 import NFT from './NFT';
+import { useTranslation } from 'react-i18next';
 
 export default function Borrow() {
+  const { t } = useTranslation();
   const location = useLocation();
   const tab = new URLSearchParams(location.search).get('tab');
   const { path } = useRouteMatch();
@@ -51,7 +52,7 @@ export default function Borrow() {
           },
         }}
       >
-        <StyledTab label="Cryptocurrency" value={'1'} />
+        <StyledTab label={t('home.hero.borrow.cryp.active')} value={'1'} />
         <StyledTab label="NFT" value={'2'} />
       </Tabs>
       {tab === '2' ? <NFT /> : <Cryps />}

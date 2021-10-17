@@ -39,6 +39,9 @@ const GreenTypo = styled(Typography)(({ theme }) => ({
 const BlueUnderline = styled(Typography)({
   textDecoration: 'underline',
   color: '#2596FF',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 });
 
 const CardLabel = styled(Typography)(({ theme }) => ({

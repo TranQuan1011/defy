@@ -6,6 +6,7 @@ import { HeroState } from 'app/containers/Hero/slice/types';
 import { LendCryptoPageState } from 'app/pages/LendCryptoResult/slice/types';
 import { BorrowerResultState } from 'app/pages/BorrowerResultPage/slice/types';
 
+import { LendNFTPageState } from 'app/pages/LendNFTResultPage/slice/types';
 /* 
   Because the redux-injectors injects your reducers asynchronously somewhere in your code
   You have to declare them here manually
@@ -17,4 +18,5 @@ export interface RootState {
   heroState?: HeroState;
   lendCryptoPage: LendCryptoPageState;
   borrowerResultPage: BorrowerResultState;
+  lendNFTPage: LendNFTPageState;
 }
