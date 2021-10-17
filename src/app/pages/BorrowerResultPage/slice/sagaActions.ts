@@ -1,6 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { resultBorrower } from 'app/commons/types';
 
-export const resultBorrowerReq = createAction<resultBorrower>(
-  'RESULT_BORROWER_REQ',
-);
+export const fetchListReq = createAction<undefined>('FETCH_LIST_REQ');
+
+export const fetchCardReq = createAction<undefined>('FECTH_CARD_REQ');

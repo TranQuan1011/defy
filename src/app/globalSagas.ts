@@ -4,11 +4,14 @@ import {
   fetchUserSuccess,
   setCollateral,
   setLoan,
+  setCollateralBorrower,
+  setLoanBorrower,
+  fetchBorrower,
   fetchCrypto,
 } from './globalActions';
 import { confirmToken } from 'app/apis/auth';
 import fetchCryptoApi from './apis/fetchCrypto';
-import fetchBorrowrResult from './apis/pawnshopSearch';
+import { fetchBorrowrResult } from './apis/pawnshopSearch';
 import { Crypto, resultBorrower } from 'app/commons/types';
 
 // workers
@@ -37,6 +40,18 @@ function* cryptopReq() {
     console.log(error.response.data.errorCodes[0]);
   }
 }
+// function* borrowerReq() {
+//   try {
+//     const res = yield call(fetchBorrowrResult);
+//     const borrower = res.data.data as resultBorrower[];
+//     const col = borrower.filter(item => item.isWhitelistCollateral);
+//     const loans = borrower.filter(item => item.isWhitelistSupply);
+//     yield put(setLoanBorrower(loans));
+//     yield put(setCollateralBorrower(col));
+//   } catch (error: any) {
+//     console.log(error.response.data.errorCodes[0]);
+//   }
+// }
 
 // watchers
 function* watchUserReq() {
@@ -48,7 +63,10 @@ function* watchCryptoReq() {
   const type = fetchCrypto.toString();
   yield takeLatest(type, cryptopReq);
 }
-
+// function* watchBorrowerReq() {
+//   const type = fetchBorrower.toString();
+//   yield takeLatest(type, borrowerReq);
+// }
 export default function* rootSaga() {
   yield all([watchUserReq(), watchCryptoReq()]);
 }

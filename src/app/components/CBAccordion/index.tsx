@@ -26,8 +26,8 @@ export default function CBAccordion(props) {
                     <Checkbox
                       name={item}
                       color="secondary"
-                      // checked={props.filterOption[props.name][item]}
-                      // onChange={e => props.onChange(e.target.name)}
+                      checked={props.filterOption[props.name][item]}
+                      onChange={e => props.onChange(e.target.name)}
                     />
                   }
                   label={props.label ? props.label(item) : item}

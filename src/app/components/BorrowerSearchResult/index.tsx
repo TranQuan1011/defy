@@ -9,6 +9,7 @@ import boostmoney from '../../assets/image/boostMoney.svg';
 import money from '../../assets/image/moneyResult.svg';
 interface data {
   data: any;
+  card: any;
 }
 
 export const BorrowerSearchResult = (props: data) => {
@@ -31,8 +32,19 @@ export const BorrowerSearchResult = (props: data) => {
         <Box>View detail</Box>
       </Box>
       <Box sx={{ display: 'flex' }}>
-        <PersonalCard />
-        <PersonalCard />
+        {props.card &&
+          props.card
+            .slice(0, 2)
+            .map((item, index) => (
+              <PersonalCard
+                key={index}
+                address={item.associatedAddress}
+                minInterest={item.minInterestRate}
+                maxInterest={item.maxInterestRate}
+                reputation={item.reputation}
+                completedContracts={item.completedContracts}
+              />
+            ))}
       </Box>
       <Ads
         img={boostmoney}
@@ -42,26 +54,27 @@ export const BorrowerSearchResult = (props: data) => {
       />
       <MenuFilter />
       <Box>
-        {props.data.data.content.map((item, index) => (
-          <LendCard
-            key={index}
-            state={item.type}
-            shopname={item.pawnShop.name}
-            interest={item.interest}
-            interestMax={item.interestMax}
-            interestMin={item.interestMin}
-            durationqtyMax={item.durationQtyMax}
-            durationqtyMin={item.durationQtyMin}
-            allowedloanMax={item.allowedLoanMax}
-            allowedloanMin={item.allowedLoanMin}
-            durationqtyType={item.durationQtyType}
-            ltv={item.loanToValue}
-            avatar={item.pawnShop.avatar}
-            symbol={item.acceptableAssetsAsLoan}
-            reputation={item.pawnShop.reputation}
-            accept={item.acceptableAssetsAsCollateral}
-          />
-        ))}
+        {props.data &&
+          props.data.map((item, index) => (
+            <LendCard
+              key={index}
+              state={item.type}
+              shopname={item.pawnShop.name}
+              interest={item.interest}
+              interestMax={item.interestMax}
+              interestMin={item.interestMin}
+              durationqtyMax={item.durationQtyMax}
+              durationqtyMin={item.durationQtyMin}
+              allowedloanMax={item.allowedLoanMax}
+              allowedloanMin={item.allowedLoanMin}
+              durationqtyType={item.durationQtyType}
+              ltv={item.loanToValue}
+              avatar={item.pawnShop.avatar}
+              symbol={item.acceptableAssetsAsLoan}
+              reputation={item.pawnShop.reputation}
+              accept={item.acceptableAssetsAsCollateral}
+            />
+          ))}
       </Box>
     </Box>
   );

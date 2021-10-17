@@ -46,13 +46,24 @@ export interface GlobalReducer {
 }
 
 export interface resultBorrower {
-  collateralAmount: number;
-  collateralSymbols: string;
-  durationQty: number;
-  durationTypes: number;
-  loanAmount: number;
-  loanSymbols: string;
-  status: number;
-  size: number;
-  page: number;
+  acceptableAssetsAsCollateral: [];
+  acceptableAssetsAsLoan: [];
+  allowedLoanMax: number;
+  allowedLoanMin: number;
+  associatedWalletAddress: string;
+  durationQtyMax: number;
+  durationQtyMin: number;
+  durationQtyType: number;
+  id: number;
+  interest: number;
+  interestMax: null;
+  interestMin: null;
+  isFavourite: null;
+  lendingType: null;
+  liquidationThreshold: number;
+  loanToValue: number;
+  loanToValueMax: null;
+  loanToValueMin: null;
+  name: string;
+  pawnShop: Object;
 }

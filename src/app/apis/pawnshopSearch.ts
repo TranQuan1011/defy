@@ -1,5 +1,8 @@
+import { FetchParams } from 'app/pages/BorrowerResultPage/slice/types';
 import { base } from './base';
 
-const fetchBorrowrResult = () => base.get('/pawn-shop-package/search?size=10');
-
-export default fetchBorrowrResult;
+export const fetchBorrowrResult = (params: FetchParams) => {
+  return base.get('/pawn-shop-package/search', {
+    params,
+  });
+};

@@ -13,7 +13,12 @@ import defi from '../../../assets/icon/defi.png';
 import defi2 from '../../../assets/icon/defi2.png';
 
 import { ButtonNoColor, ButtonColor } from '../../Button/index';
-export const PersonalCard = () => {
+export const PersonalCard = props => {
+  const shortText = text => {
+    if (text.length > 10) {
+      return text.substring(0, 10) + '...' + text.slice(text.length - 5);
+    }
+  };
   return (
     <Card sx={{ borderRadius: '20px', marginBottom: '20px' }}>
       <CardContent
@@ -25,21 +30,23 @@ export const PersonalCard = () => {
       >
         <Box sx={{ display: 'flex', width: '100%', alignItems: 'center' }}>
           <TypoBlue variant="h6" sx={{ marginRight: '12px' }}>
-            QQ's Pawnshop
+            {props.address ? shortText(props.address) : 'undefined'}
           </TypoBlue>
           <img width="20px" height="20px" src={tick} alt="tick" />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', margin: '10px 0' }}>
           <img src={star} alt="star" height="18px" width="18px" />
           <Box sx={{ marginTop: '3px', display: 'flex' }}>
-            <Typography margin="0 1.5rem 0 5px">1000</Typography>
+            <Typography margin="0 1.5rem 0 5px">{props.reputation}</Typography>
             <Typography>|</Typography>
-            <Typography marginLeft="1.5rem">100 signed contracts</Typography>
+            <Typography marginLeft="1.5rem">
+              {props.completedContracts} signed contracts
+            </Typography>
           </Box>
         </Box>
         <Box sx={{ display: 'flex', width: '100%', alignItems: 'center' }}>
           <TypoGreen variant="h6" sx={{ marginRight: '7.5px' }}>
-            11 - 12% interest rate
+            {props.minInterest} - {props.maxInterest}% interest rate
           </TypoGreen>
           <img width="15px" height="15px" src={info} alt="information" />
         </Box>

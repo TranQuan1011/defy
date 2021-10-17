@@ -1,10 +1,10 @@
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 import { AuthState } from 'app/pages/AuthPage/slice/types.js';
 import { GlobalReducer } from 'app/commons/types';
-import { SearchAction } from 'app/pages/BorrowerResultPage/slice/types';
 
 import { HeroState } from 'app/containers/Hero/slice/types';
 import { LendCryptoPageState } from 'app/pages/LendCryptoResult/slice/types';
+import { BorrowerResultState } from 'app/pages/BorrowerResultPage/slice/types';
 
 /* 
   Because the redux-injectors injects your reducers asynchronously somewhere in your code
@@ -14,7 +14,7 @@ export interface RootState {
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
   globalReducer?: GlobalReducer;
   authPage?: AuthState;
-  searchAction: SearchAction;
   heroState?: HeroState;
   lendCryptoPage: LendCryptoPageState;
+  borrowerResultPage: BorrowerResultState;
 }
