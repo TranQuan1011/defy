@@ -1,12 +1,12 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-import { item, LendNFTPageState, List, FilterOption } from './types';
+import { Item, LendCryptoPageState, List, FilterOption } from './types';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import rootSaga from './saga'
-import * as sagaActions from './sagaAction';
+import rootSaga from './saga';
+import * as sagaActions from './sagaActions';
 
-export const initialState: LendNFTPageState = {
+export const initialState: LendCryptoPageState = {
   isFilterbarOpen: false,
   filterOption: {
     collateral: {
@@ -33,7 +33,7 @@ export const initialState: LendNFTPageState = {
     },
   },
   list: {
-    content: [] as item[],
+    content: [] as Item[],
     _first: true,
     _last: true,
     total_pages: 0,
@@ -43,8 +43,8 @@ export const initialState: LendNFTPageState = {
 };
 
 const slice = createSlice({
-  name: 'lendNftPage',  
-  initialState,  
+  name: 'lendCryptoPage',
+  initialState,
   reducers: {
     openFilterbar(state) {
       state.isFilterbarOpen = true;
@@ -67,6 +67,9 @@ const slice = createSlice({
     resetFilter(state) {
       state.filterOption = initialState.filterOption;
     },
+    setList(state, action: PayloadAction<List>) {
+      state.list = action.payload;
+    },
     setFilterOption(state, action: PayloadAction<FilterOption>) {
       state.filterOption = {
         collateral: {
@@ -83,17 +86,13 @@ const slice = createSlice({
         },
       };
     },
-    setList(state, action: PayloadAction<List>) {
-      state.list = action.payload;
-    },
   },
 });
 
-export const { actions: lendNFTPageActions } = slice;
+export const { actions: lendCryptoPageActions } = slice;
 
-export const useLendNFTPageSlice = () => {
+export const useLendCryptoPageSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
-  useInjectSaga({ key: 'lendNftResult', saga: rootSaga });
+  useInjectSaga({ key: 'lendCryptoResult', saga: rootSaga });
   return { actions: slice.actions, sagaActions };
 };
-

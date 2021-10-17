@@ -1,13 +1,16 @@
 import React from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { useDispatch } from 'react-redux';
 
 export default function Sidebar(props) {
+  const dispatch = useDispatch();
+
   return (
     <SwipeableDrawer
       anchor="right"
-      open={true}
-      onOpen={() => {}}
-      onClose={() => {}}
+      open={props.open}
+      onOpen={() => dispatch(props.onOpen())}
+      onClose={() => dispatch(props.onClose())}
       sx={{
         '& > .MuiPaper-root': {
           backgroundImage: 'none',

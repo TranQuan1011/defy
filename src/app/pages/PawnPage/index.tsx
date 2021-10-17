@@ -8,7 +8,7 @@ import Pawnshop from 'app/components/Pawnshop/PawnshopContainer';
 export default function PawnPage() {
   return (
     <>
-      {/* <Hero/> */}
+      <Hero />
       <WhyBorrow />
       <Pawnshop />
       <HomeAds />

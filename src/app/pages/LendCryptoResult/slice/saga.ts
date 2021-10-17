@@ -1,8 +1,8 @@
 import { takeLatest, call, all, put } from 'redux-saga/effects';
-import { fetchListReq as fetchListAction } from './sagaAction';
-import { fetchList } from 'app/apis/lendNft';
+import { fetchListReq as fetchListAction } from './sagaActions';
+import { fetchList } from 'app/apis/lendCrypResult';
 import { FetchParams } from './types';
-import { lendNFTPageActions } from './index';
+import { lendCryptoPageActions } from './index';
 
 function* fetchListReq({ payload }: { type: string; payload: FetchParams }) {
   try {
@@ -12,7 +12,7 @@ function* fetchListReq({ payload }: { type: string; payload: FetchParams }) {
       ...payload,
     };
     const res = yield call(fetchList, params);
-    yield put(lendNFTPageActions.setList(res.data.data));
+    yield put(lendCryptoPageActions.setList(res.data.data));
   } catch (error: any) {
     console.log(error);
   }

@@ -1,11 +1,11 @@
-export interface LendNFTPageState {
+export interface LendCryptoPageState {
   isFilterbarOpen: boolean;
   filterOption: FilterOption;
   list: List;
 }
 
 export interface List {
-  content: item[];
+  content: Item[];
   _first: boolean;
   _last: boolean;
   total_pages: number;
@@ -22,26 +22,17 @@ export interface FilterOption {
   loan: Option;
   duration: Option;
 }
-export interface item {
+
+export interface Item {
   id: number;
-  nftId: number;
-  nftStatus: number;
-  nftType: number;
-  bcNftId: number;
-  bcCollateralId: number;
-  nftName: string;
-  borrowerWalletAddress: string;
+  walletAddress: string;
   reputation: number;
-  durationTime: number;
+  completedContracts: number;
+  collateralSymbol: string;
+  collateralAmount: number;
+  loanSymbol: string;
   durationType: number;
-  nftAssetLocation: string;
-  nftEvaluatedPrice: number;
-  nftEvaluatedSymbol: string;
-  expectedLoanAmount: number;
-  expectedLoanSymbol: string;
-  nftAssetTypeId: number;
-  nftAvatarCid: string;
-  nftMediaCid: string;
+  durationQty: number;
 }
 
 export interface FetchParams {

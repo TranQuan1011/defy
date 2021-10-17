@@ -100,7 +100,9 @@ export default function Pawnshop() {
     <Box sx={box}>
       <Typography sx={title}>Explore Featured Pawnshops</Typography>
       <Box sx={slider}>
-        <Typography sx={seeAll}>See all <ArrowRightAltIcon/></Typography>
+        <Typography sx={seeAll}>
+          See all <ArrowRightAltIcon />
+        </Typography>
         <Slider {...sliders}>{PawnshopContainer}</Slider>
       </Box>
     </Box>
@@ -110,7 +112,7 @@ export default function Pawnshop() {
 const box: SxProps<Theme> = {
   background: '#232732',
   paddingBottom: '80px',
-}
+};
 const title: SxProps<Theme> = {
   fontSize: '36px',
   lineHeight: '44px',
@@ -119,7 +121,7 @@ const title: SxProps<Theme> = {
   fontWeight: '600',
   paddingTop: '60px',
   paddingBottom: '64px',
-}
+};
 const slider: SxProps<Theme> = {
   maxWidth: '1340px',
   margin: '0 auto',
@@ -144,8 +146,8 @@ const slider: SxProps<Theme> = {
       // opacity: '0.1',
       '@media (max-width: 750px)': {
         fontSize: '30px',
-      }
-    }
+      },
+    },
   },
   '& .slick-next': {
     right: '-40px',
@@ -154,7 +156,7 @@ const slider: SxProps<Theme> = {
     },
     '@media (min-width: 400px) and (max-width: 750px)': {
       right: '-10px',
-    }
+    },
   },
   '& .slick-prev': {
     left: '-55px',
@@ -163,24 +165,24 @@ const slider: SxProps<Theme> = {
     },
     '@media (min-width: 400px) and (max-width: 750px)': {
       left: '-15px',
-    }
+    },
   },
   '& .slick-dots': {
     visibility: 'hidden',
-  }
-}
+  },
+};
 const seeAll: SxProps<Theme> = {
-    fontSize: '16px',
-    color: '#ffffff',
-    textAlign: 'right',
-    fontWeight: '500',
-    lineHeight: '150%',
-    paddingBottom: '12px',
-    margin: '0 0 0 auto',
-    '@media (min-width: 320px) and (max-width: 1024px)': {
-      visibility: 'hidden',
-    },
-    '@media (max-width: 1080px)': {
-      display: 'none',
-    }
-}
+  fontSize: '16px',
+  color: '#ffffff',
+  textAlign: 'right',
+  fontWeight: '500',
+  lineHeight: '150%',
+  paddingBottom: '12px',
+  margin: '0 0 0 auto',
+  '@media (min-width: 320px) and (max-width: 1024px)': {
+    visibility: 'hidden',
+  },
+  '@media (max-width: 1080px)': {
+    display: 'none',
+  },
+};

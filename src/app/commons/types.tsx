@@ -29,6 +29,18 @@ export interface User {
   name: string;
 }
 
+export interface Crypto {
+  id: number;
+  usdExchange: number;
+  symbol: string;
+  address: string;
+  isWhitelistCollateral: boolean;
+  isWhitelistSupply: boolean;
+  url?: string;
+}
+
 export interface GlobalReducer {
   user: User | null;
+  collateral: Crypto[];
+  loan: Crypto[];
 }

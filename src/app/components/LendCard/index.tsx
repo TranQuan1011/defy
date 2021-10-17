@@ -8,7 +8,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Chip } from '@mui/material';
-
 import {
   StarTypo,
   BlueUnderline,
@@ -97,8 +96,8 @@ export default function LendCard(item) {
                 </ListItemText>
                 <ListItemText>
                   <CardInfo>
-                    {/* {item.nftEvaluatedPrice.toLocaleString('en')}{' '}
-                    {item.nftEvaluatedSymbol} */}
+                    {item.nftEvaluatedPrice}{' '}
+                    {item.nftEvaluatedSymbol}
                   </CardInfo>
                 </ListItemText>
               </ListItem>
