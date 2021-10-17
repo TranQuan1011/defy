@@ -35,11 +35,11 @@ export default function Lend(props) {
     console.log(data);
     if (props.collateralRadio === 'crypto') {
       query = concatQuery(data);
-      history.push(`pawn/lender${query}`);
+      history.push(`/pawn/lender${query}`);
     } else {
       const { collateralSymbols, ...newData } = data;
       query = concatQuery(newData);
-      history.push(`pawn/lender/nft-result${query}`);
+      history.push(`/pawn/lender/nft-result${query}`);
     }
   };
 
