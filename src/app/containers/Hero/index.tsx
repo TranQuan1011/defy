@@ -9,15 +9,16 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/system/Box';
 import { useSelector, useDispatch } from 'react-redux';
-
 import ResponsiveImg from 'app/components/ResponsiveImg';
 import heroImg from 'app/assets/image/Hero.png';
 import Borrow from 'app/components/Borrow';
 import Lend from 'app/components/Lend';
 import heroSelector from './slice/selectors';
 import { useHeroSlice } from './slice';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
+  const { t } = useTranslation();
   const { actions } = useHeroSlice();
   const { heroState } = useSelector(heroSelector);
   const dispatch = useDispatch();
@@ -50,12 +51,12 @@ export default function Hero() {
                   backSpeed={100}
                   loop
                 />{' '}
-                with
+                {t('home.hero.with')}
               </Box>
               <DefySpan> DeFi For You </DefySpan>
             </Typography>
             <Typography component="p" sx={p}>
-              Get Crypto Loans Instantly, Regardless of Your Credit Rating
+              {t('home.hero.title')}
             </Typography>
             <ResponsiveImg src={heroImg} />
           </Grid>
@@ -68,8 +69,8 @@ export default function Hero() {
                 dispatch(actions.changeBorrowLendTab(value))
               }
             >
-              <StyledTab label="Borrow" value={0} />
-              <StyledTab label="Lend" value={1} />
+              <StyledTab label={t('home.hero.borrow.title')} value={0} />
+              <StyledTab label={t('home.hero.lend.title')} value={1} />
             </Tabs>
             {heroState?.borrowLendTab ? (
               <Lend

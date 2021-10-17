@@ -16,6 +16,7 @@ import elipyellow from '../../assets/image/Ellipse 46.png';
 import { AdsRow } from './Component/ads';
 import { Item } from 'app/pages/LendCryptoResult/slice/types';
 import getIconUrl from 'app/commons/getIconUrl';
+import Avatar from '@mui/material/Avatar';
 
 interface Props {
   list: Item[];
@@ -83,7 +84,8 @@ export default function LendTable({ list }: Props) {
                     </TableCell>
                     <TableCell align="left">
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <img
+                        <Avatar
+                          sx={{ height: '24px', width: '24px' }}
                           src={getIconUrl(item.collateralSymbol)}
                           alt="ellipse"
                         />
@@ -94,7 +96,11 @@ export default function LendTable({ list }: Props) {
                     </TableCell>
                     <TableCell align="left">
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <img src={getIconUrl(item.loanSymbol)} alt="ellipse" />
+                        <Avatar
+                          sx={{ height: '24px', width: '24px' }} 
+                          src={getIconUrl(item.loanSymbol)} 
+                          alt="ellipse" 
+                        />
                         <Box sx={{ margin: '0 1rem' }}>{item.loanSymbol}</Box>
                       </Box>
                     </TableCell>
@@ -138,8 +144,9 @@ export default function LendTable({ list }: Props) {
                   </Box>
                 </TableCell>
                 <TableCell align="left">
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <img
+                  <Box sx={{ display: 'flex', alignItems: 'center', height: '24px' }}>
+                    <Avatar
+                      sx={{ height: '24px', width: '24px' }}
                       src={getIconUrl(item.collateralSymbol)}
                       alt="ellipse"
                     />
@@ -150,7 +157,11 @@ export default function LendTable({ list }: Props) {
                 </TableCell>
                 <TableCell align="left">
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <img src={getIconUrl(item.loanSymbol)} alt="ellipse" />
+                    <Avatar
+                      sx={{ height: '24px', width: '24px' }} 
+                      src={getIconUrl(item.loanSymbol)} 
+                      alt="ellipse" 
+                    />
                     <Box sx={{ margin: '0 1rem' }}>{item.loanSymbol}</Box>
                   </Box>
                 </TableCell>
@@ -160,7 +171,7 @@ export default function LendTable({ list }: Props) {
                   {item.durationType === 0 ? 'Weeks' : 'Months'}
                 </TableCell>
                 <TableCell align="left">
-                  <ButtonColor sx={{ fontWeight: '600' }}>
+                  <ButtonColor sx={{ padding: '9px 10px 9px 10px', fontSize: '12px' }}>
                     Send Offer
                   </ButtonColor>
                 </TableCell>

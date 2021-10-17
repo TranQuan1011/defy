@@ -17,7 +17,10 @@ import Ava from '../../../assets/image/Vector.svg';
 import { ButtonNoColor } from 'app/components/Button';
 import { useDispatch } from 'react-redux';
 import { logout } from 'app/globalActions';
+import { useTranslation } from 'react-i18next';
+
 const ListSideBar = props => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { history } = props;
   const handleClick = page => {
@@ -37,18 +40,18 @@ const ListSideBar = props => {
               onClick={() => handleClick('/login')}
               sx={{ marginTop: '10px' }}
             >
-              Login
+              {t('navBar.login')}
             </ButtonNoColor>
           )}
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton component="a" href="/">
-            <ListItemText primary="Pawn" />
+            <ListItemText primary={t('navBar.pawn')} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton component="a" href="/">
-            <ListItemText primary="Starking" />
+            <ListItemText primary={t('navBar.staking')} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -72,7 +75,7 @@ const ListSideBar = props => {
           id="panel1a-header"
           sx={{ maxHeight: '44px', color: '#fff', minHeight: '44px' }}
         >
-          <BoxButton>My Account</BoxButton>
+          <BoxButton>{t('navBar.account')}</BoxButton>
         </AccordionSummary>
 
         <AccordionDetails>
@@ -98,19 +101,19 @@ const ListSideBar = props => {
               id="panel1a-header"
               sx={{ maxHeight: '44px', color: '#fff', minHeight: '44px' }}
             >
-              <BoxButton>Borrower Profile</BoxButton>
+              <BoxButton>{t('navBar.borrowProfile')}</BoxButton>
             </AccordionSummary>
 
             <AccordionDetails>
               <List>
                 <ListItem disablePadding>
                   <ListItemButton component="a" href="/">
-                    <ListItemText primary="Collateral" />
+                    <ListItemText primary={t('navBar.collateral')} />
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
                   <ListItemButton component="a" href="/">
-                    <ListItemText primary="Contracts" />
+                    <ListItemText primary={t('navBar.contract')} />
                   </ListItemButton>
                 </ListItem>
               </List>
@@ -139,22 +142,22 @@ const ListSideBar = props => {
               id="panel1a-header"
               sx={{ maxHeight: '44px', color: '#fff', minHeight: '44px' }}
             >
-              <BoxButton>Lender Profile</BoxButton>
+              <BoxButton>{t('navBar.lendProfile')}</BoxButton>
             </AccordionSummary>
 
             <AccordionDetails>
               <List>
                 <ListItem>
-                  <LinkButton to="/">Offers sent</LinkButton>
+                  <LinkButton to="/">{t('navBar.offer')}</LinkButton>
                 </ListItem>
                 <ListItem>
-                  <LinkButton to="/">Contracts</LinkButton>
+                  <LinkButton to="/">{t('navBar.contract')}</LinkButton>
                 </ListItem>
                 <ListItem>
-                  <LinkButton to="/">Pawnshop Loan Packages</LinkButton>
+                  <LinkButton to="/">{t('navBar.package')}</LinkButton>
                 </ListItem>
                 <ListItem>
-                  <LinkButton to="/">Loan requests</LinkButton>
+                  <LinkButton to="/">{t('navBar.loan')}</LinkButton>
                 </ListItem>
               </List>
             </AccordionDetails>
@@ -174,7 +177,7 @@ const ListSideBar = props => {
               sx={{ maxHeight: '44px', color: '#fff', minHeight: '44px' }}
             >
               <LinkButton style={{ marginLeft: '0' }} to="/">
-                Staking
+              {t('navBar.staking')}
               </LinkButton>
             </AccordionSummary>
           </Accordion>
@@ -206,10 +209,10 @@ const ListSideBar = props => {
             <AccordionDetails>
               <List>
                 <ListItem>
-                  <LinkButton to="/">NTF List</LinkButton>
+                  <LinkButton to="/">{t('navBar.list')}</LinkButton>
                 </ListItem>
                 <ListItem>
-                  <LinkButton to="/">NTF Aucion</LinkButton>
+                  <LinkButton to="/">{t('navBar.auction')}</LinkButton>
                 </ListItem>
               </List>
             </AccordionDetails>
@@ -226,7 +229,7 @@ const ListSideBar = props => {
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton onClick={Logout}>
-            <ListItemText primary="Log out" />
+            <ListItemText primary={t('navBar.logOut')} />
           </ListItemButton>
         </ListItem>
       </List>

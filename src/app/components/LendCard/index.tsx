@@ -3,12 +3,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
-import { Typography } from '@mui/material';
+import { Typography, Box, Chip, Avatar } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { Chip } from '@mui/material';
-
+import getIconUrl from 'app/commons/getIconUrl';
 import {
   StarTypo,
   BlueUnderline,
@@ -19,8 +18,13 @@ import {
 import cardmedia from 'app/assets/image/CardMedia.png';
 import tag from 'app/assets/image/tag.png';
 import { ButtonColor } from '../Button';
+import { Item } from 'app/pages/LendNFTResultPage/slice/types';
 
-export default function LendCard() {
+interface Props {
+  data: Item;
+}
+
+export default function LendCard({ data }: Props) {
   return (
     <Card sx={root}>
       <CardMedia component="img" src={tag} sx={tagSx} />
@@ -31,26 +35,65 @@ export default function LendCard() {
         <Grid item xs={12} md={5}>
           <CardContent sx={info}>
             <Typography component="h3" sx={h3}>
-              Diamond ring
+              {data.nftName}
             </Typography>
-            <StarTypo>1000</StarTypo>
+            <StarTypo>{data.reputation || 0}</StarTypo>
             <List sx={list}>
               <ListItem disablePadding>
                 <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
-                  <CardLabel>Borrower:</CardLabel>
+                  <CardLabel>Borrower: </CardLabel>
                 </ListItemText>
                 <ListItemText>
-                  <BlueUnderline sx={{ fontSize: '14px' }}>
-                    RandomText
+                  <BlueUnderline
+                    sx={{
+                      fontSize: '14px',
+                    }}
+                  >
+                    {data.borrowerWalletAddress}
                   </BlueUnderline>
                 </ListItemText>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
-                  <CardLabel>Borrower:</CardLabel>
+                  <CardLabel>Duration: </CardLabel>
                 </ListItemText>
                 <ListItemText>
-                  <CardInfo>RandomText</CardInfo>
+                  <CardInfo>
+                    {data.durationTime}{' '}
+                    {data.durationType === 0 ? 'Weeks' : 'Months'}
+                  </CardInfo>
+                </ListItemText>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
+                  <CardLabel>Asset location: </CardLabel>
+                </ListItemText>
+                <ListItemText>
+                  <CardInfo>{data.nftAssetLocation}</CardInfo>
+                </ListItemText>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemText sx={{ flexBasis: '40%', flexGrow: 0 }}>
+                  <CardLabel>Evaluated price: </CardLabel>
+                </ListItemText>
+                <ListItemText>
+                  <Box
+                    sx={{
+                      ml: {
+                        xs: 0,
+                        md: 1,
+                      },
+                      display: 'flex',
+                      alignItems: 'center',
+                      columnGap: '10px',
+                    }}
+                  >
+                    <Avatar
+                      sx={{ height: '24px', width: '24px' }}
+                      src={getIconUrl(data.nftEvaluatedSymbol)}
+                    />
+                    {data.nftEvaluatedPrice} {data.nftEvaluatedSymbol}
+                  </Box>
                 </ListItemText>
               </ListItem>
             </List>
@@ -59,7 +102,9 @@ export default function LendCard() {
 
         <Grid item xs={12} md={4} sx={lastGrid}>
           <CardLabel>Expected loan</CardLabel>
-          <GreenTypo sx={currency}>100,000 USDT</GreenTypo>
+          <GreenTypo sx={currency}>
+            {data.expectedLoanAmount} {data.expectedLoanSymbol}
+          </GreenTypo>
           <Chip
             variant="outlined"
             color="secondary"
@@ -104,8 +149,10 @@ const tagSx = {
 
 const cardMedia = {
   borderRadius: '20px',
-  width: '100%',
   margin: 'auto',
+  maxWidth: '100%',
+  height: 'auto',
+  width: 'auto',
 };
 
 const h3 = {

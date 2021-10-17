@@ -1,14 +1,15 @@
 import { Box } from '@mui/system';
 import { TextBox, LinkBoxYellow } from '../style';
-
 import vn from '../../../assets/icon/flag.vn.png';
 import england from '../../../assets/icon/image 2.png';
+import { useTranslation } from 'react-i18next';
 
 export const ContactVietNam = () => {
+  const { t } = useTranslation();
   return (
     <Box>
       <Box sx={{ fontWeight: 600, marginBottom: '20px' }}>
-        DeFi For You — Hanoi Office
+        {t('footer.office.haNoi')}
       </Box>
       <Box
         sx={{

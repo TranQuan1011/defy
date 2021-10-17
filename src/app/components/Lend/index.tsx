@@ -22,8 +22,10 @@ import MultiSelect from 'app/components/MultiSelect';
 import selector from './selectors';
 import concatQuery from 'app/commons/concatQuery';
 import history from 'app/history';
+import { useTranslation } from 'react-i18next';
 
 export default function Lend(props) {
+  const { t } = useTranslation();
   const { control, handleSubmit } = useForm({
     mode: 'all',
   });
@@ -65,13 +67,13 @@ export default function Lend(props) {
         >
           <Grid item xs={7} sm={8}>
             <Input
-              label="Loan amount"
+              label={t('home.hero.lend.maxAmount')}
               type="number"
-              placeholder="Enter amount"
+              placeholder={t('home.hero.lend.enterAmount')}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <ButtonColor sx={EndAbor}>Max</ButtonColor>
+                    <ButtonColor sx={EndAbor}>{t('home.hero.lend.max')}</ButtonColor>
                   </InputAdornment>
                 ),
               }}
@@ -87,9 +89,9 @@ export default function Lend(props) {
           </Grid>
           <Grid item xs={7} sm={8}>
             <Input
-              label="Duration"
+              label={t('home.hero.lend.duration')}
               type="number"
-              placeholder="Duration"
+              placeholder={t('home.hero.lend.duration')}
               control={control}
             />
           </Grid>
@@ -99,7 +101,7 @@ export default function Lend(props) {
           <Grid item xs={12}>
             <FormControl component="fieldset" color="secondary">
               <FormLabel component="legend" sx={{ color: '#FFF' }}>
-                Collateral
+                {t('home.hero.lend.coll')}
               </FormLabel>
               <RadioGroup
                 row
@@ -112,7 +114,7 @@ export default function Lend(props) {
                 <FormControlLabel
                   value="crypto"
                   control={<Radio color="secondary" />}
-                  label="Crypto"
+                  label={t('home.hero.lend.crypto')}
                 />
                 <FormControlLabel
                   value="nft"
@@ -134,7 +136,7 @@ export default function Lend(props) {
           )}
         </Grid>
         <ButtonColor fullWidth sx={submitBtn} type="submit">
-          <SearchIcon /> Search
+          <SearchIcon /> {t('home.hero.search')}
         </ButtonColor>
       </Box>
     </form>
