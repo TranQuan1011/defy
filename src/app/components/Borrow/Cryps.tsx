@@ -24,7 +24,7 @@ export default function Cryps() {
 
   const onSubmit: SubmitHandler<any> = data => {
     const query = concatQuery(data);
-    history.push(`pawn/offer${query}`);
+    history.push(`/pawn/offer${query}`);
   };
 
   return (
