@@ -1,5 +1,6 @@
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 import { AuthState } from 'app/pages/AuthPage/slice/types.js';
+import { LendNFTPageState } from 'app/pages/LendNFTResultPage/slice/types.js';
 import { GlobalReducer } from 'app/commons/types';
 
 /* 
@@ -10,4 +11,5 @@ export interface RootState {
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
   globalReducer?: GlobalReducer;
   authPage?: AuthState;
+  lendNftPage?: LendNFTPageState;
 }

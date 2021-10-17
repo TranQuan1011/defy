@@ -8,7 +8,7 @@ import LendCard from '../LendCard';
 export function NotFoundPage() {
   return (
     <div style={{ padding: '10px' }}>
-      <LendCard />
+      {/* <LendCard /> */}
     </div>
     /* <Helmet>
         <title>404 Page Not Found</title>
