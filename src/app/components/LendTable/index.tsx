@@ -14,31 +14,14 @@ import star from '../../assets/image/Star 1.png';
 import elipblue from '../../assets/image/Ellipse 45.png';
 import elipyellow from '../../assets/image/Ellipse 46.png';
 import { AdsRow } from './Component/ads';
-function createData(
-  id: number,
-  name: string,
-  collection: number,
-  contract: number,
-  collateral: number,
-  loan: string,
-  duration: number,
-) {
-  return { id, name, collection, contract, collateral, loan, duration };
+import { Item } from 'app/pages/LendCryptoResult/slice/types';
+import getIconUrl from 'app/commons/getIconUrl';
+
+interface Props {
+  list: Item[];
 }
 
-const rows = datas.map(data =>
-  createData(
-    data.data.id,
-    data.data.borrow.name,
-    data.data.borrow.collection,
-    data.data.borrow.contracts,
-    data.data.collateral,
-    data.data.loan,
-    data.data.duration,
-  ),
-);
-
-export default function LendTable() {
+export default function LendTable({ list }: Props) {
   return (
     <TableContainer component={Paper}>
       <Table
@@ -61,10 +44,10 @@ export default function LendTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => {
+          {list.map((item: Item, index: number) => {
             if (index % 5 === 0 && index % 2 !== 0) {
               return (
-                <>
+                <React.Fragment key={item.id}>
                   <TableRow key="ads" sx={{ borderCollapse: 'separate' }}>
                     <TableCell
                       colSpan={6}
@@ -74,91 +57,108 @@ export default function LendTable() {
                     </TableCell>
                   </TableRow>
                   <TableRow
-                    key={row.id}
+                    key={item.id}
                     sx={{
                       '&:last-child td, &:last-child th': { border: 0 },
                       backgroundColor: '#282c37',
                     }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.id}
+                      {index + 1}
                     </TableCell>
                     <TableCell align="left">
                       <Box>
-                        <LinkBox>{row.name}</LinkBox>
+                        <LinkBox>{item.walletAddress}</LinkBox>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                           <img src={star} alt="rate" />
                           <Box sx={{ margin: '0.2rem 1rem 0 0.2rem' }}>
-                            {row.collection}
+                            {item.reputation}
                           </Box>
                           <span>|</span>
                           <Box sx={{ margin: '0.2rem 1rem 0 ' }}>
-                            {row.contract}
+                            {item.completedContracts} contracts
                           </Box>
                         </Box>
                       </Box>
                     </TableCell>
                     <TableCell align="left">
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <img src={elipblue} alt="ellipse" />
-                        <Box sx={{ margin: '0 1rem' }}>{row.collateral}</Box>
+                        <img
+                          src={getIconUrl(item.collateralSymbol)}
+                          alt="ellipse"
+                        />
+                        <Box sx={{ margin: '0 1rem' }}>
+                          {item.collateralSymbol} {item.collateralAmount}
+                        </Box>
                       </Box>
                     </TableCell>
                     <TableCell align="left">
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <img src={elipyellow} alt="ellipse" />
-                        <Box sx={{ margin: '0 1rem' }}>{row.loan}</Box>
+                        <img src={getIconUrl(item.loanSymbol)} alt="ellipse" />
+                        <Box sx={{ margin: '0 1rem' }}>{item.loanSymbol}</Box>
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{row.duration}</TableCell>
+                    <TableCell align="left">
+                      {item.durationQty}{' '}
+                      {item.durationType === 0 ? 'Weeks' : 'Months'}
+                    </TableCell>
                     <TableCell align="left">
                       <ButtonColor sx={{ fontWeight: '600' }}>
                         Send Offer
                       </ButtonColor>
                     </TableCell>
                   </TableRow>
-                </>
+                </React.Fragment>
               );
             }
             return (
               <TableRow
-                key={row.id}
+                key={item.id}
                 sx={{
                   '&:last-child td, &:last-child th': { border: 0 },
                   backgroundColor: '#282c37',
                 }}
               >
                 <TableCell component="th" scope="row">
-                  {row.id}
+                  {index + 1}
                 </TableCell>
                 <TableCell align="left">
                   <Box>
-                    <LinkBox>{row.name}</LinkBox>
+                    <LinkBox>{item.walletAddress}</LinkBox>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <img src={star} alt="rate" />
                       <Box sx={{ margin: '0.2rem 1rem 0 0.2rem' }}>
-                        {row.collection}
+                        {item.reputation}
                       </Box>
                       <span>|</span>
                       <Box sx={{ margin: '0.2rem 1rem 0 ' }}>
-                        {row.contract}
+                        {item.completedContracts} contracts
                       </Box>
                     </Box>
                   </Box>
                 </TableCell>
                 <TableCell align="left">
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <img src={elipblue} alt="ellipse" />
-                    <Box sx={{ margin: '0 1rem' }}>{row.collateral}</Box>
+                    <img
+                      src={getIconUrl(item.collateralSymbol)}
+                      alt="ellipse"
+                    />
+                    <Box sx={{ margin: '0 1rem' }}>
+                      {item.collateralSymbol} {item.collateralAmount}
+                    </Box>
                   </Box>
                 </TableCell>
                 <TableCell align="left">
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <img src={elipyellow} alt="ellipse" />
-                    <Box sx={{ margin: '0 1rem' }}>{row.loan}</Box>
+                    <img src={getIconUrl(item.loanSymbol)} alt="ellipse" />
+                    <Box sx={{ margin: '0 1rem' }}>{item.loanSymbol}</Box>
                   </Box>
                 </TableCell>
-                <TableCell align="left">{row.duration}</TableCell>
+                <TableCell align="left">
+                  {' '}
+                  {item.durationQty}{' '}
+                  {item.durationType === 0 ? 'Weeks' : 'Months'}
+                </TableCell>
                 <TableCell align="left">
                   <ButtonColor sx={{ fontWeight: '600' }}>
                     Send Offer

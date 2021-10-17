@@ -6,5 +6,6 @@ export const authBase = axios.create({
 });
 
 export const base = axios.create({
-  baseURL: 'https://staginggw.defiforyou.uk/defi-pawn-crypto-service/public-api/v1.0.0',
+  baseURL:
+    'https://staginggw.defiforyou.uk/defi-pawn-crypto-service/public-api/v1.0.0',
 });

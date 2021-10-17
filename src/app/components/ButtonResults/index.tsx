@@ -4,7 +4,12 @@ import filterIcon from 'app/assets/icon/filterIcon.png';
 
 const FilterButton = props => {
   return (
-    <StyledButton variant="outlined" color="secondary" sx={props.sx}>
+    <StyledButton
+      variant="outlined"
+      color="secondary"
+      sx={props.sx}
+      onClick={props.onClick}
+    >
       <Img src={filterIcon} />
     </StyledButton>
   );

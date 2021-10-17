@@ -14,13 +14,12 @@ import { HomePage } from './pages/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 
 import { useTranslation } from 'react-i18next';
-import { useInjectSaga, useInjectReducer } from 'utils/redux-injectors';
+import { useInjectSaga } from 'utils/redux-injectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserReq } from './globalActions';
 
 import globaSelector from './globalSelector';
 import globalSaga from './globalSagas';
-import { globalReducer } from 'app/globalReducers';
 import GlobalTheme from './containers/ThemeProvider';
 import NavBar from './components/Navbar/index';
 import AuthPage from './pages/AuthPage';
@@ -30,10 +29,6 @@ import history from './history';
 
 export function App() {
   const { i18n } = useTranslation();
-  useInjectReducer({
-    key: 'globalReducer',
-    reducer: globalReducer,
-  });
   useInjectSaga({
     key: 'globalSaga',
     saga: globalSaga,
@@ -58,7 +53,7 @@ export function App() {
         >
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
-        <NavBar />
+        <NavBar user={globalState?.user} />
         <Switch>
           <Route exact path="/">
             <Redirect to="/pawn" />

@@ -5,48 +5,62 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { SxProps } from '@mui/system';
 import { Avatar, Box, Theme } from '@mui/material';
 import Paper from '@mui/material/Paper';
+import { Controller } from 'react-hook-form';
+import getIconUrl from 'app/commons/getIconUrl';
 
-const names = ['Oliver', 'Van', 'April'];
+export default function MultiSelect(props) {
+  const list = props.list.map(item => item.symbol);
 
-export default function MultiSelect() {
-  const [value, setValue] = React.useState<string[]>([]);
   return (
-    <Autocomplete
-      multiple
-      fullWidth
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      PaperComponent={props => (
-        <Paper
-          {...props}
-          sx={{
-            backgroundColor: '#2f3543',
-            borderRadius: '16px',
-          }}
-        />
-      )}
-      options={names}
-      renderOption={renderOption}
-      getOptionLabel={option => option}
-      renderTags={(tagValue, getTagProps) =>
-        tagValue.map((option, index) => (
-          <Chip
-            label={option}
-            {...getTagProps({ index })}
-            avatar={<Avatar />}
+    <Controller
+      control={props.control}
+      name={props.name}
+      defaultValue={list}
+      rules={props.rules}
+      render={({ field, fieldState: { error } }) => {
+        const { ref, onChange, ...fieldProps } = field;
+        return (
+          <Autocomplete
+            multiple
+            fullWidth
+            onChange={(event, newValue) => {
+              onChange(newValue);
+            }}
+            PaperComponent={props => (
+              <Paper
+                {...props}
+                sx={{
+                  backgroundColor: '#2f3543',
+                  borderRadius: '16px',
+                }}
+              />
+            )}
+            options={list}
+            renderOption={renderOption}
+            getOptionLabel={option => option}
+            renderTags={(tagValue, getTagProps) =>
+              tagValue.map((option, index) => (
+                <Chip
+                  label={option}
+                  {...getTagProps({ index })}
+                  avatar={<Avatar src={getIconUrl(option)} />}
+                />
+              ))
+            }
+            renderInput={params => (
+              <TextField
+                {...params}
+                placeholder="Colleteral currency"
+                color="secondary"
+                error={error && Boolean(error.message)}
+                helperText={error && error.message}
+                sx={textField}
+              />
+            )}
+            {...fieldProps}
           />
-        ))
-      }
-      renderInput={params => (
-        <TextField
-          {...params}
-          placeholder="Colleteral currency"
-          color="secondary"
-          sx={textField}
-        />
-      )}
+        );
+      }}
     />
   );
 }
@@ -57,7 +71,7 @@ const renderOption = (
 ): JSX.Element => {
   return (
     <Box component="li" display="flex" columnGap="6px" {...props}>
-      <Avatar sx={{ width: '24px', height: '24px' }} />
+      <Avatar sx={{ width: '24px', height: '24px' }} src={getIconUrl(option)} />
       {option}
     </Box>
   );

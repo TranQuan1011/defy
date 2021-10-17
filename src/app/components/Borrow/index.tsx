@@ -1,14 +1,26 @@
 import React from 'react';
 import Box from '@mui/system/Box';
-import { Theme } from '@mui/material';
-import { SxProps, styled } from '@mui/system';
+import { styled } from '@mui/system';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { useRouteMatch, useLocation } from 'react-router-dom';
+import history from 'app/history';
 
 import Cryps from './Cryps';
 import NFT from './NFT';
 
 export default function Borrow() {
+  const location = useLocation();
+  const tab = new URLSearchParams(location.search).get('tab');
+  const { path } = useRouteMatch();
+
+  const handleTabChange = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string,
+  ) => {
+    history.push(`${path}?tab=${value}`);
+  };
+
   return (
     <Box
       component="section"
@@ -23,8 +35,9 @@ export default function Borrow() {
     >
       {' '}
       <Tabs
-        value={0}
+        value={tab || '1'}
         textColor="secondary"
+        onChange={handleTabChange}
         sx={{
           mb: 4,
           '& .MuiTabs-flexContainer': {
@@ -38,11 +51,10 @@ export default function Borrow() {
           },
         }}
       >
-        <StyledTab label="Cryptocurrency" />
-        <StyledTab label="NFT" />
+        <StyledTab label="Cryptocurrency" value={'1'} />
+        <StyledTab label="NFT" value={'2'} />
       </Tabs>
-      {/* <Cryps /> */}
-      <NFT />
+      {tab === '2' ? <NFT /> : <Cryps />}
     </Box>
   );
 }
