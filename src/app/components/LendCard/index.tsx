@@ -20,7 +20,27 @@ import cardmedia from 'app/assets/image/CardMedia.png';
 import tag from 'app/assets/image/tag.png';
 import { ButtonColor } from '../Button';
 import {item} from 'app/pages/LendNFTResultPage/slice/types'
-
+// interface item {
+//   id: number;
+//   nftId: number;
+//   nftStatus: number;
+//   nftType: number;
+//   bcNftId: number;
+//   bcCollateralId: number;
+//   nftName: string;
+//   borrowerWalletAddress: string;
+//   reputation: number;
+//   durationTime: number;
+//   durationType: number;
+//   nftAssetLocation: string;
+//   nftEvaluatedPrice: number;
+//   nftEvaluatedSymbol: string;
+//   expectedLoanAmount: number;
+//   expectedLoanSymbol: string;
+//   nftAssetTypeId: number;
+//   nftAvatarCid: string;
+//   nftMediaCid: string;
+// }
 export default function LendCard(item) {
   return (
     <Card sx={root}>
@@ -77,8 +97,8 @@ export default function LendCard(item) {
                 </ListItemText>
                 <ListItemText>
                   <CardInfo>
-                    {item.nftEvaluatedPrice.toLocaleString('en')}{' '}
-                    {item.nftEvaluatedSymbol}
+                    {/* {item.nftEvaluatedPrice.toLocaleString('en')}{' '}
+                    {item.nftEvaluatedSymbol} */}
                   </CardInfo>
                 </ListItemText>
               </ListItem>
