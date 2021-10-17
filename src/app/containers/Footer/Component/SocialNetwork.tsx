@@ -1,5 +1,4 @@
 import { Box } from '@mui/system';
-
 import github from '../../../assets/icon/Exclude.png';
 import tele from '../../../assets/icon/icon.png';
 import fb from '../../../assets/icon/facebook.png';
@@ -8,12 +7,15 @@ import linkin from '../../../assets/icon/linkedin.png';
 import twitter from '../../../assets/icon/twitter.png';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTranslation } from 'react-i18next';
+
 export const SocialNetwork = () => {
+  const { t } = useTranslation();
   const themes = useTheme();
   const matches = useMediaQuery(themes.breakpoints.down('md'));
   return (
     <Box>
-      <Box sx={{ fontWeight: 600, marginBottom: '24px' }}>Find us on</Box>
+      <Box sx={{ fontWeight: 600, marginBottom: '24px' }}>{t('footer.findUs')}</Box>
       {!matches && (
         <a href="https://github.com/defi-vn/">
           <img src={github} alt="github" style={{ marginRight: '25px' }} />

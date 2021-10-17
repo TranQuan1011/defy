@@ -1,0 +1,99 @@
+{
+  "navBar": {
+    "pawn": "Cầm đồ",
+    "borrow": "Vay",
+    "lend": "Cho vay",
+    "account": "Tài khoản ",
+    "become": "Trở thành Hiệu cầm đồ",
+    "buy": "Mua DFY",
+    "connect": "Kết nối",
+    "login": "Đăng nhập",
+    "changePass": "Đổi mật khẩu",
+    "logOut": "Đăng xuất",
+    "staking": "Cá cược",
+    "borrowProfile": "Hồ sơ bên vay",
+    "collateral": "Tài sản thế chấp",
+    "contract": "Hợp đồng",
+    "lendProfile": "Hồ sơ người cho vay",
+    "offer": "Đề nghị đã gửi",
+    "package": "Các gói cho vay",
+    "loan": "Yêu cầu vay",
+    "list": "Danh sách NFT",
+    "auction": "Đấu giá NFT"
+  },
+  "home": {
+    "hero": {
+      "with": "với",
+      "title": "Nhận các khoản cho vay tiền điện tử ngay lập tức, bất kể xếp hạng tín dụng của bạn",
+      "borrow": {
+        "title": "Vay",
+        "cryp": {
+          "active": "Tiền điện tử",
+          "coll": "Tài sản thế chấp",
+          "enterAmount": "Nhập số tiền",
+          "duration": "Khoảng thời gian",
+          "loanAmount": "Số tiền vay",
+          "or": "Hoặc",
+          "max": "Tối đa",
+          "choose": "Chọn tài sản hiện có",
+          "recommend": "Số tiền đề xuất",
+          "all":"Tất cả",
+          "week": "Tuần",
+          "month": "Tháng"
+        },
+        "nft": {
+          "find": "Tìm người cho vay NFT",
+          "dont": "Không có NFT?",
+          "new": "Tạo mới"
+        }
+      },
+      "lend": {
+        "title": "Cho vay",
+        "maxAmount": "Số tiền cho vay tối đa",
+        "enterAmount": "Nhập số lượng",
+        "duration": "Khoảng thời gian",
+        "max": "Tối đa",
+        "maxRequired": "Số tiền vay bắt buộc phải lớn nhất",
+        "coll": "Tài sản thế chấp",
+        "crypto": "Tiền điện tử"
+      },
+      "search": "Tìm kiếm"
+    },
+    "sliders": {
+      "title": "Xem Các Hiệu Cầm Đồ Nổi Bật",
+      "SuperShop": "Siêu cửa hàng",
+      "SeeAll": "Xem tất cả"
+    },
+    "ads": {
+      "title": "Trở thành Hiệu cầm đồ",
+      "content": "Mở tiệm cầm đồ của riêng bạn và khám phá cơ hội kinh doanh mới với ROI. Trở thành một phần của sự biến đổi tài chính thế giới.",
+      "more": "Xem thêm"
+    }
+  },
+  "footer": {
+    "office": {
+      "haNoi": "DeFi For You — Trụ sở tại Hà Nội",
+      "london": "DeFi For You — Trụ sở tại London",
+      "CFO": "Giám đốc tài chính kinh doanh",
+      "register": "Số hiệu công ty",
+      "viewCompanies": "Xem thông tin công ty"
+    },
+    "findUs": "Tìm chúng tôi",
+    "quickNav": {
+      "title": "Điều hướng nhanh",
+      "whitepaper": "Trang trắng",
+      "mobile": "Cài đặt ứng dụng trên điện thoại"
+    },
+    "about": {
+      "title": "Về DeFi For You.",
+      "content": "là một phong cách giao dịch của văn phòng đăng ký Miles Mann Limited tại số 5 Southgate Street, Gloucester, Gloucestershire, GL1 1TG1 Được cấp phép và quản lý bởi Cơ quan quản lý tài chính để thực hiện các quyền và nghĩa vụ của người cho vay theo thỏa thuận tín dụng quy định (không bao gồm các khoản khống chi phí cao - tín dụng có kỳ hạn, hợp đồng mua bán hóa đơn và hợp đồng tín dụng thu tiền tận nhà), và có quyền thực hiện các quyền và nghĩa vụ của người cho vay theo hợp đồng tín dụng được quy định (không bao gồm tín dụng ngắn hạn chi phí cao, hợp đồng mua bán hóa đơn và tín dụng thu tiền tận nhà hợp đồng)"
+    },
+    "copyRight": {
+      "trademark": "© 2021 DeFi For You. Đã đăng ký bản quyền.",
+      "term": "Điều khoản hợp đồng",
+      "Accept":"Đồng ý",
+      "Decline":"Từ chối",
+      "policy": "Chính sách bảo mật"
+    }
+  }
+}

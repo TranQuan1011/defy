@@ -1,3 +1,105 @@
 {
-  "title": "welcome"
+  "navBar": {
+    "pawn": "Pawn",
+    "borrow": "Borrow",
+    "lend": "Lend",
+    "account": "My account",
+    "become": "Become a Pawnshop",
+    "buy": "Buy DFY",
+    "connect": "Connect",
+    "login": "Login",
+    "changePass": "Change password",
+    "logOut": "Log out",
+    "staking": "Staking",
+    "borrowProfile": "Borrower Profile",
+    "collateral": "Collateral",
+    "contract": "Contracts",
+    "lendProfile": "Lender Profile",
+    "offer": "Offers sent",
+    "package": "Pawnshop Loan Packages",
+    "loan": "Loan requests",
+    "list": "NFT List",
+    "auction": "NFT Auction"
+  },
+  "home": {
+    "hero": {
+      "with": "with",
+      "title":"Get Crypto Loans Instantly, Regardless of Your Credit Rating",
+      "borrow": {
+        "title": "Borrow",
+        "cryp": {
+          "active": "Cryptocurrency",
+          "coll": "Collateral",
+          "enterAmount": "Enter amount",
+          "duration": "Duration",
+          "loanAmount": "Loan amount",
+          "or": "Or",
+          "max": "Max",
+          "choose": "Choose Existing Collateral",
+          "recommend": "Recommended amount",
+          "recommendContent": "To get a loan quickly, you should set the desired loan amount between 50 - 70% of the collateral value.",
+          "all":"Tất cả",
+          "week": "Week",
+          "month": "Month"
+        },
+        "nft": {
+          "find": "Find NFT lenders",
+          "dont": "Don't have hard NFT?",
+          "new": "Create new"
+        }
+      },
+      "lend": {
+        "title": "Lend",
+        "maxAmount": "Maximum loan amount",
+        "enterAmount": "Enter amount",
+        "enterDuration": "Enter duration",
+        "max": "Max",
+        "maxRequired": "Maximum loan amount is required",
+        "duration": "Duration",
+        "coll": "Collateral",
+        "crypto": "Crypto"
+      },
+      "search": "Search",
+      "invalidAmount": "Invalid amount",
+      "invalidDuration": "Invalid duration"
+    },
+    "sliders": {
+      "title": "Explore Featured Pawnshops",
+      "SuperShop": "Super Shop",
+      "SeeAll": "See all"
+    },
+    "ads": {
+      "title": "Become a Pawnshop",
+      "content": "Open your own pawn shop and discover a new business opportunity with an unmatched ROI. Be a part of the world's financial revolution.",
+      "more": "Learn more"
+    }
+  },
+  "footer": {
+    "office": {
+      "haNoi": "DeFi For You — Hanoi Office",
+      "london": "DeFi For You — London Office",
+      "CFO": "Business CFO",
+      "register": "Registration Number",
+      "viewCompanies": "View on Companies House"
+    },
+    "findUs": "Find us on",
+    "quickNav": {
+      "title": "Quick Navigation",
+      "whitepaper": "Whitepaper",
+      "mobile": "Get the mobile app",
+      "buy": "Buy",
+      "exchange": "Exchanges"
+    },
+    "about": {
+      "title": "About DeFi For You.",
+      "content": "is a trading style of Miles Mann Limited registered office at 5 Southgate Street, Gloucester, Gloucestershire, GL1 1TG1 Licensed authorised and regulated by the Financial Conduct Authority to exercise lender's rights and duties under a regulated credit agreement (excluding high-cost short-term credit, bill of sale agreement, and home collected credit agreement), and has the right to exercise lender's rights and duties under a regulated credit agreement (excluding high-cost short-term credit, bill of sale agreement, and home collected credit agreement)"
+    },
+    "copyRight": {
+      "trademark": "© 2021 DeFi For You. All rights reserved.",
+      "term": "Terms of Service",
+      "Accept":"Accept",
+      "Decline":"Accept",
+      "policy": "Privacy Policy"
+    }
+  }
 }

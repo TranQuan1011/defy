@@ -8,7 +8,7 @@ export const TableCellLend = styled(TableCell)`
 
 export const LinkBox = styled(Box)`
   cursor: pointer;
-  color: blue;
+  color: #2596FF;
   text-decoration: underline;
 `;
 export const CellSpacing = styled(TableCell)`
