@@ -11,6 +11,10 @@ const concatQuery = (obj: Object): string => {
     }
   }
 
+  if (query[query.length - 1] === '&') {
+    return query.slice(0, query.length - 1);
+  }
+
   return query;
 };
 

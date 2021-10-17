@@ -36,17 +36,20 @@ const initFilter = (param: FetchParams) => {
     newFilter.loan = newLoan;
   }
   //handle nft
-  if (!param.nftType) {
+  if (typeof param.nftType === 'undefined') {
     newFilter.nftType = filterOption.nftType;
   } else {
     const newNftType = {} as Option;
-    param.nftType.split(',').forEach((item: string) => {
-      newNftType[item === '0' ? 'Haft NFT' : 'Soft NFT'] = true;
-    });
+    param.nftType
+      .toString()
+      .split(',')
+      .forEach((item: string) => {
+        newNftType[item === '0' ? 'Haft NFT' : 'Soft NFT'] = true;
+      });
     newFilter.nftType = newNftType;
   }
   // handle duration
-  if (!param.durationType) {
+  if (typeof param.nftType === 'undefined') {
     newFilter.duration = filterOption.duration;
   } else {
     const newDuration = {} as Option;

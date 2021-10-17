@@ -49,7 +49,7 @@ const initFilter = (param: FetchParams) => {
     newFilter.loan = newLoan;
   }
   // handle duration
-  if (!param.durationTypes) {
+  if (typeof param.durationTypes === 'undefined') {
     newFilter.duration = filterOption.duration;
   } else {
     const newDuration = {} as Option;
