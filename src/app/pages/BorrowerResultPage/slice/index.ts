@@ -43,6 +43,7 @@ export const initialState: BorrowerResultState = {
       Weeks: false,
       Month: false,
     },
+    name: '',
   },
   list: {
     content: [] as Item[],
@@ -106,6 +107,9 @@ const slice = createSlice({
     setCard(state, action: PayloadAction<Card>) {
       state.card = action.payload;
     },
+    updateName(state, action: PayloadAction<string>) {
+      state.filterOption.name = action.payload;
+    },
     setFilterOption(state, action: PayloadAction<FilterOption>) {
       state.filterOption = {
         collateral: {
@@ -124,6 +128,7 @@ const slice = createSlice({
           ...state.filterOption.duration,
           ...action.payload.duration,
         },
+        name: action.payload.name,
       };
     },
   },

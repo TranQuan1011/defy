@@ -42,6 +42,7 @@ export interface FilterOption {
   loan: Option;
   loanType: Option;
   duration: Option;
+  name: string;
 }
 
 export interface Item {
@@ -78,4 +79,5 @@ export interface FetchParams {
   interestRange?: number;
   ltv?: number;
   loanType?: string;
+  name?: string;
 }

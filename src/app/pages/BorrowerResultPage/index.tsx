@@ -29,6 +29,7 @@ const paramsArr = [
   'loanSymbols',
   'loanType',
   'durationTypes',
+  'name',
 ];
 
 export default function BorrowerResultPage() {
@@ -49,7 +50,7 @@ export default function BorrowerResultPage() {
         params[item] = newValue;
       }
     });
-    dispatch(sagaActions.fetchListReq());
+    dispatch(sagaActions.fetchListReq(params));
     dispatch(sagaActions.fetchCardReq());
   }, [search, dispatch, sagaActions, actions]);
 
@@ -58,9 +59,10 @@ export default function BorrowerResultPage() {
       ref.current = null;
       return;
     }
-    const { collateral, loan, loanType, duration } = filterOption;
-    const loanTypes = Object.keys(loanType)
-      .filter(item => loanType[item])
+    const { collateral, loan, loanType: type, duration, name } = filterOption;
+    const loanTypes = Object.keys(type)
+      .filter(item => type[item])
+      .map(item => (item === 'Auto' ? 0 : 1))
       .join(',');
     const collateralSymbols = Object.keys(collateral)
       .filter(item => collateral[item])
@@ -76,14 +78,14 @@ export default function BorrowerResultPage() {
     } else {
       durationTypes = '';
     }
-    const url = `collateralSymbols=${collateralSymbols}&loanSymbols=${loanSymbols}&durationTypes=${durationTypes}&loanType=${loanTypes}`;
+    const url = `collateralSymbols=${collateralSymbols}&loanSymbols=${loanSymbols}&durationTypes=${durationTypes}&loanTypes=${loanTypes}&name=${name}`;
     history.push(`/pawn/offer?${url}`);
   }, [filterOption]);
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Container maxWidth="lg" component="main" sx={root}>
+    <Container ref={ref} maxWidth="lg" component="main" sx={root}>
       {matches && (
         <FilterSidebar
           open={isFilterbarOpen}
@@ -96,13 +98,13 @@ export default function BorrowerResultPage() {
             onClose={actions.closeFilterbar}
           >
             <Box pt={2} pl={1.5} pr={1.5}>
-              {/* <SearchField
+              <SearchField
                 onValChange={(tempVal: string) =>
                   dispatch(actions.updateName(tempVal))
                 }
                 initialVal={getParamsValue(search, 'name') || ''}
                 nameVal={filterOption.name}
-              /> */}
+              />
             </Box>
             <CBAccordion
               header="Collateral"
@@ -190,13 +192,13 @@ export default function BorrowerResultPage() {
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <Filter onReset={() => dispatch(actions.resetFilter())}>
               <Box pt={2} pl={1.5} pr={1.5}>
-                {/* <SearchField
+                <SearchField
                   onValChange={(tempVal: string) =>
                     dispatch(actions.updateName(tempVal))
                   }
                   initialVal={getParamsValue(search, 'name') || ''}
                   nameVal={filterOption.name}
-                /> */}
+                />
               </Box>
               <CBAccordion
                 header="Collateral"
