@@ -21,7 +21,6 @@ import getIconUrl from 'app/commons/getIconUrl';
 import { Link } from 'react-router-dom';
 import SearchField from './SearchField';
 import ButtonMenuResults from 'app/components/ButtonResults';
-
 const paramsArr = [
   'page',
   'size',
@@ -30,6 +29,7 @@ const paramsArr = [
   'loanType',
   'durationTypes',
   'name',
+  'durationTypes',
 ];
 
 export default function BorrowerResultPage() {
@@ -144,6 +144,7 @@ export default function BorrowerResultPage() {
               onChange={item => dispatch(actions.updateLoanType(item))}
             />
             <CBAccordion
+
               header="Duration"
               labels={['Weeks', 'Month']}
               name="duration"

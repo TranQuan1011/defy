@@ -110,6 +110,7 @@ const slice = createSlice({
     updateName(state, action: PayloadAction<string>) {
       state.filterOption.name = action.payload;
     },
+
     setFilterOption(state, action: PayloadAction<FilterOption>) {
       state.filterOption = {
         collateral: {
@@ -120,10 +121,12 @@ const slice = createSlice({
           ...state.filterOption.loan,
           ...action.payload.loan,
         },
+
         loanType: {
           ...state.filterOption.loanType,
           ...action.payload.loanType,
         },
+
         duration: {
           ...state.filterOption.duration,
           ...action.payload.duration,
