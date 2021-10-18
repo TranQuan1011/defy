@@ -39,8 +39,13 @@ export default function Lend(props) {
       query = concatQuery(data);
       history.push(`/pawn/lender${query}`);
     } else {
-      const { collateralSymbols, ...newData } = data;
-      query = concatQuery(newData);
+      const {
+        collateralSymbols,
+        loanSymbols: loanSymbol,
+        durationTypes: durationType,
+        ...rest
+      } = data;
+      query = concatQuery({ loanSymbol, durationType, ...rest });
       history.push(`/pawn/lender/nft-result${query}`);
     }
   };
@@ -73,7 +78,9 @@ export default function Lend(props) {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <ButtonColor sx={EndAbor}>{t('home.hero.lend.max')}</ButtonColor>
+                    <ButtonColor sx={EndAbor}>
+                      {t('home.hero.lend.max')}
+                    </ButtonColor>
                   </InputAdornment>
                 ),
               }}

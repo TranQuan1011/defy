@@ -49,6 +49,7 @@ export default function LendNFTResult() {
         params[item] = newValue;
       }
     });
+    console.log(params);
 
     dispatch(sagaActions.fetchListReq(params));
     if (ref.current) {
