@@ -23,6 +23,11 @@ interface Props {
 }
 
 export default function LendTable({ list }: Props) {
+  const shortText = text => {
+    if (text.length > 5) {
+      return text.substring(0, 5) + '...' + text.slice(text.length - 5);
+    }
+  };
   return (
     <TableContainer component={Paper}>
       <Table
@@ -69,7 +74,7 @@ export default function LendTable({ list }: Props) {
                     </TableCell>
                     <TableCell align="left">
                       <Box>
-                        <LinkBox>{item.walletAddress}</LinkBox>
+                        <LinkBox>{shortText(item.walletAddress)}</LinkBox>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                           <img src={star} alt="rate" />
                           <Box sx={{ margin: '0.2rem 1rem 0 0.2rem' }}>
@@ -97,9 +102,9 @@ export default function LendTable({ list }: Props) {
                     <TableCell align="left">
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Avatar
-                          sx={{ height: '24px', width: '24px' }} 
-                          src={getIconUrl(item.loanSymbol)} 
-                          alt="ellipse" 
+                          sx={{ height: '24px', width: '24px' }}
+                          src={getIconUrl(item.loanSymbol)}
+                          alt="ellipse"
                         />
                         <Box sx={{ margin: '0 1rem' }}>{item.loanSymbol}</Box>
                       </Box>
@@ -130,7 +135,7 @@ export default function LendTable({ list }: Props) {
                 </TableCell>
                 <TableCell align="left">
                   <Box>
-                    <LinkBox>{item.walletAddress}</LinkBox>
+                    <LinkBox>{shortText(item.walletAddress)}</LinkBox>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <img src={star} alt="rate" />
                       <Box sx={{ margin: '0.2rem 1rem 0 0.2rem' }}>
@@ -144,7 +149,13 @@ export default function LendTable({ list }: Props) {
                   </Box>
                 </TableCell>
                 <TableCell align="left">
-                  <Box sx={{ display: 'flex', alignItems: 'center', height: '24px' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      height: '24px',
+                    }}
+                  >
                     <Avatar
                       sx={{ height: '24px', width: '24px' }}
                       src={getIconUrl(item.collateralSymbol)}
@@ -158,9 +169,9 @@ export default function LendTable({ list }: Props) {
                 <TableCell align="left">
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Avatar
-                      sx={{ height: '24px', width: '24px' }} 
-                      src={getIconUrl(item.loanSymbol)} 
-                      alt="ellipse" 
+                      sx={{ height: '24px', width: '24px' }}
+                      src={getIconUrl(item.loanSymbol)}
+                      alt="ellipse"
                     />
                     <Box sx={{ margin: '0 1rem' }}>{item.loanSymbol}</Box>
                   </Box>
@@ -171,7 +182,9 @@ export default function LendTable({ list }: Props) {
                   {item.durationType === 0 ? 'Weeks' : 'Months'}
                 </TableCell>
                 <TableCell align="left">
-                  <ButtonColor sx={{ padding: '9px 10px 9px 10px', fontSize: '12px' }}>
+                  <ButtonColor
+                    sx={{ padding: '9px 10px 9px 10px', fontSize: '12px' }}
+                  >
                     Send Offer
                   </ButtonColor>
                 </TableCell>

@@ -7,7 +7,7 @@ import { Typography, Box } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-
+import ava from '../../../assets/image/zelda.jpg';
 import {
   StarTypo,
   GreenTypo,
@@ -22,7 +22,11 @@ export default function LendCard(props) {
     <Card sx={root}>
       <Grid container>
         <Grid item xs={12} md={3}>
-          <CardMedia component="img" sx={cardMedia} src={props.avatar} />
+          <CardMedia
+            component="img"
+            sx={cardMedia}
+            src={props.avatar ? props.avatar : ava}
+          />
         </Grid>
         <Grid item xs={12} md={5}>
           <CardContent sx={info}>

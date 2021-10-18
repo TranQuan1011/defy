@@ -4,10 +4,7 @@ import { GlobalReducer } from 'app/commons/types';
 
 import { HeroState } from 'app/containers/Hero/slice/types';
 import { LendCryptoPageState } from 'app/pages/LendCryptoResult/slice/types';
-
 import { BorrowerResultState } from 'app/pages/BorrowerResultPage/slice/types';
-
-
 import { LendNFTPageState } from 'app/pages/LendNFTResultPage/slice/types';
 
 /* 

@@ -34,10 +34,16 @@ export const initialState: BorrowerResultState = {
       USDC: false,
       DAI: false,
     },
+    loanType: {
+      Auto: false,
+      SemiAuto: false,
+      Negotiation: false,
+    },
     duration: {
       Weeks: false,
       Month: false,
     },
+    name: '',
   },
   list: {
     content: [] as Item[],
@@ -88,6 +94,10 @@ const slice = createSlice({
       state.filterOption.duration[action.payload] =
         !state.filterOption.duration[action.payload];
     },
+    updateLoanType(state, action: PayloadAction<string>) {
+      state.filterOption.loanType[action.payload] =
+        !state.filterOption.loanType[action.payload];
+    },
     resetFilter(state) {
       state.filterOption = initialState.filterOption;
     },
@@ -97,6 +107,10 @@ const slice = createSlice({
     setCard(state, action: PayloadAction<Card>) {
       state.card = action.payload;
     },
+    updateName(state, action: PayloadAction<string>) {
+      state.filterOption.name = action.payload;
+    },
+
     setFilterOption(state, action: PayloadAction<FilterOption>) {
       state.filterOption = {
         collateral: {
@@ -107,10 +121,17 @@ const slice = createSlice({
           ...state.filterOption.loan,
           ...action.payload.loan,
         },
+
+        loanType: {
+          ...state.filterOption.loanType,
+          ...action.payload.loanType,
+        },
+
         duration: {
           ...state.filterOption.duration,
           ...action.payload.duration,
         },
+        name: action.payload.name,
       };
     },
   },

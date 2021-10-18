@@ -40,6 +40,9 @@ export interface Option {
 export interface FilterOption {
   collateral: Option;
   loan: Option;
+  loanType: Option;
+  duration: Option;
+  name: string;
   duration: Option;
 }
 
@@ -74,4 +77,9 @@ export interface FetchParams {
   collateralSymbols?: string;
   loanSymbols?: string;
   durationTypes?: number;
+  interestRange?: number;
+  ltv?: number;
+  loanType?: string;
+  name?: string;
+
 }
