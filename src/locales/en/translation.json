@@ -38,7 +38,7 @@
           "choose": "Choose Existing Collateral",
           "recommend": "Recommended amount",
           "recommendContent": "To get a loan quickly, you should set the desired loan amount between 50 - 70% of the collateral value.",
-          "all":"Tất cả",
+          "all":"All",
           "week": "Week",
           "month": "Month"
         },
@@ -62,6 +62,9 @@
       "search": "Search",
       "invalidAmount": "Invalid amount",
       "invalidDuration": "Invalid duration"
+    },
+    "whyBorrow": {
+      "title": "Why Borrow With Us?"
     },
     "sliders": {
       "title": "Explore Featured Pawnshops",
