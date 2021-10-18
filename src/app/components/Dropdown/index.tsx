@@ -60,7 +60,10 @@ export default function Dropdown(props): JSX.Element {
                 setInput(v);
               }
             }}
-            onChange={(e, v, r) => onChange(v)}
+            onChange={(e, v, r) => {
+              setInput('');
+              onChange(v);
+            }}
             {...fieldProps}
           />
         );
