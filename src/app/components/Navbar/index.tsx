@@ -52,6 +52,7 @@ const NavBar = props => {
   const Logout = () => {
     localStorage.removeItem('accessToken');
     dispatch(logout());
+    handleClose();
   };
   return (
     <>
@@ -79,7 +80,7 @@ const NavBar = props => {
                   <img width="100%" src={Logo} alt="logo" />
                 </Link>
               </Typography>
-              
+
               <Box
                 sx={{
                   display: 'flex',
