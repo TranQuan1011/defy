@@ -49,7 +49,7 @@ const initFilter = (param: FetchParams) => {
     newFilter.nftType = newNftType;
   }
   // handle duration
-  if (typeof param.nftType === 'undefined') {
+  if (typeof param.durationType === 'undefined') {
     newFilter.duration = filterOption.duration;
   } else {
     const newDuration = {} as Option;
