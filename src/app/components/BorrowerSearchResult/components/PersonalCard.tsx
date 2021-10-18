@@ -15,8 +15,8 @@ import defi2 from '../../../assets/icon/defi2.png';
 import { ButtonNoColor, ButtonColor } from '../../Button/index';
 export const PersonalCard = props => {
   const shortText = text => {
-    if (text.length > 10) {
-      return text.substring(0, 10) + '...' + text.slice(text.length - 5);
+    if (text.length > 5) {
+      return text.substring(0, 5) + '...' + text.slice(text.length - 5);
     }
   };
   return (

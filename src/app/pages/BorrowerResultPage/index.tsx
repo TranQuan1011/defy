@@ -19,12 +19,15 @@ import getParamsValue from 'app/commons/getParamValue';
 import initFilter from 'app/commons/initFilter';
 import getIconUrl from 'app/commons/getIconUrl';
 import { Link } from 'react-router-dom';
+import SearchField from './SearchField';
+import ButtonMenuResults from 'app/components/ButtonResults';
 
 const paramsArr = [
   'page',
   'size',
   'collateralSymbols',
   'loanSymbols',
+  'loanType',
   'durationTypes',
 ];
 
@@ -55,7 +58,10 @@ export default function BorrowerResultPage() {
       ref.current = null;
       return;
     }
-    const { collateral, loan, duration } = filterOption;
+    const { collateral, loan, loanType, duration } = filterOption;
+    const loanTypes = Object.keys(loanType)
+      .filter(item => loanType[item])
+      .join(',');
     const collateralSymbols = Object.keys(collateral)
       .filter(item => collateral[item])
       .join(',');
@@ -70,7 +76,7 @@ export default function BorrowerResultPage() {
     } else {
       durationTypes = '';
     }
-    const url = `collateralSymbols=${collateralSymbols}&loanSymbols=${loanSymbols}&durationTypes=${durationTypes}`;
+    const url = `collateralSymbols=${collateralSymbols}&loanSymbols=${loanSymbols}&durationTypes=${durationTypes}&loanType=${loanTypes}`;
     history.push(`/pawn/offer?${url}`);
   }, [filterOption]);
 
@@ -89,6 +95,15 @@ export default function BorrowerResultPage() {
             onReset={() => dispatch(actions.resetFilter())}
             onClose={actions.closeFilterbar}
           >
+            <Box pt={2} pl={1.5} pr={1.5}>
+              {/* <SearchField
+                onValChange={(tempVal: string) =>
+                  dispatch(actions.updateName(tempVal))
+                }
+                initialVal={getParamsValue(search, 'name') || ''}
+                nameVal={filterOption.name}
+              /> */}
+            </Box>
             <CBAccordion
               header="Collateral"
               labels={collateral}
@@ -118,6 +133,13 @@ export default function BorrowerResultPage() {
               name="loan"
               filterOption={filterOption}
               onChange={item => dispatch(actions.updateLoan(item))}
+            />
+            <CBAccordion
+              header="Loan Type"
+              labels={['Auto', 'Semi-Auto', 'Negotiation']}
+              name="loanType"
+              filterOption={filterOption}
+              onChange={item => dispatch(actions.updateLoanType(item))}
             />
             <CBAccordion
               header="Duration"
@@ -161,8 +183,21 @@ export default function BorrowerResultPage() {
           />
         </Grid>
         <Grid item xs={12} md={3} order={{ xs: 1, md: 2 }}>
+          <ButtonMenuResults
+            sx={{ ml: 'auto' }}
+            onClick={() => dispatch(actions.openFilterbar())}
+          />
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <Filter onReset={() => dispatch(actions.resetFilter())}>
+              <Box pt={2} pl={1.5} pr={1.5}>
+                {/* <SearchField
+                  onValChange={(tempVal: string) =>
+                    dispatch(actions.updateName(tempVal))
+                  }
+                  initialVal={getParamsValue(search, 'name') || ''}
+                  nameVal={filterOption.name}
+                /> */}
+              </Box>
               <CBAccordion
                 header="Collateral"
                 labels={collateral}
@@ -192,6 +227,13 @@ export default function BorrowerResultPage() {
                 name="loan"
                 filterOption={filterOption}
                 onChange={item => dispatch(actions.updateLoan(item))}
+              />
+              <CBAccordion
+                header="Loan Type"
+                labels={['Auto', 'Semi-Auto', 'Negotiation']}
+                name="loanType"
+                filterOption={filterOption}
+                onChange={item => dispatch(actions.updateLoanType(item))}
               />
               <CBAccordion
                 header="Duration"
