@@ -44,3 +44,26 @@ export interface GlobalReducer {
   collateral: Crypto[];
   loan: Crypto[];
 }
+
+export interface resultBorrower {
+  acceptableAssetsAsCollateral: [];
+  acceptableAssetsAsLoan: [];
+  allowedLoanMax: number;
+  allowedLoanMin: number;
+  associatedWalletAddress: string;
+  durationQtyMax: number;
+  durationQtyMin: number;
+  durationQtyType: number;
+  id: number;
+  interest: number;
+  interestMax: null;
+  interestMin: null;
+  isFavourite: null;
+  lendingType: null;
+  liquidationThreshold: number;
+  loanToValue: number;
+  loanToValueMax: null;
+  loanToValueMin: null;
+  name: string;
+  pawnShop: Object;
+}

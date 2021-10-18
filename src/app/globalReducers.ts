@@ -5,6 +5,8 @@ import {
   logout,
   setCollateral,
   setLoan,
+  setCollateralBorrower,
+  setLoanBorrower,
 } from './globalActions';
 
 const initialState = {
@@ -24,6 +26,12 @@ export const globalReducer = createReducer(initialState as GlobalReducer, {
     return { ...state, collateral: action.payload };
   },
   [setLoan.toString()]: (state, action) => {
+    return { ...state, loan: action.payload };
+  },
+  [setCollateralBorrower.toString()]: (state, action) => {
+    return { ...state, collateral: action.payload };
+  },
+  [setLoanBorrower.toString()]: (state, action) => {
     return { ...state, loan: action.payload };
   },
 });
