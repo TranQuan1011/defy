@@ -43,7 +43,6 @@ export interface FilterOption {
   loanType: Option;
   duration: Option;
   name: string;
-  duration: Option;
 }
 
 export interface Item {
